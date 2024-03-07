@@ -1,0 +1,60 @@
+--DROP PROCEDURE TYJINFWLIB.CMN_PROGRAM_ADD;
+-------------------------------------------------------------------------------------------
+-- 프로시저명 : CMN_PROGRAM_ADD
+-- 작성자     : 문광복
+-- 작성일     : 2015-09-01
+-- 설명       : 프로그램관리 트리에 새로운 노드 추가
+-- 예문       : EXEC CMN_PROGRAM_ADD '프로그램아이디','메뉴아이디', '경로'
+--		DB2 변환 : 이전프로시져명 SP_MENU_MANAGEMENT_PROGRAM_INSERT
+--		프렌지 변환 : PTCMMBAS50I1 -> CMN_PROGRAM_ADD
+-------------------------------------------------------------------------------------------
+CREATE PROCEDURE TYJINFWLIB.CMN_PROGRAM_ADD
+(
+	P_PROGRAMID		VARCHAR(50),		-- 프로그램아이디
+	P_MENUID			VARCHAR(50),		-- 메뉴아이디
+	P_PROGRAMPATH	VARCHAR(200),		-- 프로그램경로
+	P_DESCRIPTION	VARCHAR(2000),		-- 설명
+	P_POPUP			CHAR(1),
+	P_POPUP_SIZE		VARCHAR(11),
+	P_MENUTYPE			VARCHAR(10)
+)
+	LANGUAGE SQL
+
+P1: BEGIN
+
+	IF NOT EXISTS(SELECT * FROM TYJINFWLIB.CMN_PROGRAM WHERE PROGRAMID= P_PROGRAMID AND MENUID = P_MENUID) THEN
+		INSERT INTO TYJINFWLIB.CMN_PROGRAM
+		(
+				PROGRAMID
+			,	MENUID
+			,	PROGRAMPATH
+			,	DESCRIPTION
+			,	POPUP
+			,	POPUP_SIZE
+			,	MENUTYPE
+		) 
+		VALUES 
+		(
+				P_PROGRAMID
+			,	P_MENUID
+			,	P_PROGRAMPATH
+			,	P_DESCRIPTION
+			,	P_POPUP
+			,	P_POPUP_SIZE
+			,	P_MENUTYPE
+		);
+	ELSE
+		UPDATE TYJINFWLIB.CMN_PROGRAM 
+		SET
+				PROGRAMID	= P_PROGRAMID
+			,	MENUID		= P_MENUID
+			,	PROGRAMPATH	= P_PROGRAMPATH
+			,	DESCRIPTION = P_DESCRIPTION
+			,	POPUP		= P_POPUP
+			,	POPUP_SIZE	= P_POPUP_SIZE
+			,	MENUTYPE	= P_MENUTYPE
+		WHERE PROGRAMID = P_PROGRAMID AND MENUID = P_MENUID;
+	END IF;
+
+END P1
+

@@ -1,0 +1,106 @@
+----DROP PROCEDURE TYJINFWLIB.ORG_USER_GET_ACL;
+-------------------------------------------------------------------------------------------
+--
+-- 프로시저명 : ORG_USER_GET_ACL 
+-- 작성자     : 문광복
+-- 작성일     : 2014-04-03
+-- 설명       : 로그인아이디로 페이지를 로그인한다.
+-- 예문       : CALL TYJINFWLIB.ORG_USER_GET_ACL  ('','','')
+--		DB2 변환 : 이전프로시져명 SP_USER_SELECDT_ACL
+-------------------------------------------------------------------------------------------
+CREATE PROCEDURE TYJINFWLIB.ORG_USER_GET_ACL  
+(
+		P_EMPID		CHAR(20)
+	,	P_COMPANYCODE		CHAR(20)
+	,	P_MENUID		CHAR(20)
+)
+	RESULT SETS 3
+	LANGUAGE SQL
+	SET OPTION
+	ALWCPYDTA = *OPTIMIZE
+M1: BEGIN 
+	
+	S1 : BEGIN
+		
+	END S1;
+	
+	P1: BEGIN
+		
+		DECLARE REFCURSOR CURSOR WITH RETURN FOR
+		
+			SELECT
+					GRPID
+			FROM
+					TYJINFWLIB.ORG_DEPTUSR	AS D
+					INNER JOIN	TYJINFWLIB.ORG_GROUPUSR  AS G
+						ON	D.DEPTCODE		= G.USRID
+						AND	G.USRTYPE		= '2'	
+			WHERE
+					D.COMPANYCODE	= P_COMPANYCODE 
+			AND		D.EMPID				= P_EMPID
+
+			UNION
+
+			SELECT
+					GRPID
+			FROM 
+					TYJINFWLIB.ORG_GROUPUSR  AS G
+			WHERE
+					G.USRTYPE	= '1' 
+			AND		G.USRID		= P_EMPID 
+			AND		COMPANYCODE = P_COMPANYCODE;
+
+		OPEN REFCURSOR;
+	
+	END P1;
+
+	P2: BEGIN
+		
+		DECLARE REFCURSOR2 CURSOR WITH RETURN FOR
+
+			SELECT COUNT(*) FROM TYJINFWLIB.CMN_ACL WHERE ACL_TYPE='MENU' AND ACL_ID = P_MENUID AND ACL_GRP IN 
+			(
+				SELECT GRPID FROM (
+					SELECT
+						GRPID
+					FROM
+							TYJINFWLIB.ORG_DEPTUSR	AS D
+							INNER JOIN	TYJINFWLIB.ORG_GROUPUSR  AS G
+								ON	D.DEPTCODE		= G.USRID
+								AND	G.USRTYPE		= '2'	
+					WHERE
+							D.COMPANYCODE	= P_COMPANYCODE 
+					AND		D.EMPID				= P_EMPID
+
+					UNION
+
+					SELECT
+							GRPID
+					FROM 
+							TYJINFWLIB.ORG_GROUPUSR  AS G
+					WHERE
+							G.USRTYPE	= '1' 
+					AND		G.USRID		= P_EMPID 
+					AND		COMPANYCODE = P_COMPANYCODE
+				) A
+			);
+
+		OPEN REFCURSOR2;
+	
+	END P2;
+
+
+    P3 : BEGIN
+        DECLARE REFCURSOR3 CURSOR WITH RETURN FOR
+        SELECT *
+          FROM TYJINFWLIB.CMN_SWITCH
+         WHERE COMPANYCODE =P_COMPANYCODE
+         FETCH FIRST 1 ROWS ONLY
+         ;
+
+        OPEN REFCURSOR3;
+
+    END P3;
+
+END M1
+

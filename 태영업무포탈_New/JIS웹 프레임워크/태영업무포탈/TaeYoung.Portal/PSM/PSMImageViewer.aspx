@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PSMImageViewer.aspx.cs" Inherits="TaeYoung.Portal.PSM.PSMImageViewer" %>

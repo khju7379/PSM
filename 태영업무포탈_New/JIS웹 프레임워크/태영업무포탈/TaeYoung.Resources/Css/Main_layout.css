@@ -1,0 +1,371 @@
+﻿@charset "utf-8"; 
+/* JIS Web Standardization Team (http://www.jisman.co.kr) 권미영 */
+
+
+
+/* 바디 */
+#main_body {
+   position: relative;
+   width: 100%;
+   height:100%;
+   background: #EFF0F4;
+}
+
+
+	/* 상단 */
+	#main_body #top {
+		position: relative;
+		width: 100%;
+		height: 75px;	
+		font-size: 50px;
+		color: #FFF;
+   	line-height: 75px;
+		text-align: center;	
+   	background: url(../Images/tank/top_bg.gif) left center no-repeat;
+   	-moz-text-shadow: 1px 1px 2px #AF5082, -1px -1px 2px #AF5082, -1px 1px 2px #AF5082, 1px -1px 2px #AF5082;
+   	-webkit-text-shadow: 1px 1px 2px #AF5082, -1px -1px 2px #AF5082, -1px 1px 2px #AF5082, 1px -1px 2px #AF5082;
+   	text-shadow: 1px 1px 2px #AF5082, -1px -1px 2px #AF5082, -1px 1px 2px #AF5082, 1px -1px 2px #AF5082;
+	}	
+	   /* 시계 */
+		#main_body #top #clock {
+			position: absolute;
+	   	top: 8px;
+	   	right: 15px;
+	   	font-size: 15px;
+   		color: #FFF;
+      	line-height: 25px;
+      	text-align: center;	
+      	padding: 5px 10px 5px;
+	   	background: #142A47;
+	   	-moz-border-radius: 10px;
+      	-webkit-border-radius: 10px;
+      	border-radius: 10px;
+      	-moz-text-shadow: none;
+      	-webkit-text-shadow: none;
+      	text-shadow: none;
+		}	
+			   
+   /* 버튼 */
+   #main_body #btn {
+   	position: relative;
+		height: 25px;
+		padding: 5px 5px 5px;	
+		background: url(../Images/tank/btn_bg.gif) left top repeat-x;
+		background-size: contain;
+   	overflow: hidden;
+   }
+      #main_body #btn ul {
+      	position: relative;
+      	float: right;
+      }
+         #main_body #btn ul li {float: left;}
+         #main_body #btn ul li.page {
+            padding: 0 5px 0; 
+            margin-right: 5px;  
+            border-right: 1px solid #B3B7BC;
+         }
+            #main_body #btn ul li form {
+               float: left;
+               margin-left: 10px;
+            }
+            #main_body #btn ul li label {color: #4B4B4B;}
+      #main_body #btn a {
+      	font-size: 13px;
+   		color: #4B4B4B;
+      	line-height: 25px;
+      	text-align: center;
+      	padding: 5px 7px 5px;
+      	margin: 0 1px 0px;
+      	border: 1px solid #FFF;
+      	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#FFFFFF', EndColorStr='#E9EDF8');
+		   background: #E9EDF8; 
+		   background: -moz-linear-gradient(top, #FFFFFF, #E9EDF8); 
+		   background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#E9EDF8));
+		   -moz-border-radius: 3px;
+      	-webkit-border-radius: 3px;
+      	border-radius: 3px;      	
+      	-moz-box-shadow: 1px 1px 0px #B3B7BC, -1px -1px 0px #B3B7BC, -1px 1px 0px #B3B7BC, 1px -1px 0px #B3B7BC;
+      	-webkit-box-shadow: 1px 1px 0px #B3B7BC, -1px -1px 0px #B3B7BC, -1px 1px 0px #B3B7BC, 1px -1px 0px #B3B7BC;
+      	box-shadow: 1px 1px 0px #B3B7BC, -1px -1px 0px #B3B7BC, -1px 1px 0px #B3B7BC, 1px -1px 0px #B3B7BC;
+      }
+      #main_body #btn a:hover,
+      #main_body #btn a.on {
+   		color: #FFF;
+      	border: 1px solid #497FCB;
+      	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#335586', EndColorStr='#1E395E');
+		   background: #335586; 
+		   background: -moz-linear-gradient(top, #335586, #1E395E); 
+		   background: -webkit-gradient(linear, left top, left bottom, from(#335586), to(#1E395E));
+		   -moz-box-shadow: 1px 1px 0px #233246, -1px -1px 0px #233246, -1px 1px 0px #233246, 1px -1px 0px #233246;
+      	-webkit-box-shadow: 1px 1px 0px #233246, -1px -1px 0px #233246, -1px 1px 0px #233246, 1px -1px 0px #233246;
+      	box-shadow: 1px 1px 0px #233246, -1px -1px 0px #233246, -1px 1px 0px #233246, 1px -1px 0px #233246;
+      }
+      
+      /* 확대탱크 버튼 */
+   #main_body #Zbtn {
+   	position: relative;
+	background: background:rgba(0,0,0,0);
+   	overflow: hidden;
+   }
+      #main_body #Zbtn ul {
+      	position: relative;
+      	float: right;
+      	margin-right:30px;
+      }	
+      #main_body #Zbtn a {
+      	font-size: 13px;
+   		color: #4B4B4B;
+      	line-height: 25px;
+      	text-align: center;
+      	padding: 5px 7px 5px;
+      	margin: 0 1px 0px;
+      	border: 1px solid #FFF;
+      	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#FFFFFF', EndColorStr='#E9EDF8');
+		   background: #E9EDF8; 
+		   background: -moz-linear-gradient(top, #FFFFFF, #E9EDF8); 
+		   background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#E9EDF8));
+		   -moz-border-radius: 3px;
+      	-webkit-border-radius: 3px;
+      	border-radius: 3px;      	
+      	-moz-box-shadow: 1px 1px 0px #B3B7BC, -1px -1px 0px #B3B7BC, -1px 1px 0px #B3B7BC, 1px -1px 0px #B3B7BC;
+      	-webkit-box-shadow: 1px 1px 0px #B3B7BC, -1px -1px 0px #B3B7BC, -1px 1px 0px #B3B7BC, 1px -1px 0px #B3B7BC;
+      	box-shadow: 1px 1px 0px #B3B7BC, -1px -1px 0px #B3B7BC, -1px 1px 0px #B3B7BC, 1px -1px 0px #B3B7BC;
+      }	
+	  #main_body #Zbtn a:hover,
+      #main_body #Zbtn a.on {
+   		color: #FFF;
+      	border: 1px solid #497FCB;
+      	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#335586', EndColorStr='#1E395E');
+		   background: #335586; 
+		   background: -moz-linear-gradient(top, #335586, #1E395E); 
+		   background: -webkit-gradient(linear, left top, left bottom, from(#335586), to(#1E395E));
+		   -moz-box-shadow: 1px 1px 0px #233246, -1px -1px 0px #233246, -1px 1px 0px #233246, 1px -1px 0px #233246;
+      	-webkit-box-shadow: 1px 1px 0px #233246, -1px -1px 0px #233246, -1px 1px 0px #233246, 1px -1px 0px #233246;
+      	box-shadow: 1px 1px 0px #233246, -1px -1px 0px #233246, -1px 1px 0px #233246, 1px -1px 0px #233246;
+      }	   
+	/* 트렌드 버튼 */
+   #main_body #Tbtn {
+   	position: relative;
+		height: 25px;
+		padding: 5px 5px 5px;	
+		background: url(../Images/tank/btn_bg.gif) left top repeat-x;
+		background-size: contain;
+   	overflow: hidden;
+   }
+      #main_body #Tbtn ul {
+      	position: relative;
+      }	
+      #main_body #Tbtn a {
+      	font-size: 13px;
+   		color: #4B4B4B;
+      	line-height: 25px;
+      	text-align: center;
+      	padding: 5px 7px 5px;
+      	margin: 0 1px 0px;
+      	border: 1px solid #FFF;
+      	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#FFFFFF', EndColorStr='#E9EDF8');
+		   background: #E9EDF8; 
+		   background: -moz-linear-gradient(top, #FFFFFF, #E9EDF8); 
+		   background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#E9EDF8));
+		   -moz-border-radius: 3px;
+      	-webkit-border-radius: 3px;
+      	border-radius: 3px;      	
+      	-moz-box-shadow: 1px 1px 0px #B3B7BC, -1px -1px 0px #B3B7BC, -1px 1px 0px #B3B7BC, 1px -1px 0px #B3B7BC;
+      	-webkit-box-shadow: 1px 1px 0px #B3B7BC, -1px -1px 0px #B3B7BC, -1px 1px 0px #B3B7BC, 1px -1px 0px #B3B7BC;
+      	box-shadow: 1px 1px 0px #B3B7BC, -1px -1px 0px #B3B7BC, -1px 1px 0px #B3B7BC, 1px -1px 0px #B3B7BC;
+      }	
+	  #main_body #Tbtn a:hover,
+      #main_body #Tbtn a.on {
+   		color: #FFF;
+      	border: 1px solid #497FCB;
+      	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#335586', EndColorStr='#1E395E');
+		   background: #335586; 
+		   background: -moz-linear-gradient(top, #335586, #1E395E); 
+		   background: -webkit-gradient(linear, left top, left bottom, from(#335586), to(#1E395E));
+		   -moz-box-shadow: 1px 1px 0px #233246, -1px -1px 0px #233246, -1px 1px 0px #233246, 1px -1px 0px #233246;
+      	-webkit-box-shadow: 1px 1px 0px #233246, -1px -1px 0px #233246, -1px 1px 0px #233246, 1px -1px 0px #233246;
+      	box-shadow: 1px 1px 0px #233246, -1px -1px 0px #233246, -1px 1px 0px #233246, 1px -1px 0px #233246;
+      }	   
+   /* 컨텐츠 */
+   #main_body #container {
+   	position: relative;
+   	/* margin: 0 auto; */
+   	width: 100%;
+   }
+      /* 탱크 */
+      #main_body .tank {
+      	position: relative;
+      	float: left;
+      	width: 310px;
+   		height: 445px;
+   		padding: 75px 0px 0px 19px;
+   		margin: 5px 30px 0px;
+   		background: url(../Images/tank/tank.png) left top no-repeat;
+   		background-size: 100% 100%;
+      	overflow: hidden;
+      	-webkit-Box-sizing: border-box;
+      	-moz-box-sizing: border-box;
+      	box-sizing: border-box;
+      }
+         /* 셀렉트 */
+         #main_body #container form {
+         	position: absolute;
+		      top: 20px;
+		      left: 50%;
+		      margin-left: -40px;	
+         }
+            #main_body #container form select 
+            {
+                width: 80px;
+                font-size:14pt;
+            }
+            #main_body #container form select option
+            {   
+                font-size:14pt;
+            }
+         /* 그래프 */
+         #main_body .graph_bx {
+         	position: relative;
+         	float: left;
+         	width: 106px;
+      		height: 292px;
+         }
+            #main_body .graph_bx .graph {
+               position: absolute;
+               left: 32px;
+               bottom: 12px;
+               width: 65px;
+               text-align: center;
+               border: 1px solid #065689; 
+               background: #2389C8;
+            }
+               #main_body .graph_bx .graph span {
+                  font-size: 12px;
+                  color: #000;
+                  line-height: 23px;
+                  text-align: center;
+                  padding: 0 5px 0;
+                  border: 1px solid #0D1827; 
+                  background: #FFF;
+               }
+         /* 테이블 */
+         #main_body .tank table {
+            position: relative;
+            width: 163px;
+            border-top: 3px solid #0D1827; 
+            border-bottom: 2px solid #0D1827; 
+         }
+            #main_body .tank table th,
+            #main_body .tank table td {
+               font-size: 14px;
+               line-height: 23px;
+               padding: 0 2px 0;
+               border: 1px solid #0D1827; 
+            }
+            #main_body .tank table th {
+               color: #FFF;
+               font-weight: normal;
+               background: #2D4D77;
+            }
+            #main_body .tank table td {
+               color: #000;
+               background: #DCE1EC;
+            }
+            
+    /* 탱크 확대*/
+      #main_body .tankzoom {
+      	position: relative;
+      	float: left;
+      	width: 464px;
+   		height: 666px;
+   		padding: 112px 0px 0px 28px;
+   		margin: 10px 10px 10px;
+   		background: url(../Images/tank/tank.png) left top no-repeat;
+   		background-size: 100% 100%;
+      	overflow: hidden;
+      	-webkit-Box-sizing: border-box;
+      	-moz-box-sizing: border-box;
+      	box-sizing: border-box;
+      }
+         /* 셀렉트 */
+         #main_body #layZoom form {
+         	position: absolute;
+		      top: 40px;
+		      left: 50%;
+		      margin-left: -55px;		      
+         }
+            #main_body #layZoom form select {width: 120px;height:32px;}
+         /* 그래프 */
+         #main_body .graphzoom_bx {
+         	position: relative;
+         	float: left;
+         	width: 159px;
+      		height: 438px;
+         }
+            #main_body .graph_bxzoom .graph {
+               position: absolute;
+               left: 32px;
+               bottom: 12px;
+               width: 65px;
+               text-align: center;
+               border: 1px solid #065689; 
+               background: #2389C8;
+            }
+               #main_body .graph_bxzoom .graph span {
+                  font-size: 12px;
+                  color: #000;
+                  line-height: 35px;
+                  text-align: center;
+                  padding: 0 5px 0;
+                  border: 1px solid #0D1827; 
+                  background: #FFF;
+               }
+         /* 테이블 */
+         #main_body .tankzoom table {
+            position: relative;
+            width: 244px;
+            border-top: 3px solid #0D1827; 
+            border-bottom: 2px solid #0D1827; 
+         }
+            #main_body .tankzoom table th,
+            #main_body .tankzoom table td {
+               font-size: 19px;
+               line-height: 35px;
+               padding: 0 2px 0;
+               border: 1px solid #0D1827; 
+            }
+            #main_body .tankzoom table td input 
+            {
+                color:black;
+                font-size: 17px;
+                border: 0px; 
+                background:rgba(0,0,0,0);
+                text-align:right;
+            }
+            #main_body .tankzoom table th {
+               color: #FFF;
+               font-weight: normal;
+               background: #2D4D77;
+            }
+            #main_body .tankzoom table td {
+               color: #000;
+               background: #DCE1EC;
+            }        
+
+
+	/* 하단 */
+	#main_body #btm {
+		position: relative;
+		bottom: 0px;
+		width: 100%;
+		height: 30px;	
+		font-size: 10px;
+		color: #FFF;
+   	line-height: 30px;
+		text-align: right;
+		padding: 0 5px 0;	
+   	background: #737C89;
+   	-webkit-Box-sizing: border-box;
+   	-moz-box-sizing: border-box;
+   	box-sizing: border-box;
+	}	

@@ -1,0 +1,49 @@
+-------------------------------------------------------------------------------------------
+--
+-- 프로시저명 : ORG_COMPANY_LIST_COMMON
+-- 작성자     : 장윤호
+-- 작성일     : 2017-04-12
+-- 설명       : 회사 콤보박스 목록(COMMON = N)
+-- 예문       : CALL TYJINFWLIB.ORG_COMPANY_LIST_COMMON('ko')
+-- DB2 변환   : 이전프로시져명 
+--
+-------------------------------------------------------------------------------------------
+----DROP PROCEDURE TYJINFWLIB.ORG_COMPANY_LIST_COMMON
+CREATE PROCEDURE TYJINFWLIB.ORG_COMPANY_LIST_COMMON (
+		P_LANGUAGECODE			VARCHAR(10)
+)
+	LANGUAGE SQL
+	RESULT SETS 2
+	
+M1 : BEGIN
+	DECLARE REFCURSOR CURSOR WITH RETURN FOR
+	SELECT
+			'' AS COMPANYCODE
+		,	'' AS COMPANY
+		,	'' AS DISPLAYORDER
+	FROM
+			SYSIBM.SYSDUMMY1
+
+	UNION ALL
+
+	SELECT
+			C.COMPANYCODE									-- 회사코드
+		,	CASE
+				WHEN COALESCE(L.COMPANY, '') != ''
+				THEN L.COMPANY
+				ELSE L_KO.COMPANY END AS COMPANY			-- 회사명
+		,	C.DISPLAYORDER
+	FROM
+			ORG_COMPANY AS C
+			LEFT OUTER JOIN ORG_COMPANYLANG AS L
+				ON	C.COMPANYCODE		= L.COMPANYCODE 
+				AND L.LANGUAGECODE		= P_LANGUAGECODE
+			LEFT OUTER JOIN ORG_COMPANYLANG AS L_KO
+				ON	C.COMPANYCODE		= L_KO.COMPANYCODE 
+				AND L_KO.LANGUAGECODE	= 'ko'
+	WHERE
+			C.COMMON		= ''
+	ORDER BY COMPANYCODE ASC
+	;
+	OPEN REFCURSOR;
+END M1;

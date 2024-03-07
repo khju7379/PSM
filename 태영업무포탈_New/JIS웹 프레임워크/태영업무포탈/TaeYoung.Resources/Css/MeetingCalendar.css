@@ -1,0 +1,328 @@
+﻿
+#yhdateBox {
+	width:239px;
+	height:192px;
+	font-family:맑은 고딕,Arial;
+	margin:0 auto 0 auto;
+}
+#yhdateControll {
+	width:238px;
+	list-style:none;
+	clear:both;
+	margin:0;
+	padding:0 0 0 0;
+	text-align:center;
+	font-weight:bold;
+	height:40px;
+	background-color:#E8EBF2;
+	/*
+	background:-webkit-linear-gradient(#FFFFFF, #EEEEEE);
+	background:-o-linear-gradient(#FFFFFF, #EEEEEE);
+	background:-moz-linear-gradient(#FFFFFF, #EEEEEE);
+	background:linear-gradient(#FFFFFF, #EEEEEE);
+	*/
+	border-bottom:1px solid #FFFFFF;
+	box-sizing:border-box;
+}
+#yhdateHeader {
+	width:238px;
+	list-style:none;
+	clear:both;
+	margin:0;
+	padding:0 0 0 0;
+	text-align:center;
+	font-weight:bold;
+	height:30px;
+	/*
+	background: -webkit-linear-gradient(#FFFFFF, #EEEEEE);
+	background: -o-linear-gradient(#FFFFFF, #EEEEEE);
+	background: -moz-linear-gradient(#FFFFFF, #EEEEEE);
+	background: linear-gradient(#FFFFFF, #EEEEEE);
+	*/
+	margin:0 auto 0 auto;
+	border-top:1px solid #D0D7DF;
+	background-color:#E8EBF2;
+}
+#yhmonthTitle {
+	float:left;
+}
+
+#yhdateWrapDiv 
+{
+	margin:0 auto 0 auto
+}
+
+.yhdateWrapper{
+	width:238px;
+	list-style:none;
+	clear:both;
+	margin:0;
+	padding:0 0 0 0;
+	text-align:center
+}
+.yhmonthbutton, .yhyearbutton {
+	cursor:pointer;
+	/*font-family:Arial, Helvetica, sans-serif;*/
+	font-weight:bold;
+	line-height:42px;
+	font-size:16px;
+	color:#828282
+}
+
+.yhdayOfWeek {
+	padding:0 0 0 0;
+	width:34px;
+	float:left;
+	height:30px;
+	line-height:30px;
+	cursor:default; 
+	font-size:14px;
+	border-right:1px solid #D0D7DF;
+	box-sizing:border-box;
+	color:#636564;
+}
+
+.yhdayOfWeek div 
+{
+	line-height:30px;
+	width:100%;
+	height:100%;
+	border-bottom:1px solid #FFFFFF;
+	border-right:1px solid #FFFFFF;
+	box-sizing:border-box;
+	color:#636466;
+	
+}
+.yhdayOfWeek .yhdateSun 
+{
+	color:#FF8201;
+}
+.yhdayOfWeek .yhdateSat 
+{
+	color:#9CCA12;
+}
+
+#yhdateWrap 
+{
+	border-bottom:1px solid #CCCCCC;
+	margin:0 auto 0 auto;
+}
+
+.yhdateCell {
+	width:34px;
+	height:30px;
+	float:left;
+	line-height:30px;
+	cursor:pointer;
+	font-size:15px;
+	/*
+	background: -webkit-linear-gradient(#FFFFFF, #EEEEEE);
+	background: -o-linear-gradient(#FFFFFF, #EEEEEE);
+	background: -moz-linear-gradient(#FFFFFF, #EEEEEE);
+	background:linear-gradient(#FFFFFF, #EEEEEE);
+	*/
+	border-right:1px solid #D0D7DF;
+	border-top:1px solid #D0D7DF;
+	box-sizing:border-box;
+}
+
+.datewrap 
+{
+	width:100%;
+	height:100%;
+	line-height:26px;
+	font-size:14px;
+	font-family:Arial, Helvetica, sans-serif;
+	/*font-weight:bold;*/
+	border-right:1px solid #FFFFFF;
+	border-bottom:1px solid #FFFFFF;
+	box-sizing:border-box;
+}
+
+.datewrapAddInfo
+{
+	position:relative;
+	z-index:90;
+	top:-100%;
+	left:0;
+	height:100%;
+	width:100%;
+	box-sizing:border-box;
+}
+
+.Today .datewrap 
+{
+
+}
+
+.Selected .datewrap 
+{
+
+}
+
+.Today 
+{
+	
+}
+.Selected 
+{
+	/*
+	background: -webkit-linear-gradient(#CCCCCC, #FFFFFF);
+	background: -o-linear-gradient(#CCCCCC, #FFFFFF);
+	background: -moz-linear-gradient(#CCCCCC, #FFFFFF);
+	background:linear-gradient(#CCCCCC, #FFFFFF)
+	*/
+	background-color:#9B9B9B;
+	color:White !important;
+	border-right:1px solid #9B9B9B;
+	border-bottom:1px solid #9B9B9B;
+}
+.OddWeek 
+{
+	
+}
+.EvenWeek
+{
+	background-color:#F6F7FB;
+}
+
+.yhdateHoly {
+	color:#FF8201;
+}
+.yhdateSun {
+	color:#FF8201;
+}
+.yhdateSat {
+	color:#9CCA12;
+}
+#yhMonthSelector 
+{
+	margin:0 auto 0 auto;
+	border-top:1px solid #CCCCCC
+}
+.yhmonthCell, .yhmonthCellSelected 
+{
+	width:119px;
+	height:30px;
+	float:left;
+	line-height:30px;
+	font-size:15px;
+	cursor:pointer;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	border-right:1px solid #CCCCCC;
+	border-bottom:1px solid #CCCCCC;
+	/*
+	background: -webkit-linear-gradient(#FFFFFF, #EEEEEE);
+	background: -o-linear-gradient(#FFFFFF, #EEEEEE);
+	background: -moz-linear-gradient(#FFFFFF, #EEEEEE);
+	background:linear-gradient(#FFFFFF, #EEEEEE);
+	*/
+	box-sizing:border-box;
+}
+.yhmonthCellSelected 
+{
+	color:red;
+}
+#yhYearSelector 
+{
+	margin:0 auto 0 auto;
+	border-bottom:1px solid #CCCCCC
+}
+.yhyearCell, .yhyearCellSelected
+{
+	width:119px;
+	height:30px;
+	float:left;
+	line-height:30px;
+	font-size:15px;
+	cursor:pointer;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	border-right:1px solid #CCCCCC;
+	border-top:1px solid #CCCCCC;
+	/*
+	background: -webkit-linear-gradient(#FFFFFF, #EEEEEE);
+	background: -o-linear-gradient(#FFFFFF, #EEEEEE);
+	background: -moz-linear-gradient(#FFFFFF, #EEEEEE);
+	background:linear-gradient(#FFFFFF, #EEEEEE);
+	*/
+	box-sizing:border-box;
+}
+.yhyearCellSelected 
+{
+	color:red;
+}
+.yharrowLeft, .yharrowRight, .yharrowLeft1,.yharrowRight1 {
+	width:27px;
+	height:40px;
+	float:left;
+	cursor:pointer;
+	line-height:30px
+}
+.yharrowLeft div, .yharrowRight div, .yharrowLeft1 div, .yharrowRight1 div
+{
+	width:27px;
+	height:80%;
+	margin:3px auto 0 auto;
+	/*border-radius:15px;*/
+	color:#666666;
+	line-height:30px;
+	/*
+	background: -webkit-linear-gradient(#FFFFFF, #AAAAAA);
+	background: -o-linear-gradient(#FFFFFF, #AAAAAA);
+	background: -moz-linear-gradient(#FFFFFF, #AAAAAA);
+	background: linear-gradient(#FFFFFF, #AAAAAA);
+	*/
+	text-align:center;
+	font-size:15px
+}
+
+.yharrowLeft
+{
+	margin-left:5px;
+	background:url('/Mobile/Resources/Images/btn_pre_01.gif') no-repeat center;
+}
+.yharrowLeft1
+{
+	margin-left:46px;
+	background:url('/Mobile/Resources/Images/btn_pre_02.gif') no-repeat center;
+}
+.yharrowRight
+{
+	background:url('/Mobile/Resources/Images/btn_next_01.gif') no-repeat center;
+}
+
+.yharrowRight1
+{
+	margin-left:5px;
+	background:url('/Mobile/Resources/Images/btn_next_02.gif') no-repeat center;
+}
+
+.yhmonthTitleSimple {
+	width:178px;
+	line-height:30px;
+}
+.yhmonthTitleAdvance {
+	width:118px;
+	height:40px;
+	overflow:hidden
+}
+.informationBar 
+{
+	height:30px;
+	clear:both;
+	background-color:#E5F0F2;
+	/*
+	background: -webkit-linear-gradient(#EEEEEE, #FFFFFF, #EEEEEE);
+	background: -o-linear-gradient(#EEEEEE, #FFFFFF, #EEEEEE);
+	background: -moz-linear-gradient(#EEEEEE, #FFFFFF, #EEEEEE);
+	background: linear-gradient(#EEEEEE, #FFFFFF, #EEEEEE);\
+	*/
+}
+.informationBar div 
+{
+	line-height:28px;
+	font-size:12px;
+	color:#5576BB;
+}

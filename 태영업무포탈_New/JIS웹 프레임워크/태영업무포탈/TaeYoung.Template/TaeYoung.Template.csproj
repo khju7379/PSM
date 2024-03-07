@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{016E8D4B-0357-407F-982D-4E0A8C5E6FDA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TaeYoung.Template</RootNamespace>
+    <AssemblyName>TaeYoung.Template</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ext.Net">
+      <HintPath>..\참조프로그램\참조DLL\Ext.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Ext.Net.Utilities">
+      <HintPath>..\참조프로그램\참조DLL\Ext.Net.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="JINI">
+      <HintPath>..\참조프로그램\참조DLL\JINI.dll</HintPath>
+    </Reference>
+    <Reference Include="JINI.Control">
+      <HintPath>..\참조프로그램\참조DLL\JINI.Control.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Temp.Biz, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ControlSample\Temp.Biz.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ControlSample\Button.aspx" />
+    <Content Include="ControlSample\ChartFxScript.aspx" />
+    <Content Include="ControlSample\CheckBox.aspx" />
+    <Content Include="ControlSample\Combo.aspx" />
+    <Content Include="ControlSample\FileUpload.aspx" />
+    <Content Include="ControlSample\FlipSwitch.aspx" />
+    <Content Include="ControlSample\Index.aspx" />
+    <Content Include="ControlSample\Layer.aspx" />
+    <Content Include="ControlSample\Radio.aspx" />
+    <Content Include="ControlSample\Rating.aspx" />
+    <Content Include="ControlSample\Region.aspx" />
+    <Content Include="ControlSample\SearchView.aspx" />
+    <Content Include="ControlSample\Temp.Biz.dll" />
+    <Content Include="ControlSample\Text.aspx" />
+    <Content Include="ControlSample\TextBox.aspx" />
+    <Content Include="ControlSample\WebEditor.aspx" />
+    <Content Include="ControlSample\WebSheet.aspx" />
+    <Content Include="ControlSample\WebTree.aspx" />
+    <Content Include="CrossDomain.aspx" />
+    <Content Include="DBConnectTest.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Design.aspx" />
+    <Content Include="EDU\EDU01.aspx" />
+    <Content Include="EDU\EDU02.aspx" />
+    <Content Include="EDU\TankMonitor3.aspx" />
+    <Content Include="EDU\TankPressMonitor.aspx" />
+    <Content Include="NewPageLayout.aspx" />
+    <Content Include="OrgChart\OrgMap.aspx" />
+    <Content Include="Sample\GridBindAfter.aspx" />
+    <Content Include="ScriptSample\DateTime.aspx" />
+    <Content Include="ScriptSample\DyGrid.aspx" />
+    <Content Include="ScriptSample\UtilSample.aspx" />
+    <Content Include="SessionCheck.aspx" />
+    <Content Include="SessionTest.aspx" />
+    <Content Include="SystemLogTest.aspx" />
+    <Content Include="Template01.aspx" />
+    <Content Include="Template02.aspx" />
+    <Content Include="TYDefault1.aspx" />
+    <Content Include="TYDefault2.aspx" />
+    <Content Include="TYDefault3.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="WebForm2.aspx" />
+    <Content Include="WebFormUpload.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControlSample\Button.aspx.cs">
+      <DependentUpon>Button.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\Button.aspx.designer.cs">
+      <DependentUpon>Button.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\ChartFxScript.aspx.cs">
+      <DependentUpon>ChartFxScript.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\ChartFxScript.aspx.designer.cs">
+      <DependentUpon>ChartFxScript.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\CheckBox.aspx.cs">
+      <DependentUpon>CheckBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\CheckBox.aspx.designer.cs">
+      <DependentUpon>CheckBox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\Combo.aspx.cs">
+      <DependentUpon>Combo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\Combo.aspx.designer.cs">
+      <DependentUpon>Combo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\FileUpload.aspx.cs">
+      <DependentUpon>FileUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\FileUpload.aspx.designer.cs">
+      <DependentUpon>FileUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\FlipSwitch.aspx.cs">
+      <DependentUpon>FlipSwitch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\FlipSwitch.aspx.designer.cs">
+      <DependentUpon>FlipSwitch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\Layer.aspx.cs">
+      <DependentUpon>Layer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\Layer.aspx.designer.cs">
+      <DependentUpon>Layer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\Radio.aspx.cs">
+      <DependentUpon>Radio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\Radio.aspx.designer.cs">
+      <DependentUpon>Radio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\Rating.aspx.cs">
+      <DependentUpon>Rating.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\Rating.aspx.designer.cs">
+      <DependentUpon>Rating.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\Region.aspx.cs">
+      <DependentUpon>Region.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\Region.aspx.designer.cs">
+      <DependentUpon>Region.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\SearchView.aspx.cs">
+      <DependentUpon>SearchView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\SearchView.aspx.designer.cs">
+      <DependentUpon>SearchView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\Text.aspx.cs">
+      <DependentUpon>Text.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\Text.aspx.designer.cs">
+      <DependentUpon>Text.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\TextBox.aspx.cs">
+      <DependentUpon>TextBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\TextBox.aspx.designer.cs">
+      <DependentUpon>TextBox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\WebEditor.aspx.cs">
+      <DependentUpon>WebEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\WebEditor.aspx.designer.cs">
+      <DependentUpon>WebEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\WebSheet.aspx.cs">
+      <DependentUpon>WebSheet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\WebSheet.aspx.designer.cs">
+      <DependentUpon>WebSheet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlSample\WebTree.aspx.cs">
+      <DependentUpon>WebTree.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlSample\WebTree.aspx.designer.cs">
+      <DependentUpon>WebTree.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CrossDomain.aspx.cs">
+      <DependentUpon>CrossDomain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CrossDomain.aspx.designer.cs">
+      <DependentUpon>CrossDomain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DBConnectTest.aspx.cs">
+      <DependentUpon>DBConnectTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DBConnectTest.aspx.designer.cs">
+      <DependentUpon>DBConnectTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Design.aspx.cs">
+      <DependentUpon>Design.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Design.aspx.designer.cs">
+      <DependentUpon>Design.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EDU\EDU01.aspx.cs">
+      <DependentUpon>EDU01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EDU\EDU01.aspx.designer.cs">
+      <DependentUpon>EDU01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EDU\EDU02.aspx.cs">
+      <DependentUpon>EDU02.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EDU\EDU02.aspx.designer.cs">
+      <DependentUpon>EDU02.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EDU\TankMonitor3.aspx.cs">
+      <DependentUpon>TankMonitor3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EDU\TankMonitor3.aspx.designer.cs">
+      <DependentUpon>TankMonitor3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EDU\TankPressMonitor.aspx.cs">
+      <DependentUpon>TankPressMonitor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EDU\TankPressMonitor.aspx.designer.cs">
+      <DependentUpon>TankPressMonitor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewPageLayout.aspx.cs">
+      <DependentUpon>NewPageLayout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewPageLayout.aspx.designer.cs">
+      <DependentUpon>NewPageLayout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrgChart\OrgMap.aspx.cs">
+      <DependentUpon>OrgMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrgChart\OrgMap.aspx.designer.cs">
+      <DependentUpon>OrgMap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sample\GridBindAfter.aspx.cs">
+      <DependentUpon>GridBindAfter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sample\GridBindAfter.aspx.designer.cs">
+      <DependentUpon>GridBindAfter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptSample\DateTime.aspx.cs">
+      <DependentUpon>DateTime.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ScriptSample\DateTime.aspx.designer.cs">
+      <DependentUpon>DateTime.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptSample\DyGrid.aspx.cs">
+      <DependentUpon>DyGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ScriptSample\DyGrid.aspx.designer.cs">
+      <DependentUpon>DyGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptSample\UtilSample.aspx.cs">
+      <DependentUpon>UtilSample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ScriptSample\UtilSample.aspx.designer.cs">
+      <DependentUpon>UtilSample.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SessionCheck.aspx.cs">
+      <DependentUpon>SessionCheck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SessionCheck.aspx.designer.cs">
+      <DependentUpon>SessionCheck.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SessionTest.aspx.cs">
+      <DependentUpon>SessionTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SessionTest.aspx.designer.cs">
+      <DependentUpon>SessionTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemLogTest.aspx.cs">
+      <DependentUpon>SystemLogTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemLogTest.aspx.designer.cs">
+      <DependentUpon>SystemLogTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Template01.aspx.cs">
+      <DependentUpon>Template01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Template01.aspx.designer.cs">
+      <DependentUpon>Template01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Template02.aspx.cs">
+      <DependentUpon>Template02.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Template02.aspx.designer.cs">
+      <DependentUpon>Template02.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYDefault1.aspx.cs">
+      <DependentUpon>TYDefault1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYDefault1.aspx.designer.cs">
+      <DependentUpon>TYDefault1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYDefault2.aspx.cs">
+      <DependentUpon>TYDefault2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYDefault2.aspx.designer.cs">
+      <DependentUpon>TYDefault2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYDefault3.aspx.cs">
+      <DependentUpon>TYDefault3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYDefault3.aspx.designer.cs">
+      <DependentUpon>TYDefault3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormUpload.aspx.cs">
+      <DependentUpon>WebFormUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormUpload.aspx.designer.cs">
+      <DependentUpon>WebFormUpload.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ScriptSample\ProjectTemplate\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaeYoung.Biz\TaeYoung.Biz.csproj">
+      <Project>{AF480D12-B59D-433C-9194-5922CFABA493}</Project>
+      <Name>TaeYoung.Biz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaeYoung.Common\TaeYoung.Common.csproj">
+      <Project>{A0364021-790B-4B76-87BA-EF34A52002D1}</Project>
+      <Name>TaeYoung.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaeYoung.Logging\TaeYoung.Logging.csproj">
+      <Project>{2A05D871-E22D-484D-AEE1-26E8B885E669}</Project>
+      <Name>TaeYoung.Logging</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63641</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8110/Template</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

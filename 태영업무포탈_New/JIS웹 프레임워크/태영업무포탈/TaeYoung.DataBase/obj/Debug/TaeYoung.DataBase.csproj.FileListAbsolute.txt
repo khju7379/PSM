@@ -1,0 +1,6 @@
+D:\프레임워크소스\태영업무포탈_New\JIS웹 프레임워크\태영업무포탈\TaeYoung.DataBase\bin\Debug\TaeYoung.DataBase.dll
+D:\프레임워크소스\태영업무포탈_New\JIS웹 프레임워크\태영업무포탈\TaeYoung.DataBase\bin\Debug\TaeYoung.DataBase.pdb
+D:\프레임워크소스\태영업무포탈_New\JIS웹 프레임워크\태영업무포탈\TaeYoung.DataBase\obj\Debug\TaeYoung.DataBase.csproj.AssemblyReference.cache
+D:\프레임워크소스\태영업무포탈_New\JIS웹 프레임워크\태영업무포탈\TaeYoung.DataBase\obj\Debug\TaeYoung.DataBase.csproj.CoreCompileInputs.cache
+D:\프레임워크소스\태영업무포탈_New\JIS웹 프레임워크\태영업무포탈\TaeYoung.DataBase\obj\Debug\TaeYoung.DataBase.dll
+D:\프레임워크소스\태영업무포탈_New\JIS웹 프레임워크\태영업무포탈\TaeYoung.DataBase\obj\Debug\TaeYoung.DataBase.pdb

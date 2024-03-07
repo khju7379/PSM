@@ -1,0 +1,308 @@
+﻿<%@ Master Language="C#" AutoEventWireup="false" CodeBehind="Sub.master.cs" Inherits="TaeYoung.Common.VirtualPath.Sub"
+    ViewStateMode="Disabled" Debug="false" %>
+
+<!DOCTYPE html>
+<html lang='ko'>
+<head id="Head1" runat="server">
+    <meta charset="utf-8" />
+    <title>태영 통합 고객정보 시스템</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/Resources/Images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/Resources/Css/Import.css" />
+    <link rel="stylesheet" type="text/css" href="/Resources/Css/Control.css" />    
+    <link href="/Resources/Framework/JIS.Control.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/Resources/Css/Common.css" />    
+    <style type="text/css">
+        <asp:LIteral ID="ltlCustomStyle" runat="server" />
+        #frmOrg
+        {
+            border:0px;
+            width:620px;
+            height:490px;
+            overflow:hidden;
+            display:none;
+        }
+        
+    </style>
+    <script type="text/javascript" src="/Resources/Script/Domain.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery-migrate-3.0.0.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/moxie.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/plupload.dev.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery.ui.plupload.js"></script>
+    <script type="text/javascript" src="/Resources/Script/Common.js"></script>
+    <script type="text/javascript" src="/Resources/Script/Site.UI.js"></script>
+    <script type="text/javascript" src="/Resources/Script/Org.js"></script>
+    <script type="text/javascript" src="/Resources/Script/OrgChart.js"></script>
+    <script type="text/javascript" src="/Resources/Script/showModalDialog.js"></script>
+    <script type="text/javascript" src="/Resources/Script/showModalDialogCallee.js"></script>
+    <!-- 차트 -->
+    <script type="text/javascript" src="/Resources/RGraph/libraries/RGraph.common.core.js"></script>
+    <script type="text/javascript" src="/Resources/RGraph/libraries/RGraph.common.dynamic.js"></script>
+    <script type="text/javascript" src="/Resources/RGraph/libraries/RGraph.common.tooltips.js"></script>
+    <script type="text/javascript" src="/Resources/RGraph/libraries/RGraph.common.effects.js"></script>
+    <script type="text/javascript" src="/Resources/RGraph/libraries/RGraph.line.js"></script>
+    <script type="text/javascript" src="/Resources/RGraph/libraries/RGraph.bar.js"></script>
+    <script type="text/javascript" src="/Resources/RGraph/libraries/RGraph.pie.js"></script>
+    <script type="text/javascript">
+        //window.onerror = function () {
+        //    var message = "\nMessage: " + arguments[0];
+        //    message += "\nURL: " + arguments[1];
+        //    message += "\nLine: " + arguments[2];
+        //    message += "\nColumn: " + arguments[3];
+        //    alert("스크립트에서 오류가 발생하였습니다."+message);
+        //};
+
+		var ProgramID = "<asp:LIteral ID="ltlProgramID" runat="server" />";
+        var TopMenuID = "<asp:LIteral ID="ltlTopMenuID" runat="server" />";
+		var MenuID = "<asp:LIteral ID="ltlMenuID" runat="server" />";
+        var MenuFold = false;
+		var IsPopup = false;
+        var EMPID = "<%= TaeYoung.Biz.Document.UserInfo.EmpID %>";       
+
+		var COMPANYCODE = "<%= TaeYoung.Biz.Document.UserInfo.CompanyCode %>";
+        var SiteCompanyCode = "<%= TaeYoung.Biz.Document.SiteCompanyCode %>";
+        var ACL = "<%= ACL %>";
+        var Use_Language = "<%= TaeYoung.Biz.Document.ClientCultureName %>"; 
+		var ManualExist = "<asp:LIteral ID="ltlManualExist" runat="server" />";
+        var SessionUserInfoString = "<%= HttpContext.Current.Session["UserInfo"] != null ? System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(HttpContext.Current.Session["UserInfo"].ToString())) : "" %>";
+        function TopOrgTextClick(){
+            if(document.getElementById("search").value == "임직원 검색"){
+                document.getElementById("search").value = "";
+            }
+        }
+        function TopOrgTextBlur(){
+            if(document.getElementById("search").value == ""){
+                document.getElementById("search").value = "임직원 검색";
+            }
+        }
+        function TopOrgTextDown(){
+            if(event.keyCode == 13){
+                TopOrgSearch();
+            }
+        }
+        function TankMonitorPopUp(){
+
+                var xWidth = window.screen.width;  
+                var xHeight = window.screen.height; 
+
+                //alert(#{GWID}.getValue());
+                var userAgent = navigator.userAgent.toLowerCase();
+                if(userAgent.match('iphone')||userAgent.match('ipod')||userAgent.match('ipad')||userAgent.match('iemobile')||userAgent.match('opera mini')||userAgent.match('android')||userAgent.match('webos')||userAgent.match('Blackberry'))
+                {
+                    window.open("/Portal/TANK/TankMonitor3.aspx", "탱크모니터링","resizable=yes,channelmode=no, width="+xWidth+", height="+xHeight);
+                }
+                else{
+                    //window.open("http://psm1.taeyoung.co.kr/Portal/Login.aspx?id=khim&ReturnUrl=/Portal/TANK/TankMonitor3.aspx", "탱크모니터링","resizable=yes,channelmode=no, width="+xWidth+", height="+xHeight);
+                    window.open("/Portal/TANK/TankMonitor3.aspx", "탱크모니터링","resizable=yes,channelmode=no, width="+xWidth+", height="+xHeight);
+                }
+        }        
+        
+    </script>
+    <asp:ContentPlaceHolder ID="conHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body id="wrapper">
+    <form id="form1" runat="server">
+     <div style="display:none;">
+        <input type="textbox" />
+    </div>
+    <script type="text/javascript" src="/Resources/Framework/JIS.Control.js"></script>
+    <script type="text/javascript">
+        var ControlLoad = [];
+    </script>
+    <!--서브시작-->
+    <div id="sub_body">
+        <!--상단시작-->
+        <div id="header" runat="server">
+            <!--탑소메뉴시작-->
+            <div id="topsmenu_bx">
+                
+                <div id="member_search" style="color:#FFFFFF; font-size:17px; line-height:25px;">
+                    <%--접속정보 : <%= TaeYoung.Biz.Document.UserInfo.UserName %> [ <%= TaeYoung.Biz.Document.UserInfo.JobName%> ] (<%= TaeYoung.Biz.Document.UserInfo.EmpID %>) <asp:Literal ID="ltlMenuName" runat="server"></asp:Literal>--%>
+                    접속정보 : <%= TaeYoung.Biz.Document.UserInfo.UserName %> ( <%= TaeYoung.Biz.Document.UserInfo.JobName%> ) <asp:Literal ID="ltlMenuName" runat="server"></asp:Literal>
+                </div>
+
+                <div id="topsmenu" style="float:right;">
+                    
+                    <a href="javascript:fn_OpenPop('/Portal/ChangePwdPopup.aspx',650,410);"><img src="/Resources/Images/topsmenu_pwd.png" alt="비밀번호변경" /></a>
+   	                <a href="/Portal/LogOut.aspx"><img src="/Resources/Images/topsmenu_logoout.png" alt="로그아웃" /></a>
+                </div>
+
+                <div id="language_bx" style="float:right;padding-left:10px;">
+                    <a id="language" onclick="LanguageClick();"><img src="/Resources/Images/flag/<%= LangCode %>.png" alt="" title=""></a>
+                    <div id="language_list" style="display: none;position:absolute;z-index:100;background-color:White;margin:3px;padding:3px;" onmouseout="LanguageHidden();" onmouseover="LanguageShow();">
+                        <ul>
+                            <li><a onclick="LanguageChange('ko');"><img src="/Resources/Images/flag/ko.png" alt="" title=""> 한국어</a></li>
+                            <%--<li><a onclick="LanguageChange('cn');"><img src="/Resources/Images/flag/cn.png" alt="" title=""> 中國語</a></li>--%>
+                            <li><a onclick="LanguageChange('en');"><img src="/Resources/Images/flag/en.png" alt="" title=""> ENGLISH</a></li>
+                        </ul>
+				    </div>
+				</div>
+
+               <div id="member_search2" style="float:right; margin-top:-4px;" runat="server">
+                    <fieldset>
+					    <legend>임직원검색</legend>
+					    <label for="FindTxt">임직원검색어입력</label>
+					    <input type="text" id="search" name="search" title="임직원검색어를 입력하세요." value="임직원 검색" /><a href="javascript:;" onclick="TopOrgSearch();"><img src="/Resources/Images/btn_search.png" alt="검색" /></a>   
+				    </fieldset>
+                </div>
+
+                 
+            </div>
+            <!--//탑소메뉴끝-->
+            <!--탑메뉴시작-->
+            <noscript>
+                <p>
+                    현재 사용중인 환경에서는 스크립트 동작이 활성화 되지 않아 자동으로 움직이지 않습니다.</p>
+            </noscript>
+            <div id="topmenu_bx">
+                <!--로고시작-->
+                <h1><a href="javascript:;">
+                      <%= TaeYoung.Biz.Document.UserInfo.CompanyCode != "TG" ? "<img src='/Resources/Images/Logo_TY.png' alt='태영' />" : "<img src='/Resources/Images/Logo_TG.png' alt='태영' />" %>
+                    </a></h1>
+                <!--로고끝-->
+                <ul id="topmenu" runat="server">
+                </ul>
+                <!--//탑메뉴끝-->
+            </div>
+            <!--//탑메뉴박스끝-->
+            <div>
+                <%--<iframe id="frmOrg" src="/Portal/Common/OrgSearch/OrgMap.aspx" border="0" width="620"
+                    height="490" scrolling="no" border="no" maginwidth="0" marginheight="0" frameborder="0">
+                </iframe>--%>
+            </div>
+        </div>
+        <!--//상단끝-->
+        <!--컨테이너시작-->
+        <div id="container">
+            <!--왼쪽메뉴박스시작-->
+            <div id="leftmenu_bx" runat="server">
+                <%--<div id="treeMenu"></div>--%>
+                <asp:ContentPlaceHolder ID="conLeft" runat="server"></asp:ContentPlaceHolder>
+                <div id="treeMenu" style="width: 219px; height: 100%; ">
+                    <div id="treeMenu_progress" class="websheet_progress" style="margin-top: -800px; display: none;">
+                        <div style="top: 384px; left: 93.5px;"><img src="/Resources/Framework/ajax_loding.gif" alt=""></div>
+                    </div>
+                    <%--<div name="treeMenu" id="treeMenu" class="myTreeCSS" style="height: 100%; width: 100%; overflow: auto; display: block;">
+                        <div name="treeMenu" id="treeMenu" style="margin-bottom: 10px;">
+                            <div name="undefined_Items" id="undefined_Items" style="display: block; margin-left: 2px;"></div>
+                        </div>
+                    </div>--%>
+                </div>
+                <script type="text/javascript">
+                    var treeMenu = new myTreeView('treeMenu', 'treeMenu');
+                    if (treeMenu.Param == '') {
+                        treeMenu.Param = new Object();
+                    }
+                    treeMenu.Commonable = true;
+                    treeMenu.DataSource("Common.MenuBiz", "GetMenuSubData");
+                    var params = new Object();
+                    params["MENUID"] = TopMenuID;
+                    treeMenu.Params(params);
+                    treeMenu.Title("");
+                    treeMenu.HideTitle(true);
+                    treeMenu.IndexBindFiledName = "";
+                    treeMenu.ParentBindFieldName = "";
+                    treeMenu.TextBindFieldName = "";
+                    treeMenu.Loaded = "LeftMenuLoaded";
+                    treeMenu.Rander("treeMenu");
+                    treeMenu.BindTree("treeMenu");
+                    treeMenu.onclickItem = function (e, s) {
+                        treeMenu_click(e, s);
+                    };
+    </script>
+            </div>
+            <!--//왼쪽메뉴박스끝-->
+            <!--컨텐츠박스시작-->
+            <div id="content_bx">
+                <asp:ContentPlaceHolder ID="conBody" runat="server">
+                </asp:ContentPlaceHolder>
+                <asp:Label ID="lblNoACL" runat="server" Visible="false">
+                    <div id="title" style="background-image:url(/Resources/Images/Img_permission.png); background-position:top,top; background-repeat:no-repeat; background-size:cover; height:860px; margin:0px; padding:0px;">
+                    </div>
+                </asp:Label>
+            </div>
+            <!--//컨텐츠박스끝-->
+            <div id="menuQList" style="position:absolute;z-index:10;background-color:#fff;margin-left:-1px;" runat="server">
+                <table border="0" cellpadding="0" cellspacing="0" style="border-top:solid 5px #ccc;">
+                    <colgroup>
+                        <col width="70px" />
+                        <col width="70px" />
+                        <col width="80px" />
+                    </colgroup>
+                        
+                    <tr>
+                        <td align="center" style="padding-top:10px;">
+                            <a href="/Portal/PSM/PlantsSafetyMonitoring_SILO.aspx"><img src="/Resources/Images/Monitor_01.png" alt="SILO"  /><br />                                
+                            SILO
+                            </a>                                
+                        </td>
+                        <td align="center" style="padding-top:10px;border-left:solid 1px #ccc;">
+                            <a href="/Portal/PSM/PlantsSafetyMonitoring_UTT.aspx"><img src="/Resources/Images/Monitor_02.png" alt="UTT"  /><br />
+                            UTT</a>
+                        </td>
+                        <td align="center" style="padding-top:10px;border-left:solid 1px #ccc;">
+                            <a><img src="/Resources/Images/TankMonitor.png" alt="탱크모니터링" onclick="TankMonitorPopUp();" /><br />
+                            탱크모니터링</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!--//컨테이너끝-->
+        
+    </div>
+    <!--//서브끝-->
+    <!-- 레이어팝업 -->
+    <div id="Search_dView" style="position: absolute; display: none; z-index: 99; height: 240px;
+        padding: 3px; background: rgba(255, 255, 255, 0);">
+        <iframe id="Search_iView" name="Search_iView" height="240" src="/Resources/Framework/SearchViewCommon.html"
+            frameborder="0" scrolling="no"></iframe>
+    </div>
+    <div id="Calendar_Layer" style="position: absolute; z-index: 30; display: none; width: 258px;
+        height: 286px; margin-top: 5px;">
+        <iframe id="frmCalendar" name="frmCalendar" src="/Resources/Framework/calendar.html"
+            width="258px" height="286px" frameborder="0" scrolling="no"></iframe>
+        <iframe id="frmCalendar_FT" name="frmCalendar_FT" src="/Resources/Framework/calendar_FT.html"
+            style="width: 660px; height: 286px;" frameborder="0" scrolling="no"></iframe>
+    </div>
+    <div id="Image_Layer" style="display: none; z-index: 10;">
+    </div>
+    <div id="Org_Layer" style="display: none; z-index: 10; height:0px; width:0px;">
+        <iframe id="frmOrgMap" name="frmOrgMap" src="/Portal/Common/OrgSearch/OrgMap.aspx" style="top: 40px; border: 0px; width: 880px; height: 490px; position: absolute; bottom: 0px; right: 0px; overflow: hidden; padding: 0px; margin: 0px; z-index: 20000001;" scrolling="no"></iframe>
+    </div>
+    <div id="ERP_Layer" style="display: none; z-index: 10; height:0px; width:0px;">
+        <iframe id="frmErpPrm" name="frmErpPrm" src="" style="top: 40px; border: 0px; width: 880px; height: 490px; position: absolute; bottom: 0px; left: 0px; overflow: hidden; padding: 0px; margin: 0px; z-index: 20000001;" scrolling="no"></iframe>
+    </div>
+    <div id="divOrgUser" style="display:none;">
+        <div id="divOrgUser_close" onclick="grdOrgUser_Close()">×</div>
+        <div id="divOrgUser_photo"></div>
+            
+        <ul style="float:left;">
+            <li id="divOrgUser_Cont" style="float:left;">
+                <div id="divOrgUser_Name"></div>
+                <div id="divOrgUser_Company"></div>
+                <div id="divOrgUser_Dept"></div>
+                <div id="divOrgUser_Rank"></div>
+                <div id="divOrgUser_Job"></div>
+                <div id="divOrgUser_Mail"></div>
+                <div id="divOrgUser_Tel1"></div>
+                <div id="divOrgUser_Tel2"></div>
+                <div id="divOrgUser_Tel3" style="display:none;"></div>
+                <div id="divOrgUser_Tel4" style="display:none;"></div>
+                <div id="divOrgUser_Emp" style="display:none;"></div>
+            </li>
+        </ul>
+        <div id="divOrgUser_Bar" style="display:none;">
+            <ul style="float:left;">
+                <li style="float:left;">
+                    <div class="gmail" onclick="SendMailTo();"></div>
+                </li>   
+            </ul>
+        </div>
+    </div>
+    <%--<div id="bottomLine" style="height:3px; background-color:#A32958; position:absolute; width:100%;"></div>--%>
+    </form>
+</body>
+</html>

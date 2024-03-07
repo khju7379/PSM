@@ -1,0 +1,44 @@
+-------------------------------------------------------------------------------------------
+--
+-- 프로시저명 : ORG_GROUPUSR_GET 
+-- 작성자     : 서정민
+-- 작성일     : 2015-09-03
+-- 설명       : 그룹 멤버조회 조회
+-- 예문       : CALL ORG_GROUPUSR_GET  ('GRPID')
+--		DB2 변환 : 이전프로시져명 UP_GROUPMEMBER_SELECT
+--		프렌지 변환 : PTORGUSR40S1 -> ORG_GROUPUSR_GET  
+-------------------------------------------------------------------------------------------
+----DROP PROCEDURE ORG_GROUPUSR_GET
+CREATE PROCEDURE ORG_GROUPUSR_GET
+(
+		P_GRPID		VARCHAR(10)   --그룹ID
+)
+	RESULT SETS 1
+	LANGUAGE SQL
+
+P1: BEGIN	-- 시작
+	
+	DECLARE REFCURSOR CURSOR WITH RETURN FOR
+	SELECT 
+			GM.GRPID
+		,	GM.USRID
+		,	GM.COMPANYCODE
+		,	GM.USRTYPE
+		,	CASE GM.USRTYPE
+				WHEN 1
+				THEN TYJINFWLIB.UF_USERINFO_USERNAME2(GM.USRID, 'ko')
+				WHEN 2
+				THEN TYJINFWLIB.UF_DEPTNAME(GM.COMPANYCODE, 'ko', GM.USRID)
+			END AS USRNM
+		,	G.COMPANY AS COMPANYNAME
+	FROM
+			TYJINFWLIB.ORG_GROUPUSR AS GM
+			LEFT JOIN TYJINFWLIB.ORG_COMPANYLANG AS G
+				ON	GM.COMPANYCODE		= G.COMPANYCODE
+				AND G.LANGUAGECODE		= 'ko'
+	WHERE
+			GRPID = P_GRPID
+	;
+	OPEN REFCURSOR;
+END P1
+	

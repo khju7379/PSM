@@ -1,0 +1,38 @@
+-- 시스템로그
+-- TB_System_Log
+CREATE TABLE TYJINFWLIB.CMN_SYSTEMLOG
+(
+	  IDX            INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1, NO CACHE )
+	, LOG_TYPE       CHAR (10) 
+	, BIZ_TYPE       CHAR (20) 
+	, OCCUR_TIME     TIMESTAMP 
+	, FORM_ID        VARCHAR (1000) 
+	, MESSAGE        VARCHAR (4000) 
+	, MESSAGE_DETAIL VARCHAR (4000) 
+	, USER_IP        CHAR (15) 
+	, USER_ID        CHAR (12) 
+	, EXECUTION_TIME TIMESTAMP 
+	, MACHINE_NAME   CHAR (30) 
+	, PRIMARY KEY (IDX)
+);
+
+ COMMENT ON TABLE TYJINFWLIB.CMN_SYSTEMLOG IS '공통-시스템로그'; 
+ 
+ COMMENT ON COLUMN TYJINFWLIB.CMN_SYSTEMLOG
+ (
+	IDX IS '로그번호' , 
+	LOG_TYPE IS '로그타입' , 
+	BIZ_TYPE IS '비지니스타입(공통/품질/개발...)' , 
+	OCCUR_TIME IS '페이지 호출시간' , 
+	FORM_ID IS '페이지호출명' , 
+	MESSAGE IS '오류메시지' , 
+	MESSAGE_DETAIL IS '오류메시지(상세)' , 
+	USER_IP IS '접속IP' , 
+	USER_ID IS '접속ID' , 
+	EXECUTION_TIME IS '오류발생시간' , 
+	MACHINE_NAME IS '오류발생 머신명' 
+);
+
+COMMIT;
+ 
+	

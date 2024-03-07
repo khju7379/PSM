@@ -1,0 +1,270 @@
+﻿@charset "utf-8"; 
+/* JIS Web Standardization Team (http://www.jisman.co.kr) 권미영 */
+
+
+
+/* 로그인 */
+#login {
+   position: relative;
+   width: 100%;
+   height: 100%;
+   min-height: 480px;
+   background: #E6EBF0;
+}
+
+   #login #container {
+	   position: relative;
+	   width: 100%;
+	   background: url(/Images/login_bg.png); background-position: top 50%; background-repeat: no-repeat;
+	}
+
+	   #login #container ul#login_bx {
+		   position: relative;
+		   margin: 95px auto 0px;
+		   width: 250px;
+		}
+		   #login #container ul#login_bx li {margin-bottom: 10px;}
+		   #login #container ul#login_bx li input {
+				width: 230px;
+				height: 40px;
+				font-size: 15px;
+			   color: #A5AAAA;
+			   line-height: 40px;
+			   padding: 0px 10px 0px;
+				border: none;
+				background: #FFFFFF;
+			}	
+			#login #container ul#login_bx li.remember {position: relative;}	
+			   #login #container ul#login_bx li.remember input[id="remember"] {display: none;}
+				#login #container ul#login_bx li.remember input[id="remember"] + label {
+				   height: 20px;
+				   font-size: 12px;
+			      color: #323232;
+			      line-height: 20px;
+				   padding-left: 30px;
+				   background: url(/Images/login_checkbox.gif); background-position: top left; background-repeat: no-repeat;
+				   cursor: pointer;
+				   display: inline-block;
+				}
+				#login #container ul#login_bx li.remember input[id="remember"]:checked + label:after {content: url(/Images/login_checkbox_checked.gif); background-position: top left; background-repeat: no-repeat;}
+			#login #container ul#login_bx li a.btn_login {
+				position: relative;
+				height: 50px;
+				font-size: 20px;
+			   color: #FFFFFF;
+			   text-align: center;
+			   line-height: 50px;
+				border-bottom: 2px solid #0A5096;
+				background: #1475EB;
+				display: block;	
+			}	
+
+
+
+/* 메인 */
+#main {
+   position: relative;
+   width: 100%;
+   height: 100%;
+   min-height: 480px;
+   background: #EEF5FF;
+}
+
+   #main #container {
+	   position: relative;
+	   width: 100%;
+	   background: url(/Images/main_img.png); background-position: 50% 30px; background-repeat: no-repeat
+	}
+
+	   #main #container #user {
+		   font-size: 14px;
+		   color: #505050;
+		   line-height: 30px;
+		   text-align: right;
+		   padding: 0px 10px 0px;
+		   background: #E6EBF0;
+      }
+            
+	   #main #container #menu {
+		   position: relative;
+		   margin: 90px auto;
+		   width: 310px;
+		   overflow: hidden;
+		}
+		   #main #container #menu a {
+			   float: left;
+			   width: 138px;
+			   height: 78px;
+			   font-size: 12px;
+			   color: #1E1E1E;
+			   text-align: center;
+			   margin: 0px 0px 10px 10px;
+			   border: 1px solid #C8C8C8;
+			   background: #FFFFFF;
+			}
+			   #main #container #menu a img {
+			   	margin: 8px 0px 5px;
+				   display: block;
+				}
+				#main #container #menu a span {color: #0064D7;}
+
+
+
+/* 리스트 */
+#list {
+   position: relative;
+   width: 100%;
+   height: 100%;
+   min-height: 480px;
+}
+
+   #list #container {
+	   position: relative;
+	   width: 100%;
+	}
+
+	   #list #container #title {
+	   	position: relative;
+	   	height: 30px;
+		   font-size: 14px;
+		   color: #505050;
+		   line-height: 30px;
+		   text-align: center;
+		   background: #E6EBF0;
+      }
+
+	   #list #container #tab {
+	   	position: relative;
+	   	border: 1px solid #C8C8C8;
+	   	border-right: none;
+	   	overflow: hidden;
+      }
+		   #list #container #tab a {
+		   	float: left;
+			   font-size: 14px;
+			   color: #646464;
+			   line-height: 30px;
+			   text-align: center;
+			   background: #F5F5F5 url(/Resources/Images/Mobile/tab_line.gif); background-position: top right; background-repeat: repeat-y;
+			   display: block;
+	      }
+	      #list #container #tab a.on {
+	      	color: #FFFFFF;
+	      	background: #329BFF url(/Resources/Images/Mobile/tab_line.gif); background-position: top right; background-repeat: repeat-y;
+	      }
+
+	   #list #container #search {
+	   	position: relative;
+	   	padding: 5px 40px 5px 110px;
+	   	background: #EEF5FF;
+	   	overflow: hidden;
+      }
+         #list #container #search select {
+            position: absolute;
+		      z-index: 10000;
+		      top: 5px;
+		      left: 5px;
+		      width: 98px;
+		      height: 30px;
+         }
+         #list #container #search input {
+         	width: 100%;
+		   	height: 28px;
+		   	line-height: 28px;
+	      }
+	      #list #container #search img {
+            position: absolute;
+		      z-index: 10000;
+		      top: 5px;
+		      right: 5px;
+         }
+         
+	      #list #container #list_bx {position: relative;}
+		      #list #container #page_bx {
+					position: relative;
+				   height: 30px;
+				   line-height: 30px;
+				   text-align: center;
+				   background: #EBEBEB;
+				}
+				#list #container table#list_table {
+					width: 100%;
+				   border-top: 1px solid #E6E6E6;
+				   border-bottom: 1px solid #E6E6E6;
+				}
+				   #list #container table#list_table tr.row td {background: #F7F7F7;}
+					   #list #container table#list_table th {
+					      padding: 5px;
+					      border-right: 1px solid #E6E6E6;
+					      border-bottom: 1px solid #E6E6E6;
+					      background: #F7F7F7;
+					   }
+					   #list #container table#list_table td {
+					      padding: 5px;
+					      border-bottom: 1px solid #E6E6E6;
+					      background: #FFFFFF;
+					   }
+
+
+
+
+   /* 상단 */
+   #header {
+	   position: relative;
+	   width: 100%;
+	   height: 37px;
+	   border-top: 3px solid #2E3137;
+	   background: #2E3137; background-position: 50% 50%; background-repeat: no-repeat;
+	   text-align:center;
+	}
+	   #login #header img {display: none;}
+	   #header .btn_left {
+	      position: relative;
+	      float: left;
+	      margin: 8px;
+	   }
+	   #header .btn_center img
+	   {
+	       padding:10px;
+	   }
+	   
+	   #header .btn_right {
+	      position: relative;
+	      float: right;
+	      margin: 8px;
+	   }
+   
+   /* 하단 */
+   #bottom {
+	   position: absolute;
+		z-index: 100;
+		bottom: 0px;
+		left: 50%;
+		margin-left: -50%;
+	   width: 100%;
+	   height: 42px;
+	   padding-top: 8px;
+	   text-align: center;
+	   background: #E6EBF0;
+	}
+		#bottom .btn_bottom {
+			position: relative;
+			margin: 0 auto;
+			width: 150px;
+			height: 20px;
+			overflow: hidden;
+		}	
+		#login #bottom .btn_bottom {width: 75px;}	
+			#bottom .btn_bottom a {
+				float: left;
+				width: 68px;
+				height: 18px;
+				font-size: 12px;
+			   color: #505050;
+			   text-align: center;
+			   line-height: 18px;
+			   margin-right: 5px;
+				border: 1px solid #BBBBBB;
+				background: #FFFFFF;
+				display: block;	
+			}	

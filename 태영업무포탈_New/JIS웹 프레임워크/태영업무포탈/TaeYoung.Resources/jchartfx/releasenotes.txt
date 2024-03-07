@@ -1,0 +1,23 @@
+Product: jChartFX
+Version: 7.5.5900
+Release Date: 03/04/2016
+----------------------------
+
+Enhancements:
+============
+
+New Features v7.5:
+
+New Gallery: Sunburst
+New Annotation Objects Attachment methods.
+New ValueName support for DataFields Conditions (NumberFieldCondition and StringFieldCondition)
+New Dock option on Border Objects on childs div
+New Title object properties: Template, Data and Wordwrap
+New Interactive Datagrid Scroll
+New HighLow Gallery property: Baseline
+New Point Attributes property: TextColorMethod
+HighLowClose Gallery Improvements: ShadowSameAsBody, ShadowVolume, WingVolume, SingleColor
+Annotation Objects Improvements: AnnotationImage (Opacity, Grayscale), AnnImageMode.StretchRatio and 			 AnnotationObject.Interactive
+
+								 
+Disclaimer: information contained in this document is subject to change.

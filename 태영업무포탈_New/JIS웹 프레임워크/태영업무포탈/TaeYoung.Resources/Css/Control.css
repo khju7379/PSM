@@ -1,0 +1,571 @@
+﻿.control_table
+{
+}
+.control_table label
+{
+    padding-left:2px;
+    padding-right:7px;
+}
+.JINSheet_NormalTable
+{
+    table-layout: fixed;
+    border-left:1px solid #DCDCDC;
+    border-right:1px solid #DCDCDC;
+}
+
+.JINSheet_NormalTable th,
+.JINSheet_NormalTable td {
+	text-overflow:ellipsis;white-space:nowrap;word-wrap:normal
+}	
+
+.JINSheet_ScrollBodyHeight, .NoneScroll
+{
+	overflow:scroll;
+	overflow-x:hidden;
+}
+			
+.navbar_paging .total
+{
+    position : absolute; margin-left:15px; margin-top:6px;
+}
+
+.tree_search_bx {
+	position: relative;
+	.height: 31px;
+	.margin-top: -1px;
+	border-bottom: 1px solid #CFD7DF;
+}
+.tree_search_bx .leftmenu_search {
+    width: 139px;
+    height: 30px;
+    font-size: 12px;
+    color: #FFFFFF;
+    border: none;
+    background: #AAAAAA;
+}
+			
+#quickmenu_config li
+{
+	list-style:none;
+}
+
+#divOrg
+{
+    position:fixed; 
+    top:00px; 
+    left:0px; 
+    width:200px; 
+    height:30px; 
+    vertical-align:top; 
+    border-bottom:5px solid #46464B; 
+    background:rgba(0,0,0,0.80); 
+    z-index:100001;
+    display:none;
+}
+
+#divOrg *
+{
+    color:#eeeeee;
+}
+
+#divOrg #common_search_org
+{
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    background:#252527; 
+    width:140px; 
+    padding:3px 3px 3px 3px; 
+    border:1px solid #505050;
+}
+
+#divOrg .saperator
+{
+    margin-right:5px;
+    margin-left:5px;
+    border-right:#999999;
+    border-left:#eeeeee;
+    height:15px;
+}
+
+#divOrg select.org_combo
+{
+    -webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    -webkit-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -webkit-user-select: none;
+    background-color:#333333;
+    background-image: url('/Resources/Images/combo_button.png'), -webkit-linear-gradient(#333333, #333333 40%, #404040);
+    background-position: 97% center;
+    background-repeat: no-repeat;
+    border: 1px solid #666666;
+    color: #ffffff;
+    font-size: inherit;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /*width: 180px;*/
+    width : 170px;
+}
+
+#grdOrg th 
+{
+    border:1px solid rgba(255, 255, 255, 0.05);
+    background:rgba(0,0,0,0.250);
+    padding:3px 3px 3px 3px;
+}
+
+#grdOrg .grdOrg_Body 
+{
+    height:380px;
+    /*border-bottom:1px solid #CFD7D7;*/
+}
+
+#grdOrg #grdOrg_Cont td 
+{
+    border:1px solid rgba(255, 255, 255, 0.05);
+    background:rgba(0,0,0,0.15);
+    height:18px;
+    text-align:center;
+    padding:3px 3px 3px 3px;
+}
+
+#grdOrg span.btn a
+{
+    position: relative;
+    border: 1px solid #666666;
+    padding:2px 3px 2px 3px;
+    border-radius: 2px 2px 2px 2px;
+    -moz-border-radius: 2px 2px 2px 2px;
+    -webkit-border-radius: 2px 2px 2px 2px;
+    -webkit-box-shadow: inset 0 0 4px #666666;
+}
+#grdOrg span.btn a:hover
+{
+    background :#666666;
+}
+
+#grdOrg ::-webkit-scrollbar 
+{
+    width: 8px; 
+    height: 8px; 
+    /*border: 3px solid #fff;*/
+}
+#grdOrg ::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment 
+{
+    display: none; 
+}
+#grdOrg ::-webkit-scrollbar-track 
+{
+        /*background: #efefef; */
+        /*background:rgba(0,0,0,0.75); */
+        -webkit-border-radius: 2px; 
+        border-radius:2px; 
+        -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.0);
+        
+}
+#grdOrg ::-webkit-scrollbar-thumb 
+{
+    height: 50px; width: 50px; 
+    -webkit-border-radius: 1px; 
+    border-radius: 1px; 
+    -webkit-box-shadow: inset 0 0 4px rgba(100,100,50,0.93);
+    background:rgba(255,255,255,0.5);
+}
+
+#grdOrg .progress
+{
+	position:absolute;
+	z-index:10;
+	display:none;
+	background:rgba(255,255,255,0.25);
+	text-align:center;
+}
+
+#grdOrg #grdOrg_Cont .bg2 
+{
+    background:rgba(0,0,0,0.10);
+}
+
+#grdOrg input
+{
+    width:auto;
+}
+
+#grdOrg #grdOrg_Cont input
+{
+    width:auto;
+}
+#divOrgUser *
+{
+    color : #bb0;
+}
+
+#treeOrg .myTreeCSS
+{
+    background:rgba(32,32,32,0.70);
+}
+#treeOrg ::-webkit-scrollbar 
+{
+    width: 8px; 
+    height: 8px; 
+    /*border: 3px solid #fff;*/
+}
+#treeOrg ::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment 
+{
+    display: none; 
+}
+#treeOrg ::-webkit-scrollbar-track 
+{
+        /*background: #efefef; */
+        /*background:rgba(0,0,0,0.75); */
+        -webkit-border-radius: 2px; 
+        border-radius:2px; 
+        -webkit-box-shadow: 
+        inset 0 0 4px rgba(0,0,0,0.0);
+        
+}
+#treeOrg ::-webkit-scrollbar-thumb 
+{
+    height: 50px; width: 50px; 
+    -webkit-border-radius: 1px; 
+    border-radius: 1px; 
+    -webkit-box-shadow: inset 0 0 4px rgba(100,100,50,0.93);
+    background:rgba(255,255,255,0.5);
+}
+
+/*
+#divOrgUser
+{
+    width:250px;
+    height:400px;
+    position:fixed;
+    top:100px;
+    left:200px;
+    background:rgba(0,0,0,0.85);
+    z-index:200;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -webkit-box-shadow: 5px 5px 2px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 5px 5px 2px 0px rgba(0,0,0,0.25);
+    box-shadow: 5px 5px 2px 0px rgba(0,0,0,0.25);
+    display:none;
+    text-align:center;
+    border:1px solid #999999;
+}
+
+#divOrgUser #divOrgUser_photo
+{
+    border-radius: 55px 55px 55px 55px;
+    -moz-border-radius: 55px 55px 55px 55px;
+    -webkit-border-radius: 55px 55px 55px 55px;
+    width:110px;
+    height:110px;
+    background:rgba(255,255,255,0.5);
+    margin:20px 70px 5px 70px;
+}
+.photo
+{
+    border-radius: 60px 60px 60px 60px;
+    -moz-border-radius: 60px 60px 60px 60px;
+    -webkit-border-radius: 60px 60px 60px 60px;
+    width:120px;
+    height:120px;
+}
+#divOrgUser #divOrgUser_close
+{
+    position:absolute;
+    top:0px;
+    right:0px;
+    color:#F0F0F0;
+    font-size:18px;
+    text-align:right;
+    padding:5px 5px 5px 5px;
+    cursor:pointer;
+}
+
+#divOrgUser #divOrgUser_Cont
+{
+    margin-top:15px;
+    width:250px;
+}
+
+#divOrgUser #divOrgUser_Cont div
+{
+    padding:1px 15px 1px 15px;
+    text-align:center;
+    height:15px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+#divOrgUser #divOrgUser_Cont #divOrgUser_Name
+{
+    font-size:18px;
+    color:#ff0;
+    padding:0px 15px 10px 15px;
+}
+
+#divOrgUser #divOrgUser_Bar
+{
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    width:100%;
+    height:50px;
+    background:rgba(128,128,128,0.4);
+}
+#divOrgUser #divOrgUser_Bar ul 
+{
+    width:150px;
+    margin-top:10px;
+}
+#divOrgUser #divOrgUser_Bar ul li 
+{
+    width:50%;
+    text-align:center;
+    vertical-align:middle;
+}
+#divOrgUser #divOrgUser_Bar ul li  img
+{
+    cursor:pointer;
+}
+
+#divOrgUser_Bar .gmail
+{
+    width:28px;
+    height:28px;
+    border:1px solid #F6F6F6;
+    border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    background:url('/Resources/Images/gmail.png') no-repeat;
+    cursor:pointer;
+    margin-left:20px;
+}
+
+#divOrgUser_Bar .post
+{
+    width:28px;
+    height:28px;
+    border:1px solid #F6F6F6;
+    border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    background:url('/Resources/Images/post.png') no-repeat;
+    cursor:pointer;
+    margin-left:20px;
+}
+*/
+
+#divOrgUser
+{
+    width:250px;
+    height:410px;
+    position:fixed;
+    top:100px;
+    left:200px;
+    background:rgba(255,255,255,0.95);
+    z-index:100002;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -webkit-box-shadow: 5px 5px 2px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 5px 5px 2px 0px rgba(0,0,0,0.25);
+    box-shadow: 5px 5px 2px 0px rgba(0,0,0,0.25);
+    display:none;
+    text-align:center;
+    border:1px solid #999999;
+}
+#divOrgUser *
+{
+    color:#505050;
+}
+#divOrgUser #divOrgUser_photo
+{
+    border-radius: 65px 65px 65px 65px;
+    -moz-border-radius: 65px 65px 65px 65px;
+    -webkit-border-radius: 65px 65px 65px 65px;
+    width:110px;
+    height:110px;
+    margin:20px 60px 5px 60px;
+    border:10px solid #F0F0F0;
+    background-color:#FFFFFF;
+}
+.photo
+{
+    border-radius: 60px 60px 60px 60px;
+    -moz-border-radius: 60px 60px 60px 60px;
+    -webkit-border-radius: 60px 60px 60px 60px;
+    width:120px;
+    height:120px;
+}
+#divOrgUser #divOrgUser_close
+{
+    position:absolute;
+    top:0px;
+    right:5px;
+    color:#000;
+    font-size:20px;
+    text-align:right;
+    padding:5px 5px 5px 5px;
+    cursor:pointer;
+}
+        
+#divOrgUser #divOrgUser_flag
+{
+    position:absolute;
+    top:10px;
+    left:10px;
+    border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
+    width:16px;
+    height:16px;
+    border:1px solid #ccc;
+}
+
+#divOrgUser #divOrgUser_Cont
+{
+    margin-top:15px;
+    width:250px;
+}
+
+#divOrgUser #divOrgUser_Cont div
+{
+    padding:1px 15px 1px 15px;
+    text-align:center;
+    height:15px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    background-position: 15% center;
+    background-repeat:no-repeat;
+        
+}
+#divOrgUser #divOrgUser_Cont #divOrgUser_Mail 
+{
+    background-image: url('/Resources/Images/Icon/mail.png');
+    margin-top:5px;
+}
+#divOrgUser #divOrgUser_Cont #divOrgUser_Tel1
+{
+    background-image: url('/Resources/Images/Icon/tel1.png');
+}
+#divOrgUser #divOrgUser_Cont #divOrgUser_Tel2
+{
+    background-image: url('/Resources/Images/Icon/tel2.png');
+}
+#divOrgUser #divOrgUser_Cont #divOrgUser_Tel3 
+{
+    background-image: url('/Resources/Images/Icon/tel3.png');
+}
+#divOrgUser #divOrgUser_Cont #divOrgUser_Tel4
+{
+    background-image: url('/Resources/Images/Icon/tel4.png');
+}
+#divOrgUser #divOrgUser_Cont #divOrgUser_OrgCard
+{
+    background-image: url('/Resources/Images/Icon/tel4.png');
+}
+#divOrgUser #divOrgUser_Cont #divOrgUser_Name
+{
+    font-size:18px;
+    color:#000000;
+    font-weight:bold;
+    padding:0px 15px 10px 15px;
+}
+
+#divOrgUser #divOrgUser_Bar
+{
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    width:100%;
+    height:50px;
+    background:#EEE;
+    border-top:1px solid #c9c9c9;
+    border-radius: 0px 0px 6px 6px;
+    -moz-border-radius: 0px 0px 6px 6px;
+    -webkit-border-radius: 0px 0px 6px 6px;
+}
+#divOrgUser #divOrgUser_Bar ul 
+{
+    width:250px;
+    margin-top:10px;
+    white-space:nowrap;
+}
+#divOrgUser #divOrgUser_Bar ul li 
+{
+    width:81px;
+    text-align:center;
+    vertical-align:middle;
+    display:inline-block;
+            
+}
+#divOrgUser #divOrgUser_Bar ul li  img
+{
+    cursor:pointer;
+}
+        
+#divOrgUser_Bar ul > li > div 
+{
+}
+
+#divOrgUser_Bar div.gmail
+{
+    width:28px;
+    height:28px;
+    border:1px solid #F6F6F6;
+    border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    cursor:pointer;
+    margin:0px 0px 0px 0px;
+    float:none;
+    display:inline-block;
+    border:1px solid #c9c9c9;
+    background:url('/Resources/Images/gmail.png') no-repeat;
+            
+}
+
+#divOrgUser_Bar div.post
+{
+    width:28px;
+    height:28px;
+    border:1px solid #F6F6F6;
+    border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    cursor:pointer;
+    margin:0px 0px 0px 0px;
+    float:none;
+    display:inline-block;
+    border:1px solid #c9c9c9;
+    background:url('/Resources/Images/post.png') no-repeat;
+}
+#divOrgUser_Bar div.push
+{
+    width:28px;
+    height:28px;
+    border:1px solid #F6F6F6;
+    border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    cursor:pointer;
+    margin:0px 0px 0px 0px;
+    float:none;
+    display:inline-block;
+    border:1px solid #c9c9c9;
+    background:url('/Resources/Images/post.png') no-repeat;
+}
+
+.title_01, .title_02
+{
+    border-radius: 0px 10px 0px 0px;
+    -moz-border-radius: 0px 8px 0px 0px;
+    -webkit-border-radius: 0px 10px 0px 0px;
+}

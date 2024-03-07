@@ -1,0 +1,72 @@
+﻿@charset "utf-8"; 
+/* JIS Web Standardization Team (http://www.jisman.co.kr) 권미영 */
+
+
+
+/* 공통 */
+html, body {wdith: 100%; height: 100%;}
+#wrapper {position: relative;}
+
+* {
+	margin: 0px; padding: 0px;
+	font-family: Dotum, 돋움, Gulim, 굴림, AppleGothic, Sans-serif; font-size: 12px; color: #646464; line-height: 18px;
+	word-break: keep-all;
+}
+
+table {border-collapse: collapse;}
+img, button, fieldset, iframe {border: none;}
+img, input, select {vertical-align: middle;}
+hr, button img {display: none;}
+fieldset {_display: inline;}
+address {font-style: normal;}
+
+ul, ul li {list-style: none;}
+ul.vertical li {clear: both;}
+ul.horizontal li {float: left;}
+
+ol, ol li {list-style: none;}
+ol.vertical li {clear: both;}
+ol.horizontal li {float: left;}
+
+.group_horizontal {_float: left; overflow: hidden;}
+.para_group {margin-bottom: 50px;}
+.para {margin-bottom: 40px;}
+.para_s {margin-bottom: 30px;}
+.para_ss {margin-bottom: 10px;}
+.object {margin-bottom: 10px;}
+
+.inline {display: inline;}
+.none {display: none;}
+.clear {clear: both;}
+.cursor {cursor: pointer;}
+
+.left {float: left;}
+.center {margin: 0 auto; display: block;} /* 해당 width입력 필(이미지 제외) */
+.right {float: right;}
+.top {vertical-align: top;}
+.middle {position: relative; top: 50%;} /* 상위 wrapper에 hieght입력 필, 해당 margin-top:해당 객체 높이의 반px입력 필 */
+.bottom {position: absolute; bottom: 0px;} /* 상위 wrapper에 position:relative입력 필 */
+
+.text_left {text-align: left;}
+.text_center {text-align: center;}
+.text_right {text-align: right;}
+.text_top {vertical-align: top;}
+.text_middle {vertical-align: middle;}
+.text_bottom {vertical-align: bottom;}
+
+.onmouse a img {display: inline;}
+.onmouse a img.over {display: none;}
+.onmouse a:hover {position: relative;}
+.onmouse a:hover img {display: none;}
+.onmouse a:hover img.over {display: inline;}
+
+a {text-decoration: none; cursor: pointer;}
+a:hover {color: #FF5A00;}
+
+.png24 {tmp:expression(setPng24(this));}
+
+input {width: 128px; height: 18px; border: 1px solid #C3C3C3; background: #FFFFFF;}
+input.readonly {background: #F5F5F5;}
+textarea {width: 100%; height: 98px; overflow: auto; border: 1px solid #C3C3C3; background: #FFFFFF;}
+select {width: 130px; height: 20px; border: 1px solid #C3C3C3; background: #FFFFFF;}
+span input {width: 13px; border: none; background: none;}

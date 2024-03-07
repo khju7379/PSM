@@ -1,0 +1,3025 @@
+DROP PROCEDURE TYJINFWLIB.SP_TGCSI_CSG1010_DETAIL;
+  
+CREATE PROCEDURE TYJINFWLIB.SP_TGCSI_CSG1010_DETAIL ( 
+	IN P_CURRENTPAGEINDEX INTEGER , 
+	IN P_PAGESIZE INTEGER , 
+	IN P_COMPANY VARCHAR(20) , 
+	IN P_HANGCHA VARCHAR(7) , 
+	IN P_GOKJONG VARCHAR(2) ) 
+	DYNAMIC RESULT SETS 2 
+	LANGUAGE SQL 
+	SPECIFIC TYJINFWLIB.SP_TGCSI_CSG1010_DETAIL 
+	NOT DETERMINISTIC 
+	MODIFIES SQL DATA 
+	CALLED ON NULL INPUT 
+	SET OPTION  ALWBLK = *ALLREAD , 
+	ALWCPYDTA = *OPTIMIZE , 
+	COMMIT = *NONE , 
+	DECRESULT = (31, 31, 00) , 
+	DYNDFTCOL = *NO , 
+	DYNUSRPRF = *USER , 
+	SRTSEQ = *HEX   
+	P1 : BEGIN  -- 시작 
+	DECLARE P_STNUM INTEGER ; 
+	DECLARE P_FNNUM INTEGER ; 
+	DECLARE P_SQLSTRING VARCHAR ( 4000 ) ; 
+	DECLARE P_SQLTOTALROWCOUNT VARCHAR ( 4000 ) ; 
+	DECLARE P_TABLE_QUERY VARCHAR ( 5000 ) ; 
+	DECLARE P_COUNT_QUERY VARCHAR ( 5000 ) ; 
+  
+	PREV : BEGIN  -- 값 설정 
+		SET P_STNUM = ( P_PAGESIZE * ( P_CURRENTPAGEINDEX - 1 ) ) + 1 ; 
+	SET P_FNNUM = P_PAGESIZE * P_CURRENTPAGEINDEX ; 
+	END PREV ; 
+  
+	MAIN : BEGIN  -- 실행부 
+		IF P_COMPANY = '그레인' THEN 
+  
+			LIST_T : BEGIN  -- 리스트 
+				DECLARE REFCURSOR_T CURSOR WITH RETURN FOR 
+  
+					WITH ORIGINAL_DATA AS 
+					( 
+						SELECT 
+						IPIPDAT , 
+						IPIPPQTY , 
+						IPIEDAT , 
+						IPIEPQTY , 
+						IPISDAT , 
+						IPISQTY 
+						FROM 
+						( 
+							SELECT 
+							IPIPDAT1 AS IPIPDAT , 
+							IPIPPQTY1 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY1 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT2 AS IPIPDAT , 
+							IPIPPQTY2 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY2 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT3 AS IPIPDAT , 
+							IPIPPQTY3 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY3 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT4 AS IPIPDAT , 
+							IPIPPQTY4 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY4 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT5 AS IPIPDAT , 
+							IPIPPQTY5 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY5 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT6 AS IPIPDAT , 
+							IPIPPQTY6 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY6 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT7 AS IPIPDAT , 
+							IPIPPQTY7 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY7 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT8 AS IPIPDAT , 
+							IPIPPQTY8 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY8 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT9 AS IPIPDAT , 
+							IPIPPQTY9 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY9 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT10 AS IPIPDAT , 
+							IPIPPQTY10 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY10 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT11 AS IPIPDAT , 
+							IPIPPQTY11 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY11 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT12 AS IPIPDAT , 
+							IPIPPQTY12 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY12 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT13 AS IPIPDAT , 
+							IPIPPQTY13 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY13 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT14 AS IPIPDAT , 
+							IPIPPQTY14 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY14 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT15 AS IPIPDAT , 
+							IPIPPQTY15 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY15 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT16 AS IPIPDAT , 
+							IPIPPQTY16 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY16 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT1 AS IPIEDAT , 
+							IPIEPQTY1 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY1 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT2 AS IPIEDAT , 
+							IPIEPQTY2 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY2 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT3 AS IPIEDAT , 
+							IPIEPQTY3 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY3 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT4 AS IPIEDAT , 
+							IPIEPQTY4 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY4 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT5 AS IPIEDAT , 
+							IPIEPQTY5 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY5 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT6 AS IPIEDAT , 
+							IPIEPQTY6 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY6 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT7 AS IPIEDAT , 
+							IPIEPQTY7 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY7 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT8 AS IPIEDAT , 
+							IPIEPQTY8 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY8 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT9 AS IPIEDAT , 
+							IPIEPQTY9 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY9 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT10 AS IPIEDAT , 
+							IPIEPQTY10 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY10 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT11 AS IPIEDAT , 
+							IPIEPQTY11 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY11 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT12 AS IPIEDAT , 
+							IPIEPQTY12 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY12 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT13 AS IPIEDAT , 
+							IPIEPQTY13 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY13 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT14 AS IPIEDAT , 
+							IPIEPQTY14 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY14 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT15 AS IPIEDAT , 
+							IPIEPQTY15 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY15 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT16 AS IPIEDAT , 
+							IPIEPQTY16 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY16 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT1 AS IPISDAT , 
+							IPISQTY1 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY1 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT2 AS IPISDAT , 
+							IPISQTY2 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY2 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT3 AS IPISDAT , 
+							IPISQTY3 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY3 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT4 AS IPISDAT , 
+							IPISQTY4 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY4 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT5 AS IPISDAT , 
+							IPISQTY5 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY5 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT6 AS IPISDAT , 
+							IPISQTY6 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY6 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT7 AS IPISDAT , 
+							IPISQTY7 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY7 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT8 AS IPISDAT , 
+							IPISQTY8 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY8 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT9 AS IPISDAT , 
+							IPISQTY9 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY9 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT10 AS IPISDAT , 
+							IPISQTY10 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY10 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT11 AS IPISDAT , 
+							IPISQTY11 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY11 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT12 AS IPISDAT , 
+							IPISQTY12 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY12 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT13 AS IPISDAT , 
+							IPISQTY13 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY13 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT14 AS IPISDAT , 
+							IPISQTY14 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY14 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT15 AS IPISDAT , 
+							IPISQTY15 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY15 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT16 AS IPISDAT , 
+							IPISQTY16 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY16 <> 0 
+  
+						) AS TEMP 
+					) , 
+  
+					DETAIL AS 
+					( 
+						SELECT 
+						ROW_NUMBER ( ) OVER ( ORDER BY GUBUN , IPIPDAT ) AS ROWNO , 
+						GUBUN , 
+						IHHANGCHA , 
+						VSDESC1 , 
+						IHIPHANG , 
+						IHGOKJONG1 , 
+						GKDESC1 , 
+						SKDESC1 , 
+						IHBLQTY1 , 
+						( CASE WHEN GUBUN IN ( '2' ) THEN '<div style="color:blue" >소     계</div>' 
+						ELSE IPIPDAT END ) AS IPIPDAT , 
+						( CASE WHEN GUBUN IN ( '2' ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( IPIPQTY , '999,999,999,990.000' ) ) || '</div>' 
+						ELSE TRIM ( TO_CHAR ( IPIPQTY , '999,999,999,990.000' ) ) END ) AS IPIPQTY , 
+						IPIEDAT , 
+						( CASE WHEN GUBUN IN ( '2' ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( IPIEQTY , '999,999,999,990.000' ) ) || '</div>' 
+						ELSE TRIM ( TO_CHAR ( IPIEQTY , '999,999,999,990.000' ) ) END ) AS IPIEQTY , 
+						IPISDAT , 
+						( CASE WHEN GUBUN IN ( '2' ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( IPISQTY , '999,999,999,990.000' ) ) || '</div>' 
+						ELSE TRIM ( TO_CHAR ( IPISQTY , '999,999,999,990.000' ) ) END ) AS IPISQTY 
+						FROM 
+						( 
+							SELECT 
+							'1' AS GUBUN , 
+							IHHANGCHA , 
+							VSCODE . CDDESC1 AS VSDESC1 , 
+							CHAR ( IHIPHANG ) AS IHIPHANG , 
+							IHGOKJONG1 , 
+							GKCODE . CDDESC1 AS GKDESC1 , 
+							SKCODE . CDDESC1 AS SKDESC1 , 
+							TRIM ( TO_CHAR ( IHBLQTY1 , '999,999,999,990.000' ) ) AS IHBLQTY1 , 
+							TRIM ( CHAR ( IPIPDAT ) ) AS IPIPDAT , 
+							VALUE ( SUM ( IPIPPQTY ) , 0 ) AS IPIPQTY , 
+							TRIM ( CHAR ( IPIEDAT ) ) AS IPIEDAT , 
+							VALUE ( SUM ( IPIEPQTY ) , 0 ) AS IPIEQTY , 
+							TRIM ( CHAR ( IPISDAT ) ) AS IPISDAT , 
+							VALUE ( SUM ( IPISQTY ) , 0 ) AS IPISQTY 
+							FROM ORIGINAL_DATA 
+							LEFT OUTER JOIN TGSCMLIB . USIIPHAF AS IPHA 
+							ON IPHA . IHHANGCHA = P_HANGCHA 
+							LEFT OUTER JOIN TGSCMLIB . USICODEF AS GKCODE 
+							ON 'GK' = GKCODE . CDINDEX 
+							AND IPHA . IHGOKJONG1 = GKCODE . CDCODE 
+							LEFT OUTER JOIN TGSCMLIB . USICODEF AS SKCODE 
+							ON 'SK' = SKCODE . CDINDEX 
+							AND IPHA . IHSOSOK = SKCODE . CDCODE 
+							LEFT OUTER JOIN TGSCMLIB . USICODEF AS VSCODE 
+							ON 'VS' = VSCODE . CDINDEX 
+							AND IPHA . IHHANGCHA = VSCODE . CDCODE 
+							GROUP BY IPIPDAT , IPIEDAT , IPISDAT , IHHANGCHA , VSCODE . CDDESC1 , IHIPHANG , IHGOKJONG1 , GKCODE . CDDESC1 , SKCODE . CDDESC1 , IHBLQTY1 
+  
+							UNION ALL 
+  
+							SELECT 
+							'2' AS GUBUN , 
+							'' AS IHHANGCHA , 
+							'' AS VSDESC1 , 
+							'' AS IHIPHANG , 
+							'' AS IHGOKJONG1 , 
+							'' AS GKDESC1 , 
+							'' AS SKDESC1 , 
+							'' AS IHBLQTY1 , 
+							'' AS IPIPDAT , 
+							VALUE ( SUM ( IPIPPQTY ) , 0 ) AS IPIPQTY , 
+							'' AS IPIEDAT , 
+							VALUE ( SUM ( IPIEPQTY ) , 0 ) AS IPIEQTY , 
+							'' AS IPISDAT , 
+							VALUE ( SUM ( IPISQTY ) , 0 ) AS IPISQTY 
+							FROM ORIGINAL_DATA 
+						) AS TEMP 
+					) 
+  
+					SELECT 
+					* 
+					FROM DETAIL AS A 
+					WHERE ROWNO BETWEEN CAST ( P_STNUM AS VARCHAR ( 100 ) ) AND CAST ( P_FNNUM AS VARCHAR ( 100 ) ) 
+					ORDER BY ROWNO ASC ; 
+				 
+				OPEN REFCURSOR_T ; 
+  
+			END LIST_T ; 
+	 
+			PAGING_T : BEGIN  -- 페이징 
+				DECLARE REFCURSOR_T CURSOR WITH RETURN FOR 
+  
+					WITH ORIGINAL_DATA AS 
+					( 
+						SELECT 
+						IPIPDAT , 
+						IPIPPQTY , 
+						IPIEDAT , 
+						IPIEPQTY , 
+						IPISDAT , 
+						IPISQTY 
+						FROM 
+						( 
+							SELECT 
+							IPIPDAT1 AS IPIPDAT , 
+							IPIPPQTY1 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY1 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT2 AS IPIPDAT , 
+							IPIPPQTY2 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY2 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT3 AS IPIPDAT , 
+							IPIPPQTY3 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY3 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT4 AS IPIPDAT , 
+							IPIPPQTY4 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY4 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT5 AS IPIPDAT , 
+							IPIPPQTY5 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY5 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT6 AS IPIPDAT , 
+							IPIPPQTY6 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY6 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT7 AS IPIPDAT , 
+							IPIPPQTY7 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY7 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT8 AS IPIPDAT , 
+							IPIPPQTY8 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY8 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT9 AS IPIPDAT , 
+							IPIPPQTY9 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY9 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT10 AS IPIPDAT , 
+							IPIPPQTY10 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY10 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT11 AS IPIPDAT , 
+							IPIPPQTY11 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY11 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT12 AS IPIPDAT , 
+							IPIPPQTY12 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY12 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT13 AS IPIPDAT , 
+							IPIPPQTY13 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY13 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT14 AS IPIPDAT , 
+							IPIPPQTY14 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY14 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT15 AS IPIPDAT , 
+							IPIPPQTY15 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY15 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT16 AS IPIPDAT , 
+							IPIPPQTY16 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY16 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT1 AS IPIEDAT , 
+							IPIEPQTY1 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY1 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT2 AS IPIEDAT , 
+							IPIEPQTY2 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY2 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT3 AS IPIEDAT , 
+							IPIEPQTY3 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY3 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT4 AS IPIEDAT , 
+							IPIEPQTY4 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY4 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT5 AS IPIEDAT , 
+							IPIEPQTY5 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY5 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT6 AS IPIEDAT , 
+							IPIEPQTY6 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY6 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT7 AS IPIEDAT , 
+							IPIEPQTY7 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY7 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT8 AS IPIEDAT , 
+							IPIEPQTY8 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY8 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT9 AS IPIEDAT , 
+							IPIEPQTY9 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY9 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT10 AS IPIEDAT , 
+							IPIEPQTY10 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY10 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT11 AS IPIEDAT , 
+							IPIEPQTY11 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY11 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT12 AS IPIEDAT , 
+							IPIEPQTY12 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY12 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT13 AS IPIEDAT , 
+							IPIEPQTY13 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY13 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT14 AS IPIEDAT , 
+							IPIEPQTY14 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY14 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT15 AS IPIEDAT , 
+							IPIEPQTY15 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY15 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT16 AS IPIEDAT , 
+							IPIEPQTY16 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY16 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT1 AS IPISDAT , 
+							IPISQTY1 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY1 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT2 AS IPISDAT , 
+							IPISQTY2 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY2 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT3 AS IPISDAT , 
+							IPISQTY3 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY3 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT4 AS IPISDAT , 
+							IPISQTY4 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY4 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT5 AS IPISDAT , 
+							IPISQTY5 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY5 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT6 AS IPISDAT , 
+							IPISQTY6 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY6 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT7 AS IPISDAT , 
+							IPISQTY7 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY7 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT8 AS IPISDAT , 
+							IPISQTY8 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY8 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT9 AS IPISDAT , 
+							IPISQTY9 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY9 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT10 AS IPISDAT , 
+							IPISQTY10 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY10 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT11 AS IPISDAT , 
+							IPISQTY11 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY11 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT12 AS IPISDAT , 
+							IPISQTY12 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY12 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT13 AS IPISDAT , 
+							IPISQTY13 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY13 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT14 AS IPISDAT , 
+							IPISQTY14 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY14 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT15 AS IPISDAT , 
+							IPISQTY15 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY15 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT16 AS IPISDAT , 
+							IPISQTY16 AS IPISQTY 
+							FROM TGSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY16 <> 0 
+  
+						) AS TEMP 
+					) 
+  
+					SELECT 
+					COUNT ( * ) AS TOTALCOUNT 
+					FROM 
+					( 
+						SELECT 
+						'1' AS GUBUN , 
+						TRIM ( CHAR ( IPIPDAT ) ) AS IPIPDAT , 
+						VALUE ( SUM ( IPIPPQTY ) , 0 ) AS IPIPQTY , 
+						TRIM ( CHAR ( IPIEDAT ) ) AS IPIEDAT , 
+						VALUE ( SUM ( IPIEPQTY ) , 0 ) AS IPIEQTY , 
+						TRIM ( CHAR ( IPISDAT ) ) AS IPISDAT , 
+						VALUE ( SUM ( IPISQTY ) , 0 ) AS IPISQTY 
+						FROM ORIGINAL_DATA 
+						GROUP BY IPIPDAT , IPIEDAT , IPISDAT 
+  
+						UNION ALL 
+  
+						SELECT 
+						'2' AS GUBUN , 
+						'' AS IPIPDAT , 
+						VALUE ( SUM ( IPIPPQTY ) , 0 ) AS IPIPQTY , 
+						'' AS IPIEDAT , 
+						VALUE ( SUM ( IPIEPQTY ) , 0 ) AS IPIEQTY , 
+						'' AS IPISDAT , 
+						VALUE ( SUM ( IPISQTY ) , 0 ) AS IPISQTY 
+						FROM ORIGINAL_DATA 
+					) AS TEMP ; 
+  
+				OPEN REFCURSOR_T ; 
+  
+			END PAGING_T ; 
+  
+		ELSE 
+  
+			LIST_P : BEGIN  -- 리스트 
+				DECLARE REFCURSOR_P CURSOR WITH RETURN FOR 
+  
+					WITH ORIGINAL_DATA AS 
+					( 
+						SELECT 
+						IPIPDAT , 
+						IPIPPQTY , 
+						IPIEDAT , 
+						IPIEPQTY , 
+						IPISDAT , 
+						IPISQTY 
+						FROM 
+						( 
+							SELECT 
+							IPIPDAT1 AS IPIPDAT , 
+							IPIPPQTY1 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY1 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT2 AS IPIPDAT , 
+							IPIPPQTY2 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY2 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT3 AS IPIPDAT , 
+							IPIPPQTY3 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY3 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT4 AS IPIPDAT , 
+							IPIPPQTY4 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY4 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT5 AS IPIPDAT , 
+							IPIPPQTY5 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY5 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT6 AS IPIPDAT , 
+							IPIPPQTY6 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY6 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT7 AS IPIPDAT , 
+							IPIPPQTY7 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY7 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT8 AS IPIPDAT , 
+							IPIPPQTY8 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY8 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT9 AS IPIPDAT , 
+							IPIPPQTY9 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY9 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT10 AS IPIPDAT , 
+							IPIPPQTY10 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY10 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT11 AS IPIPDAT , 
+							IPIPPQTY11 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY11 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT12 AS IPIPDAT , 
+							IPIPPQTY12 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY12 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT13 AS IPIPDAT , 
+							IPIPPQTY13 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY13 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT14 AS IPIPDAT , 
+							IPIPPQTY14 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY14 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT15 AS IPIPDAT , 
+							IPIPPQTY15 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY15 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT16 AS IPIPDAT , 
+							IPIPPQTY16 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY16 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT1 AS IPIEDAT , 
+							IPIEPQTY1 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY1 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT2 AS IPIEDAT , 
+							IPIEPQTY2 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY2 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT3 AS IPIEDAT , 
+							IPIEPQTY3 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY3 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT4 AS IPIEDAT , 
+							IPIEPQTY4 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY4 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT5 AS IPIEDAT , 
+							IPIEPQTY5 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY5 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT6 AS IPIEDAT , 
+							IPIEPQTY6 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY6 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT7 AS IPIEDAT , 
+							IPIEPQTY7 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY7 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT8 AS IPIEDAT , 
+							IPIEPQTY8 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY8 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT9 AS IPIEDAT , 
+							IPIEPQTY9 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY9 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT10 AS IPIEDAT , 
+							IPIEPQTY10 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY10 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT11 AS IPIEDAT , 
+							IPIEPQTY11 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY11 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT12 AS IPIEDAT , 
+							IPIEPQTY12 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY12 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT13 AS IPIEDAT , 
+							IPIEPQTY13 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY13 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT14 AS IPIEDAT , 
+							IPIEPQTY14 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY14 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT15 AS IPIEDAT , 
+							IPIEPQTY15 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY15 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT16 AS IPIEDAT , 
+							IPIEPQTY16 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY16 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT1 AS IPISDAT , 
+							IPISQTY1 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY1 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT2 AS IPISDAT , 
+							IPISQTY2 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY2 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT3 AS IPISDAT , 
+							IPISQTY3 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY3 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT4 AS IPISDAT , 
+							IPISQTY4 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY4 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT5 AS IPISDAT , 
+							IPISQTY5 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY5 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT6 AS IPISDAT , 
+							IPISQTY6 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY6 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT7 AS IPISDAT , 
+							IPISQTY7 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY7 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT8 AS IPISDAT , 
+							IPISQTY8 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY8 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT9 AS IPISDAT , 
+							IPISQTY9 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY9 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT10 AS IPISDAT , 
+							IPISQTY10 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY10 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT11 AS IPISDAT , 
+							IPISQTY11 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY11 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT12 AS IPISDAT , 
+							IPISQTY12 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY12 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT13 AS IPISDAT , 
+							IPISQTY13 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY13 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT14 AS IPISDAT , 
+							IPISQTY14 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY14 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT15 AS IPISDAT , 
+							IPISQTY15 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY15 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT16 AS IPISDAT , 
+							IPISQTY16 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY16 <> 0 
+  
+						) AS TEMP 
+					) , 
+  
+					DETAIL AS 
+					( 
+						SELECT 
+						ROW_NUMBER ( ) OVER ( ORDER BY GUBUN , IPIPDAT ) AS ROWNO , 
+						GUBUN , 
+						IHHANGCHA , 
+						VSDESC1 , 
+						IHIPHANG , 
+						IHGOKJONG1 , 
+						GKDESC1 , 
+						SKDESC1 , 
+						IHBLQTY1 , 
+						( CASE WHEN GUBUN IN ( '2' ) THEN '<div style="color:blue" >소     계</div>' 
+						ELSE IPIPDAT END ) AS IPIPDAT , 
+						( CASE WHEN GUBUN IN ( '2' ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( IPIPQTY , '999,999,999,990.000' ) ) || '</div>' 
+						ELSE TRIM ( TO_CHAR ( IPIPQTY , '999,999,999,990.000' ) ) END ) AS IPIPQTY , 
+						IPIEDAT , 
+						( CASE WHEN GUBUN IN ( '2' ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( IPIEQTY , '999,999,999,990.000' ) ) || '</div>' 
+						ELSE TRIM ( TO_CHAR ( IPIEQTY , '999,999,999,990.000' ) ) END ) AS IPIEQTY , 
+						IPISDAT , 
+						( CASE WHEN GUBUN IN ( '2' ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( IPISQTY , '999,999,999,990.000' ) ) || '</div>' 
+						ELSE TRIM ( TO_CHAR ( IPISQTY , '999,999,999,990.000' ) ) END ) AS IPISQTY 
+						FROM 
+						( 
+							SELECT 
+							'1' AS GUBUN , 
+							IHHANGCHA , 
+							VSCODE . CDDESC1 AS VSDESC1 , 
+							CHAR ( IHIPHANG ) AS IHIPHANG , 
+							IHGOKJONG1 , 
+							GKCODE . CDDESC1 AS GKDESC1 , 
+							SKCODE . CDDESC1 AS SKDESC1 , 
+							TRIM ( TO_CHAR ( IHBLQTY1 , '999,999,999,990.000' ) ) AS IHBLQTY1 , 
+							TRIM ( CHAR ( IPIPDAT ) ) AS IPIPDAT , 
+							VALUE ( SUM ( IPIPPQTY ) , 0 ) AS IPIPQTY , 
+							TRIM ( CHAR ( IPIEDAT ) ) AS IPIEDAT , 
+							VALUE ( SUM ( IPIEPQTY ) , 0 ) AS IPIEQTY , 
+							TRIM ( CHAR ( IPISDAT ) ) AS IPISDAT , 
+							VALUE ( SUM ( IPISQTY ) , 0 ) AS IPISQTY 
+							FROM ORIGINAL_DATA 
+							LEFT OUTER JOIN PTSCMLIB . USIIPHAF AS IPHA 
+							ON IPHA . IHHANGCHA = P_HANGCHA 
+							LEFT OUTER JOIN TGSCMLIB . USICODEF AS GKCODE 
+							ON 'GK' = GKCODE . CDINDEX 
+							AND IPHA . IHGOKJONG1 = GKCODE . CDCODE 
+							LEFT OUTER JOIN TGSCMLIB . USICODEF AS SKCODE 
+							ON 'SK' = SKCODE . CDINDEX 
+							AND IPHA . IHSOSOK = SKCODE . CDCODE 
+							LEFT OUTER JOIN TGSCMLIB . USICODEF AS VSCODE 
+							ON 'VP' = VSCODE . CDINDEX 
+							AND IPHA . IHHANGCHA = VSCODE . CDCODE 
+							GROUP BY IPIPDAT , IPIEDAT , IPISDAT , IHHANGCHA , VSCODE . CDDESC1 , IHIPHANG , IHGOKJONG1 , GKCODE . CDDESC1 , SKCODE . CDDESC1 , IHBLQTY1 
+  
+							UNION ALL 
+  
+							SELECT 
+							'2' AS GUBUN , 
+							'' AS IHHANGCHA , 
+							'' AS VSDESC1 , 
+							'' AS IHIPHANG , 
+							'' AS IHGOKJONG1 , 
+							'' AS GKDESC1 , 
+							'' AS SKDESC1 , 
+							'' AS IHBLQTY1 , 
+							'' AS IPIPDAT , 
+							VALUE ( SUM ( IPIPPQTY ) , 0 ) AS IPIPQTY , 
+							'' AS IPIEDAT , 
+							VALUE ( SUM ( IPIEPQTY ) , 0 ) AS IPIEQTY , 
+							'' AS IPISDAT , 
+							VALUE ( SUM ( IPISQTY ) , 0 ) AS IPISQTY 
+							FROM ORIGINAL_DATA 
+						) AS TEMP 
+					) 
+  
+					SELECT 
+					* 
+					FROM DETAIL AS A 
+					WHERE ROWNO BETWEEN CAST ( P_STNUM AS VARCHAR ( 100 ) ) AND CAST ( P_FNNUM AS VARCHAR ( 100 ) ) 
+					ORDER BY ROWNO ASC ; 
+				 
+				OPEN REFCURSOR_P ; 
+  
+			END LIST_P ; 
+	 
+			PAGING_P : BEGIN  -- 페이징 
+				DECLARE REFCURSOR_P CURSOR WITH RETURN FOR 
+  
+					WITH ORIGINAL_DATA AS 
+					( 
+						SELECT 
+						IPIPDAT , 
+						IPIPPQTY , 
+						IPIEDAT , 
+						IPIEPQTY , 
+						IPISDAT , 
+						IPISQTY 
+						FROM 
+						( 
+							SELECT 
+							IPIPDAT1 AS IPIPDAT , 
+							IPIPPQTY1 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY1 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT2 AS IPIPDAT , 
+							IPIPPQTY2 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY2 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT3 AS IPIPDAT , 
+							IPIPPQTY3 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY3 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT4 AS IPIPDAT , 
+							IPIPPQTY4 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY4 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT5 AS IPIPDAT , 
+							IPIPPQTY5 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY5 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT6 AS IPIPDAT , 
+							IPIPPQTY6 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY6 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT7 AS IPIPDAT , 
+							IPIPPQTY7 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY7 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT8 AS IPIPDAT , 
+							IPIPPQTY8 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY8 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT9 AS IPIPDAT , 
+							IPIPPQTY9 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY9 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT10 AS IPIPDAT , 
+							IPIPPQTY10 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY10 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT11 AS IPIPDAT , 
+							IPIPPQTY11 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY11 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT12 AS IPIPDAT , 
+							IPIPPQTY12 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY12 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT13 AS IPIPDAT , 
+							IPIPPQTY13 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY13 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT14 AS IPIPDAT , 
+							IPIPPQTY14 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY14 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT15 AS IPIPDAT , 
+							IPIPPQTY15 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY15 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							IPIPDAT16 AS IPIPDAT , 
+							IPIPPQTY16 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIPPQTY16 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT1 AS IPIEDAT , 
+							IPIEPQTY1 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY1 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT2 AS IPIEDAT , 
+							IPIEPQTY2 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY2 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT3 AS IPIEDAT , 
+							IPIEPQTY3 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY3 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT4 AS IPIEDAT , 
+							IPIEPQTY4 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY4 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT5 AS IPIEDAT , 
+							IPIEPQTY5 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY5 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT6 AS IPIEDAT , 
+							IPIEPQTY6 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY6 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT7 AS IPIEDAT , 
+							IPIEPQTY7 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY7 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT8 AS IPIEDAT , 
+							IPIEPQTY8 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY8 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT9 AS IPIEDAT , 
+							IPIEPQTY9 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY9 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT10 AS IPIEDAT , 
+							IPIEPQTY10 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY10 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT11 AS IPIEDAT , 
+							IPIEPQTY11 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY11 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT12 AS IPIEDAT , 
+							IPIEPQTY12 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY12 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT13 AS IPIEDAT , 
+							IPIEPQTY13 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY13 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT14 AS IPIEDAT , 
+							IPIEPQTY14 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY14 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT15 AS IPIEDAT , 
+							IPIEPQTY15 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY15 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							IPIEDAT16 AS IPIEDAT , 
+							IPIEPQTY16 AS IPIEPQTY , 
+							0 AS IPISDAT , 
+							0 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPIEPQTY16 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT1 AS IPISDAT , 
+							IPISQTY1 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY1 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT2 AS IPISDAT , 
+							IPISQTY2 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY2 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT3 AS IPISDAT , 
+							IPISQTY3 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY3 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT4 AS IPISDAT , 
+							IPISQTY4 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY4 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT5 AS IPISDAT , 
+							IPISQTY5 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY5 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT6 AS IPISDAT , 
+							IPISQTY6 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY6 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT7 AS IPISDAT , 
+							IPISQTY7 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY7 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT8 AS IPISDAT , 
+							IPISQTY8 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY8 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT9 AS IPISDAT , 
+							IPISQTY9 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY9 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT10 AS IPISDAT , 
+							IPISQTY10 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY10 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT11 AS IPISDAT , 
+							IPISQTY11 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY11 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT12 AS IPISDAT , 
+							IPISQTY12 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY12 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT13 AS IPISDAT , 
+							IPISQTY13 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY13 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT14 AS IPISDAT , 
+							IPISQTY14 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY14 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT15 AS IPISDAT , 
+							IPISQTY15 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY15 <> 0 
+  
+							UNION ALL 
+  
+							SELECT 
+							0 AS IPIPDAT , 
+							0 AS IPIPPQTY , 
+							0 AS IPIEDAT , 
+							0 AS IPIEPQTY , 
+							IPISDAT16 AS IPISDAT , 
+							IPISQTY16 AS IPISQTY 
+							FROM PTSCMLIB . USIIPGOF 
+							WHERE IPHANGCHA = P_HANGCHA 
+							AND IPGOKJONG = P_GOKJONG 
+							AND IPISQTY16 <> 0 
+  
+						) AS TEMP 
+					) 
+  
+					SELECT 
+					COUNT ( * ) AS TOTALCOUNT 
+					FROM 
+					( 
+						SELECT 
+						'1' AS GUBUN , 
+						TRIM ( CHAR ( IPIPDAT ) ) AS IPIPDAT , 
+						VALUE ( SUM ( IPIPPQTY ) , 0 ) AS IPIPQTY , 
+						TRIM ( CHAR ( IPIEDAT ) ) AS IPIEDAT , 
+						VALUE ( SUM ( IPIEPQTY ) , 0 ) AS IPIEQTY , 
+						TRIM ( CHAR ( IPISDAT ) ) AS IPISDAT , 
+						VALUE ( SUM ( IPISQTY ) , 0 ) AS IPISQTY 
+						FROM ORIGINAL_DATA 
+						GROUP BY IPIPDAT , IPIEDAT , IPISDAT 
+  
+						UNION ALL 
+  
+						SELECT 
+						'2' AS GUBUN , 
+						'' AS IPIPDAT , 
+						VALUE ( SUM ( IPIPPQTY ) , 0 ) AS IPIPQTY , 
+						'' AS IPIEDAT , 
+						VALUE ( SUM ( IPIEPQTY ) , 0 ) AS IPIEQTY , 
+						'' AS IPISDAT , 
+						VALUE ( SUM ( IPISQTY ) , 0 ) AS IPISQTY 
+						FROM ORIGINAL_DATA 
+					) AS TEMP ; 
+  
+				OPEN REFCURSOR_P ; 
+  
+			END PAGING_P ; 
+  
+		END IF ; 
+  
+	END MAIN ; 
+END P1  ; 
+  
+

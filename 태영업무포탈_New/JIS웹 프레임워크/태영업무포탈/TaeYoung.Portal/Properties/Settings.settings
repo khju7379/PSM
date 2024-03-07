@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TaeYoung.Portal.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TaeYoung_Portal_wsdominoadmin_wsDominoAdminElement" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://gw.taeyoung.co.kr:80/pilot/webservice.nsf/wsdominoadmin?OpenWebService</Value>
+    </Setting>
+    <Setting Name="TaeYoung_Portal_kr_co_taeyoung_emg_SafeOrderService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://emg.taeyoung.co.kr/Portal/PSM/SafeOrderService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

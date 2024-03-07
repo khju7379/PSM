@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00.참조프로그램", "00.참조프로그램", "{F897E945-83AC-4A60-9869-25549119FCAC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10.Database", "10.Database", "{AA9EAE1C-ECBA-47EC-8551-C088F3706481}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20.업무 공통", "20.업무 공통", "{6E0A9622-7A5C-4A7A-9360-27C5363FDEB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "30.WinForm", "30.WinForm", "{54FBE3B9-54D7-4FC2-92D7-149A0494C9E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "40.Service", "40.Service", "{E3293323-0D21-4729-B448-7E25EF1A35AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "참조프로그램", "참조프로그램\참조프로그램.csproj", "{0B423000-6B0B-423E-9166-635E06321506}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaeYoung.DataBase", "TaeYoung.DataBase\TaeYoung.DataBase.csproj", "{C25EB5D0-EDB7-47D8-A170-F9D75A697E2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaeYoung.WinForm", "TaeYoung.WinForm\TaeYoung.WinForm.csproj", "{81C4CA98-7250-4263-A2C1-A62FD1DF5B5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaeYoung.WinCommon", "TaeYoung.WinCommon\TaeYoung.WinCommon.csproj", "{615395F9-6E62-43B4-87CE-054F194AF039}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://192.168.100.161:8080/tfs/jisweb%20framework
+		SccProjectUniqueName0 = 참조프로그램\\참조프로그램.csproj
+		SccProjectTopLevelParentUniqueName0 = 태영WinForm.sln
+		SccProjectName0 = 참조프로그램
+		SccLocalPath0 = 참조프로그램
+		SccProjectUniqueName1 = TaeYoung.DataBase\\TaeYoung.DataBase.csproj
+		SccProjectTopLevelParentUniqueName1 = 태영WinForm.sln
+		SccProjectName1 = TaeYoung.DataBase
+		SccLocalPath1 = TaeYoung.DataBase
+		SccProjectUniqueName2 = TaeYoung.WinForm\\TaeYoung.WinForm.csproj
+		SccProjectTopLevelParentUniqueName2 = 태영WinForm.sln
+		SccProjectName2 = TaeYoung.WinForm
+		SccLocalPath2 = TaeYoung.WinForm
+		SccLocalPath3 = .
+		SccProjectUniqueName4 = TaeYoung.WinCommon\\TaeYoung.WinCommon.csproj
+		SccProjectTopLevelParentUniqueName4 = 태영WinForm.sln
+		SccProjectName4 = TaeYoung.WinCommon
+		SccLocalPath4 = TaeYoung.WinCommon
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B423000-6B0B-423E-9166-635E06321506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B423000-6B0B-423E-9166-635E06321506}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B423000-6B0B-423E-9166-635E06321506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B423000-6B0B-423E-9166-635E06321506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C25EB5D0-EDB7-47D8-A170-F9D75A697E2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C25EB5D0-EDB7-47D8-A170-F9D75A697E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C25EB5D0-EDB7-47D8-A170-F9D75A697E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C25EB5D0-EDB7-47D8-A170-F9D75A697E2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81C4CA98-7250-4263-A2C1-A62FD1DF5B5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81C4CA98-7250-4263-A2C1-A62FD1DF5B5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81C4CA98-7250-4263-A2C1-A62FD1DF5B5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81C4CA98-7250-4263-A2C1-A62FD1DF5B5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{615395F9-6E62-43B4-87CE-054F194AF039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{615395F9-6E62-43B4-87CE-054F194AF039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{615395F9-6E62-43B4-87CE-054F194AF039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{615395F9-6E62-43B4-87CE-054F194AF039}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0B423000-6B0B-423E-9166-635E06321506} = {F897E945-83AC-4A60-9869-25549119FCAC}
+		{C25EB5D0-EDB7-47D8-A170-F9D75A697E2A} = {AA9EAE1C-ECBA-47EC-8551-C088F3706481}
+		{615395F9-6E62-43B4-87CE-054F194AF039} = {6E0A9622-7A5C-4A7A-9360-27C5363FDEB1}
+		{81C4CA98-7250-4263-A2C1-A62FD1DF5B5C} = {54FBE3B9-54D7-4FC2-92D7-149A0494C9E1}
+	EndGlobalSection
+EndGlobal

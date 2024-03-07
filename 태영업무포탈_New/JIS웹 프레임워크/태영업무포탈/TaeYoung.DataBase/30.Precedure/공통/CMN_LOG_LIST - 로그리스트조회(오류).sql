@@ -1,0 +1,88 @@
+--DROP PROCEDURE CMN_LOG_LIST
+-------------------------------------------------------------------------------------------
+-- 프로시저명 : CMN_LOG_LIST
+-- 작성자     : 문광복
+-- 작성일     : 2015-09-07
+-- 설명       : 오류로그정보를 입력한다.
+-- 예문       : CALL CMN_LOG_LIST (1, 20, '2014-04-18', 'ERROR', '', '')
+--		DB2 변환 : 이전프로시져명 SP_SYSTEM_LOG_LIST
+--		프렌지 변환 : PTCMMBAS60L1 -> CMN_LOG_LIST
+-------------------------------------------------------------------------------------------
+CREATE PROCEDURE CMN_LOG_LIST
+(
+		P_CURRENTPAGEINDEX		INTEGER
+	,	P_PAGESIZE				INTEGER
+	,	P_OCCUR_DATE			VARCHAR(4000)
+	,	P_LOG_TYPE				VARCHAR(4000)
+	,	P_BIZ_TYPE				VARCHAR(4000)
+	,	P_USER_ID				VARCHAR(4000)
+)
+	RESULT SETS 2
+	LANGUAGE SQL
+P1: BEGIN
+	
+	DECLARE P_STNUM                 INTEGER;   
+	DECLARE P_FNNUM                 INTEGER;
+	DECLARE P_SQLSTRING             VARCHAR(4000);   
+	DECLARE P_SQLTOTALROWCOUNT      VARCHAR(4000);  
+	DECLARE P_TABLE_QUERY 			VARCHAR(4000);
+	DECLARE P_COUNT_QUERY 			VARCHAR(4000);
+	DECLARE	P_LOG_SDATE				VARCHAR(20);
+	DECLARE P_LOG_EDATE				VARCHAR(20);
+	   
+	S1: BEGIN -- 값 설정
+		SET P_STNUM = (P_PAGESIZE * (P_CURRENTPAGEINDEX - 1)) + 1;   
+		SET P_FNNUM = P_PAGESIZE * P_CURRENTPAGEINDEX;   
+
+		SET	P_LOG_SDATE = P_OCCUR_DATE || ' 00:00:00';
+		SET P_LOG_EDATE = P_OCCUR_DATE || ' 23:59:59';
+	END S1; 
+	
+	S2: BEGIN -- 실행부
+		C1 : BEGIN -- 리스트
+			DECLARE REFCURSOR  INSENSITIVE SCROLL CURSOR WITH RETURN FOR S1 ;  -- 커서생성 
+			SET P_TABLE_QUERY = '
+				WITH ORIGINAL_DATA AS (  
+					SELECT 
+						ROW_NUMBER() OVER() AS ROWNO
+					,	IDX
+					,	LOG_TYPE
+					,	BIZ_TYPE
+					,	OCCUR_TIME -- TO_CHAR(OCCUR_TIME,''YYYY-MM-DD HH24:MI:SS'')
+				   	,	EXECUTION_TIME -- TO_CHAR(EXECUTION_TIME,''YYYY-MM-DD HH24:MI:SS'')
+					,	FORM_ID
+					,	USER_ID
+					,	USER_IP
+					,	MACHINE_NAME
+					FROM TYJINFWLIB.CMN_LOG A 
+					WHERE OCCUR_TIME BETWEEN ''' || P_LOG_SDATE || ''' AND ''' || P_LOG_EDATE || '''
+						AND LOG_TYPE LIKE ''' || P_LOG_TYPE || '%''
+						AND BIZ_TYPE LIKE ''' || P_BIZ_TYPE || '%''
+				) 
+			  
+				SELECT 
+					* 
+				FROM ORIGINAL_DATA
+				WHERE ROWNO BETWEEN ' || CAST(P_STNUM AS VARCHAR(100)) || ' AND ' || CAST(P_FNNUM AS VARCHAR(100)) || '
+				ORDER BY ROWNO ASC 
+			';
+			PREPARE S1 FROM P_TABLE_QUERY;
+			OPEN REFCURSOR;
+		END C1;
+		C2: BEGIN -- 페이징
+			DECLARE REFCURSOR2  INSENSITIVE SCROLL CURSOR WITH RETURN FOR S2 ;  -- 커서생성 
+			SET P_COUNT_QUERY = '
+				SELECT 
+					COUNT(*) AS TOTALCOUNT  
+				FROM TYJINFWLIB.CMN_LOG
+				WHERE OCCUR_TIME BETWEEN ''' || P_LOG_SDATE || ''' AND ''' || P_LOG_EDATE || '''
+					AND LOG_TYPE LIKE ''' || P_LOG_TYPE || '%''
+					AND BIZ_TYPE LIKE ''' || P_BIZ_TYPE || '%''
+			
+			';
+			PREPARE S2 FROM P_COUNT_QUERY;
+			OPEN REFCURSOR2;
+		END C2;
+	END S2;
+
+END P1

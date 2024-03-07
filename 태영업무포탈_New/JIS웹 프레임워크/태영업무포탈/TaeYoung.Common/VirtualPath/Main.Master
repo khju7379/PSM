@@ -1,0 +1,396 @@
+﻿<%@ Master Language="C#" AutoEventWireup="false" CodeBehind="Main.master.cs" Inherits="TaeYoung.Common.VirtualPath.Main"
+    ViewStateMode="Disabled" Debug="false" %>
+
+<!DOCTYPE html>
+<html lang='ko'>
+<head id="Head1" runat="server">
+    <meta charset="utf-8" />
+    <title>태영 통합 고객정보 시스템</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/Resources/Images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/Resources/Css/Import.css" />
+    <link rel="stylesheet" type="text/css" href="/Resources/Css/Control.css" />
+    <link href="/Resources/Framework/JIS.Control.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        <asp:LIteral ID="ltlCustomStyle" runat="server" />
+        #frmOrg
+        {
+            border:0px;
+            width:620px;
+            height:490px;
+            overflow:hidden;
+            display:none;
+        }
+    </style>
+    <script type="text/javascript" src="/Resources/Script/Domain.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery-migrate-3.0.0.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/moxie.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/plupload.dev.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery.ui.plupload.js"></script>
+    <script type="text/javascript" src="/Resources/Script/Common.js"></script>
+    <script type="text/javascript" src="/Resources/Script/Site.UI.js"></script>
+    <script type="text/javascript" src="/Resources/Script/Org.js"></script>
+    <script type="text/javascript" src="/Resources/Script/OrgChart.js"></script>
+    <script type="text/javascript" src="/Resources/Script/showModalDialog.js"></script>
+    <script type="text/javascript" src="/Resources/Script/showModalDialogCallee.js"></script>
+
+    <script type="text/javascript">
+        //window.onerror = function () {
+        //    var message = "\nMessage: " + arguments[0];
+        //    message += "\nURL: " + arguments[1];
+        //    message += "\nLine: " + arguments[2];
+        //    message += "\nColumn: " + arguments[3];
+        //    alert("스크립트에서 오류가 발생하였습니다."+message);
+        //};
+
+		var ProgramID = "<asp:LIteral ID="ltlProgramID" runat="server" />";
+        var TopMenuID = "<asp:LIteral ID="ltlTopMenuID" runat="server" />";
+		var MenuID = "<asp:LIteral ID="ltlMenuID" runat="server" />";
+        var MenuFold = false;
+		var IsPopup = false;
+		var EMPID = "<%= TaeYoung.Biz.Document.UserInfo.EmpID %>";
+		var COMPANYCODE = "<%= TaeYoung.Biz.Document.UserInfo.CompanyCode %>";
+        var SiteCompanyCode = "<%= TaeYoung.Biz.Document.SiteCompanyCode %>";
+        var ACL = "<%= ACL %>";
+        var Use_Language = "<%= TaeYoung.Biz.Document.ClientCultureName %>"; 
+		var ManualExist = "<asp:LIteral ID="ltlManualExist" runat="server" />";
+        var SessionUserInfoString = "<%= HttpContext.Current.Session["UserInfo"] != null ? System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(HttpContext.Current.Session["UserInfo"].ToString())) : "" %>";
+        
+    </script>
+    <asp:ContentPlaceHolder ID="conHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body id="wrapper">
+    <form id="form1" runat="server">
+     <div style="display:none;">
+        <input type="textbox" />
+    </div>
+    <script type="text/javascript" src="/Resources/Framework/JIS.Control.js"></script>
+    <script type="text/javascript">
+        var ControlLoad = [];
+    </script>
+    <!--메인시작-->
+   <div id="main_body">
+   	
+   	
+   	
+   	<!--상단시작-->
+      <div id="header" runat="server">
+      	
+      	<!--탑소메뉴시작-->
+      	<div id="topsmenu_bx">
+      		<%--<div id="member_search">
+				<fieldset>
+					<legend>임직원검색</legend>
+					<label for="FindTxt">임직원검색어입력</label>
+					<input type="text" id="search" name="search" title="임직원검색어를 입력하세요." value="임직원 검색" /><a href="javascript:;" onclick="TopOrgSearch();"><img src="/Resources/Images/btn_search.png" alt="검색" /></a>   
+					<a href="#"><img src="/Resources/Images/btn_member_search.png" alt="조직도검색" /></a> 
+				</fieldset>
+			</div>--%>
+            <div id="member_search" style="color:#FFFFFF; font-size:17px; line-height:25px;">
+                접속정보 : <%= TaeYoung.Biz.Document.UserInfo.UserName %> (<%= TaeYoung.Biz.Document.UserInfo.EmpID %>) - <%= TaeYoung.Biz.Document.UserInfo.SiteCompanyCode %>
+            </div>
+      	   <div id="topsmenu">
+      	   	<script type="text/javascript">
+      	   	    var isVend = "<%= TaeYoung.Biz.Document.UserInfo.IsVend %>";
+                var email = "<%= TaeYoung.Biz.Document.UserInfo.Email %>";              
+
+      	   	    $(document).ready(function () {
+      	   	        if (isVend == "True" && email != "") {
+      	   	            $("#Mail").show();
+      	   	        }
+      	   	    });
+
+      	   	    function WorklinkClick() {
+      	   	        if (document.getElementById("worklink").style.display == 'none') {
+      	   	            document.getElementById("worklink").style.display = "block";
+      	   	        }
+      	   	        else {
+      	   	            document.getElementById("worklink").style.display = "none";
+      	   	        }
+      	   	    }
+      	   	    function WorklinkShow() {
+      	   	        document.getElementById("worklink").style.display = "block";
+      	   	    }
+      	   	    function WorklinkHidden() {
+      	   	        document.getElementById("worklink").style.display = "none";
+      	   	    }
+
+      	   	    function SitelinkClick() {
+      	   	        if (document.getElementById("sitelink").style.display == 'none') {
+      	   	            document.getElementById("sitelink").style.display = "block";
+      	   	        }
+      	   	        else {
+      	   	            document.getElementById("sitelink").style.display = "none";
+      	   	        }
+      	   	    }
+      	   	    function SitelinkShow() {
+      	   	        document.getElementById("sitelink").style.display = "block";
+      	   	    }
+      	   	    function SitelinkHidden() {
+      	   	        document.getElementById("sitelink").style.display = "none";
+      	   	    }
+
+      	   	    function LanguageClick() {
+      	   	        if (document.getElementById("language").style.display == 'none') {
+      	   	            document.getElementById("language").style.display = "block";
+      	   	        }
+      	   	        else {
+      	   	            document.getElementById("language").style.display = "none";
+      	   	        }
+      	   	    }
+      	   	    function LanguageShow() {
+      	   	        document.getElementById("language").style.display = "block";
+      	   	    }
+      	   	    function LanguageHidden() {
+      	   	        document.getElementById("language").style.display = "none";
+      	   	    }
+      	   	    function LocationLinkClick() {
+      	   	        if (document.getElementById("LocationLink").style.display == 'none') {
+      	   	            document.getElementById("LocationLink").style.display = "block";
+      	   	        }
+      	   	        else {
+      	   	            document.getElementById("LocationLink").style.display = "none";
+      	   	        }
+      	   	    }
+      	   	    function LocationLinkShow() {
+      	   	        document.getElementById("LocationLink").style.display = "block";
+      	   	    }
+      	   	    function LocationLinkHidden() {
+      	   	        document.getElementById("LocationLink").style.display = "none";
+      	   	    }
+
+      	   	    function B2BWorkBtn_Click() {
+      	   	        if (document.getElementById("worklink").style.display == 'none') {
+      	   	            document.getElementById("worklink").style.display = "block";
+      	   	        }
+      	   	        else {
+      	   	            document.getElementById("worklink").style.display = "none";
+      	   	        }
+      	   	    }
+
+      	   	    /********************************************************************************************
+      	   	    * 함수명      : btnEpro_Click()
+      	   	    * 작성목적    : 전자구매 시스템 클릭 이벤트
+      	   	    * Parameter   :
+      	   	    * Return
+      	   	    * 작성자      : 장윤호
+      	   	    * 최초작성일  : 2017-07-04
+      	   	    * 최종작성일  :
+      	   	    * 수정내역    :
+      	   	    ********************************************************************************************/
+      	   	    function btnEpro_Click() {
+      	   	        if (epro_id == "") {
+      	   	            alert("매핑된 전자구매 시스템 ID가 없습니다.");
+      	   	            return false;
+      	   	        }
+
+      	   	        window.open("http://epro.TaeYoung.com/intro/index.jsp?gw_user_id=" + epro_id, "Eprolink", "resizable=yes location=yes menubar=yes toolbar=yes");
+
+      	   	        return false;
+      	   	    }
+
+      	   	    /********************************************************************************************
+      	   	    * 함수명      : btnRmt_ClientClick()
+      	   	    * 작성목적    : 원격지원 클릭 이벤트
+      	   	    * Parameter   :
+      	   	    * Return
+      	   	    * 작성자      : 장윤호
+      	   	    * 최초작성일  : 2017-07-04
+      	   	    * 최종작성일  :
+      	   	    * 수정내역    :
+      	   	    ********************************************************************************************/
+      	   	    function btnRmt_ClientClick() {
+      	   	        window.open("http://kofco.cs1472.com/", "Rmtlink", "resizable=yes location=yes menubar=yes toolbar=yes");
+      	   	        return false;
+      	   	    }
+
+      	   	    /********************************************************************************************
+      	   	    * 함수명      : btnMsg_Click()
+      	   	    * 작성목적    : B2B 메신저 클릭 이벤트
+      	   	    * Parameter   :
+      	   	    * Return
+      	   	    * 작성자      : 장윤호
+      	   	    * 최초작성일  : 2017-07-04
+      	   	    * 최종작성일  :
+      	   	    * 수정내역    :
+      	   	    ********************************************************************************************/
+      	   	    function btnMsg_Click() {
+      	   	        window.open("http://biz.TaeYoung.com/Messenger/Publish.htm", "Messengerlink", "resizable=yes location=yes menubar=yes toolbar=yes");
+      	   	    }
+
+      	   	    /********************************************************************************************
+      	   	    * 함수명      : btnVisitorInfo()
+      	   	    * 작성목적    : 방문신청 클릭 이벤트
+      	   	    * Parameter   :
+      	   	    * Return
+      	   	    * 작성자      : 장윤호
+      	   	    * 최초작성일  : 2017-07-04
+      	   	    * 최종작성일  :
+      	   	    * 수정내역    :
+      	   	    ********************************************************************************************/
+      	   	    function btnVisitorInfo() {
+      	   	        location.href = "/Portal/VIS/VIS0101010.aspx";
+      	   	        return false;
+      	   	    }
+
+      	   	    /********************************************************************************************
+      	   	    * 함수명      : iHelp_Click()
+      	   	    * 작성목적    : i-Help 클릭 이벤트
+      	   	    * Parameter   :
+      	   	    * Return
+      	   	    * 작성자      : 장윤호
+      	   	    * 최초작성일  : 2017-07-07
+      	   	    * 최종작성일  :
+      	   	    * 수정내역    :
+      	   	    ********************************************************************************************/
+      	   	    function iHelp_Click() {
+      	   	        if (isVend == "True") {
+      	   	            ShowPopup("/Portal/IHP/IHP0101020.aspx?MODE=N", Math.floor(Math.random() * 999) + 1, "800", "700");
+      	   	        }
+      	   	        else {
+      	   	            location.href = "/Portal/IHP/IHP0101010.aspx";
+      	   	        }
+
+      	   	        return false;
+      	   	    }
+
+      	   	    /********************************************************************************************
+      	   	    * 함수명      : Mail_Click()
+      	   	    * 작성목적    : 메일 클릭 이벤트
+      	   	    * Parameter   :
+      	   	    * Return
+      	   	    * 작성자      : 장윤호
+      	   	    * 최초작성일  : 2017-09-21
+      	   	    * 최종작성일  :
+      	   	    * 수정내역    :
+      	   	    ********************************************************************************************/
+      	   	    function Mail_Click() {
+      	   	        window.open('http://imail.kofco.com', 'MAILFRAME', 'scrollbars=auto,resizable=yes,toolbar=no,status=no,location=no,top=0,left=0,width=1200,height=900');
+      	   	        return false;
+                }
+                 </script>
+                 <div id="LocationLink" class="topsmenu_sub_bx" style="display: none;width:130px;" onmouseout="LocationLinkHidden();" onmouseover="LocationLinkShow();">
+		      	    <img src="/Resources/Images/topmenus_bx_arrow.gif" class="arrow" alt="" />
+		            <asp:Literal id="ltlLocation" runat="server"></asp:Literal>
+		        </div>
+      	   	    <div id="worklink" class="topsmenu_sub_bx" style="display: none; width:130px;" onmouseout="WorklinkHidden();" onmouseover="WorklinkShow();">
+		      	    <img src="/Resources/Images/topmenus_bx_arrow.gif" class="arrow" alt="" />
+                    <div style="text-align: center; padding-right: 10px; float: left;">
+		                <a onclick="btnEpro_Click();">
+                            <img src="/Resources/Images/B2B/main_bt_1.png" alt="전자구매 시스템" />
+                            <span>
+                                전자구매
+                            </span>
+                        </a>
+                    </div>
+                    <div style="text-align: center; padding-right: 10px; float: left;">
+		                <a onclick="btnMsg_Click();">
+                            <img src="/Resources/Images/B2B/main_bt_5.png" alt="B2B 메신저" />
+                            <span>
+                                B2B 메신저
+                            </span>
+                        </a>
+                    </div>
+                    <div style="text-align: center; padding-right: 10px; float: left;">
+		                <a onclick="btnVisitorInfo();">
+                            <img src="/Resources/Images/B2B/main_bt_2_1.png" alt="방문신청" />
+                            <span>
+                                방문신청
+                            </span>
+                        </a>
+                    </div>
+                    <div style="text-align: center; padding-right: 10px; float: left;">
+		                <a onclick="btnRmt_ClientClick();">
+                            <img src="/Resources/Images/B2B/main_bt_6.png" alt="원격지원" />
+                            <span>
+                                원격지원
+                            </span>
+                        </a>
+                    </div>
+		        </div>
+		        <div id="sitelink" class="topsmenu_sub_bx" style="display: none;" onmouseout="SitelinkHidden();" onmouseover="SitelinkShow();">
+		          	<img src="/Resources/Images/topmenus_bx_arrow.gif" class="arrow" alt="" />
+		            <a href="#"><img src="/Resources/Images/topmenus_sitelink_naver.gif" alt="naver" /></a>
+		            <a href="#"><img src="/Resources/Images/topmenus_sitelink_daum.gif" alt="daum" /></a>
+		            <a href="#"><img src="/Resources/Images/topmenus_sitelink_goole.gif" alt="goole" /></a>
+		        </div>
+		        <div id="language" class="topsmenu_sub_bx" style="display: none;" onmouseout="LanguageHidden();" onmouseover="LanguageShow();">
+		         	<img src="/Resources/Images/topmenus_bx_arrow.gif" class="arrow" alt="" />
+		            <a href="#"><img src="/Resources/Images/topmenus_language_kor_b.gif" alt="한국어" /></a>
+		            <a href="#"><img src="/Resources/Images/topmenus_language_eng_b.gif" alt="영어" /></a>
+		            <a href="#"><img src="/Resources/Images/topmenus_language_cha_b.gif" alt="중국어" /></a>
+		        </div>
+      	        <a href="/Portal/Main.aspx"><img src="/Resources/Images/topsmenu_home.png" alt="홈" /></a>
+                <a href="javascript:;" id="LocationlinkBtn" onclick="LocationLinkClick();" runat="server"><img src="/Resources/Images/topsmenu_company.png" alt="회사변경" ></a>
+                <a href="javascript:;" id="B2BWorkBtn" onclick="B2BWorkBtn_Click();" runat="server"><img src="/Resources/Images/topsmenu_work_link.png" alt="B2B업무" ></a>
+                <a href="javascript:;" id="Mail" onclick="Mail_Click();" runat="server" style="display:none;"><img src="/Resources/Images/topsmenu_mail.png" style="width:20px; height:20px;" alt="메일" ></a>
+                <a onclick="iHelp_Click();" runat="server"><img src="/Resources/Images/topsmenu_ihelp.png" alt="i-Help" ></a>
+   	            <%--<a href="javascript:;"><img src="/Resources/Images/topsmenu_admin.png" alt="관리자" /></a>--%>
+   	            <%--<a href="javascript:;"><img src="/Resources/Images/topsmenu_pwd.png" alt="비밀번호변경" /></a>--%>
+                <a href="javascript:fn_OpenPop('/Portal/ChangePwdPopup.aspx',650,410);"><img src="/Resources/Images/topsmenu_pwd.png" alt="비밀번호변경" /></a>
+   	            <%--<a href="javascript:;" onclick="WorklinkClick();"><img src="/Resources/Images/topsmenu_work_link.png" alt="업무링크" /></a>
+   	            <a href="javascript:;" onclick="SitelinkClick();"><img src="/Resources/Images/topsmenu_site_link.png" alt="사이트링크" /></a>
+   	            <a href="javascript:;" onclick="LanguageClick();"><img src="/Resources/Images/topsmenu_language_korean.png" alt="한국어" /></a>--%>
+   	            <a href="/Portal/LogOut.aspx"><img src="/Resources/Images/topsmenu_logoout.png" alt="로그아웃" /></a>
+
+      	   </div>
+      	</div>
+      	<!--//탑소메뉴끝-->
+
+      	<!--탑메뉴시작-->
+      	<noscript><p>현재 사용중인 환경에서는 스크립트 동작이 활성화 되지 않아 자동으로 움직이지 않습니다.</p></noscript>	
+      	<div id="topmenu_bx">
+      		<!--로고시작-->
+            <h1><a href="/Portal/Main.aspx"><img src="/Resources/Images/logo.png" alt="서한" /> Global Portal</a></h1>
+            <!--로고끝-->
+	      	<ul id="topmenu" runat="server"></ul>
+			</div>
+			<!--//탑메뉴끝-->
+            <div>
+                <iframe id="frmOrg" src="/Portal/Common/OrgSearch/OrgMap.aspx" border="0" width="620"
+                    height="490" scrolling="no" border="no" maginwidth="0" marginheight="0" frameborder="0">
+                </iframe>
+            </div>
+      </div>
+      <!--//상단끝-->
+      
+      
+      
+      <!--컨테이너시작-->
+      <div id="container">
+      	
+      <asp:ContentPlaceHolder ID="conBody" runat="server"></asp:ContentPlaceHolder>
+
+      </div>
+      <!--//컨테이너끝-->
+      
+      
+      
+   </div>
+   <!--//메인끝-->
+    <!-- 레이어팝업 -->
+    <div id="Search_dView" style="position: absolute; display: none; z-index: 99; height: 240px;
+        padding: 3px; background: rgba(255, 255, 255, 0);">
+        <iframe id="Search_iView" name="Search_iView" height="240" src="/Resources/Framework/SearchViewCommon.html"
+            frameborder="0" scrolling="no"></iframe>
+    </div>
+    <div id="Calendar_Layer" style="position: absolute; z-index: 30; display: none; width: 258px;
+        height: 286px; margin-top: 5px;">
+        <iframe id="frmCalendar" name="frmCalendar" src="/Resources/Framework/calendar.html"
+            width="258px" height="286px" frameborder="0" scrolling="no"></iframe>
+        <iframe id="frmCalendar_FT" name="frmCalendar_FT" src="/Resources/Framework/calendar_FT.html"
+            style="width: 660px; height: 286px;" frameborder="0" scrolling="no"></iframe>
+    </div>
+    <div id="Image_Layer" style="display: none; z-index: 10;">
+    </div>
+    <div id="Org_Layer" style="display: none; z-index: 10; height:0px; width:0px;">
+        <iframe id="frmOrgMap" name="frmOrgMap" src="/Portal/Common/OrgSearch/OrgMap.aspx" style="top: 40px; border: 0px; width: 880px; height: 490px; position: absolute; bottom: 0px; left: 0px; overflow: hidden; padding: 0px; margin: 0px; z-index: 20000001;" scrolling="no"></iframe>
+    </div>
+    <div id="ERP_Layer" style="display: none; z-index: 10; height:0px; width:0px;">
+        <iframe id="frmErpPrm" name="frmErpPrm" src="" style="top: 40px; border: 0px; width: 880px; height: 490px; position: absolute; bottom: 0px; left: 0px; overflow: hidden; padding: 0px; margin: 0px; z-index: 20000001;" scrolling="no"></iframe>
+    </div>
+    </form>
+</body>
+</html>

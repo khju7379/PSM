@@ -1,0 +1,229 @@
+﻿/*
+ * 홍정화(Miksystem) 2008.08.26
+ * revision 90 2008-09-29 ver 1.0 beta
+ */
+ 
+/* 조직도의 버튼 아이콘 */
+.add { background-image:url('ext/resources/images/add.gif') !important; }
+.delete { background-image:url('ext/resources/images/delete.gif') !important; }
+.cross { background-image:url('ext/resources/images/cross.gif') !important; }
+.contact { background-image:url('ext/resources/images/contact.gif') !important; }
+.load { background-image:url('ext/resources/images/load.gif') !important; }
+.up { background-image:url('ext/resources/images/up.gif') !important; width:100% !important}
+.down { background-image:url('ext/resources/images/down.gif') !important; width:100% !important}
+
+/* 다국어처리 버튼 아이콘 */
+.sk-korea { background-image:url('ext/resources/images/ko.png') !important; }
+.sk-english { background-image:url('ext/resources/images/en.png') !important; }
+.sk-china { background-image:url('ext/resources/images/cn.png') !important; }
+.sk-spanish { background-image:url('ext/resources/images/es.png') !important; }
+
+#header {
+    background: #7F99BE url('ext/resources/images/hd-bg.gif') repeat-x center;
+}
+
+#header h1 {
+    font-size: 16px;
+    color: #fff;
+    font-weight: normal;
+    padding: 5px 10px;
+}
+
+x-grid3-cell-inner sk-dept-name 
+{
+	color:#800000;
+	font-weight: 700;
+	overflow:visible;
+}
+
+.x-window-dlg .sk-wait-box {
+	background:transparent url('ext/resources/images/default/shared/blue-loading.gif') no-repeat top left;
+	height:46px;
+}
+
+.loading-indicator {
+    font:bold 13px  Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    color:#444;
+    background-image:url('ext/resources/images/default/shared/blue-loading.gif');
+    background-repeat: no-repeat;
+    background-position:left 5px;
+    padding:10px 10px 10px 38px;
+    height:18px;
+	text-align:left;
+}
+
+#loading-mask{
+	position:absolute;
+	left:0;
+	top:0;
+    width:100%;
+    height:100%;
+    z-index:20000;
+    background-color:white;
+}
+#loading{
+	position:absolute;
+	left:45%;
+	top:40%;
+	padding:2px;
+	z-index:20001;
+    height:auto;
+}
+#loading img {
+    margin-bottom:5px;
+}
+#loading .loading-indicator{
+	background:white;
+	color:#555;
+	font:bold 13px tahoma,arial,helvetica;
+	padding:10px;
+	margin:0;
+    text-align:center;
+    height:auto;
+}
+
+/* 조직도의 Presence 아이콘 */
+
+.gw-presence {
+	padding-right:4px;
+}
+.gw-presence-icon {
+	background-position:center center;
+	background-repeat:no-repeat;
+	border:0 none;
+	height:12px;
+	margin:0;
+	padding:0;
+	vertical-align:middle;
+	width:12px;
+	cursor:pointer;
+}
+.gw-presence-unk		{ background-image:url(presence.image/IMNUNK.PNG) !important; }
+.gw-presence-on			{ background-image:url(presence.image/IMNON.PNG) !important; }
+.gw-presence-onoof		{ background-image:url(presence.image/IMNONOOF.PNG) !important; }
+.gw-presence-off		{ background-image:url(presence.image/IMNOFF.PNG) !important; }
+.gw-presence-offoof		{ background-image:url(presence.image/IMNOFFOOF.PNG) !important; }
+.gw-presence-awayoof	{ background-image:url(presence.image/IMNAWAYOOF.PNG) !important; }
+.gw-presence-busyoof	{ background-image:url(presence.image/IMNBUSYOOF.PNG) !important; }
+.gw-presence-busy		{ background-image:url(presence.image/IMNBUSY.PNG) !important; }
+.gw-presence-away		{ background-image:url(presence.image/IMNAWAY.PNG) !important; }
+.gw-presence-dnd		{ background-image:url(presence.image/IMNDND.PNG) !important; }
+.gw-presence-dndoof		{ background-image:url(presence.image/IMNDNDOOF.PNG) !important; }
+.gw-presence-idle		{ background-image:url(presence.image/IMNIDLE.PNG) !important; }
+.gw-presence-idleoof	{ background-image:url(presence.image/IMNIDLEOOF.PNG) !important; }
+.gw-presence-blocked	{ background-image:url(presence.image/IMNBLOCKED.PNG) !important; }
+.gw-presence-idlebusy	{ background-image:url(presence.image/imnidlebusy.png) !important; }
+.gw-presence-idlebusyoof { background-image:url(presence.image/imnidlebusyoof.png) !important; }
+
+/* Ext customize */
+.x-small-editor .x-form-field{font:normal 12px Gulim,GulimChe, Helvetica, sans-serif;}
+.x-tree-node{color:black;font:normal 12px Gulim,GulimChe, Helvetica, sans-serif;white-space:nowrap;}
+.x-grid3-hd-row td,.x-grid3-row td,.x-grid3-summary-row td{font:normal 12px Gulim,GulimChe, Helvetica, sans-serif;-moz-outline:none;-moz-user-focus:normal;}
+.x-btn button{border:0 none;background:transparent;font:normal 12px Gulim,GulimChe, Helvetica, sans-serif;padding-left:3px;padding-right:3px;cursor:pointer;margin:0;overflow:visible;width:auto;-moz-outline:0 none;outline:0 none;}
+.x-panel-header{overflow:hidden;zoom:1;color:#15428b;font:bold 12px Gulim,GulimChe, Helvetica, sans-serif;padding:5px 3px 4px 5px;border:1px solid #99bbe8;line-height:15px;background:transparent url(ext/resources/images/default/panel/white-top-bottom.gif) repeat-x 0 -1px;}
+.x-tab-strip span.x-tab-strip-text{font:normal 13px Gulim,GulimChe, Helvetica, sans-serif;}
+.x-tab-strip-active span.x-tab-strip-text{cursor:default;color:#15428b;font-weight:bold;}
+/* bug 수정 홍정화 2008-02-02 */
+.x-grid3-header-offset{padding-left:1px;
+width:10000px;/* apply to all browsers */
+#width:auto;/* override for Microsoft Internet Explorer browsers*/
+_width:auto;/* override for IE browsers 6.0 and older */
+}
+.x-tree-root-ct{float:left;}
+
+/* Ext Menu */
+.menu-title {
+	-x-system-font:none;
+	background:#EBEADB url(ext/resources/images/default/grid/grid3-hrow.gif) repeat-x scroll 0 0;
+	border-bottom:1px solid #99bbe8;
+	color:#15428B;
+	display:block;
+	font:bold 12px Gulim,GulimChe, Helvetica, sans-serif;
+	margin-left:-3px;
+	margin-right:-3px;
+	padding-top:3px;
+	padding-bottom:3px;
+	cursor:pointer;
+}
+.menu-title-text{
+	display:block;
+	padding-left:5px;
+}
+/*ul.x-tab-strip-top{background:#7F99BE url(ext/resources/images/hd-bg.gif) repeat-x scroll center center;}*/
+
+/* Buttons */
+/*
+.x-btn-left{background-image:url(ext/resources/images/gray/button/btn-sprite.gif);}
+.x-btn-right{background-image:url(ext/resources/images/gray/button/btn-sprite.gif);}
+.x-btn-center{background-image:url(ext/resources/images/gray/button/btn-sprite.gif);}
+*/
+
+.x-tree-node-leaf .x-tree-node-icon{background-image:url(ext/resources/images/treeLeaf.gif);}
+.x-tree-node .x-tree-selected{background-color:#d9e8fb;font-weight:bold;}
+.x-toolbar td,.x-toolbar span,.x-toolbar input,.x-toolbar div,.x-toolbar select,.x-toolbar label{white-space:nowrap;font:normal 12px Gulim,GulimChe, Helvetica, sans-serif;}
+.x-window-tl .x-window-header{color:#15428b;font:bold 12px Gulim,GulimChe, Helvetica, sans-serif;}
+.x-form-item{font:normal 12px Gulim,GulimChe, Helvetica, sans-serif;}
+
+/* 개인정보 자세히 보기 창 Style */
+.profile {
+    font-family:AppleGothic,"새굴림","굴림",gulim,sans-serif;
+    font-size:13px;
+    background: #FFF none repeat scroll 0 0;
+    clear:both;
+    width:390px;
+}
+.profileImageContainer {
+    float:left;
+    border:2px solid #ECECEC;
+    margin-right:14px;
+    position:relative;
+}
+.profileImage {
+    margin:4px;
+    border:1px solid #ECECEC;
+}
+.profileContents {
+    float:left;
+    overflow:hidden;
+}
+.profileName {
+    margin-bottom:7px;
+    font-size:14px;
+    font-weight:bold;
+}
+.profContent {
+    clear:both;list-style:none;margin:0;padding:0;
+}
+.profName {
+    width:70px;
+    list-style:none;margin:0;padding:0;
+    float:left;
+    font-size:12px;
+    color:#7A7A7A;
+    line-height:17px;
+    margin-top:1px;
+}
+.profValue {
+    list-style:none;margin:0;padding:0;
+    float:none;
+    font-size:12px;
+    line-height:19px;
+    margin-top:0;
+    /*overflow:hidden;*/
+    padding-left:8px;
+}
+div.clear {
+    clear:both;
+    font-size:0;
+}
+/* Note: 다른 부분에 영향이 많다.
+a:active, a:hover {
+    text-decoration:underline;
+    font-weight:bold;
+    color:#4E59E7;
+}
+a,a:visited,a:link {
+    text-decoration:none;
+    color:#4E59E7;
+}
+*/

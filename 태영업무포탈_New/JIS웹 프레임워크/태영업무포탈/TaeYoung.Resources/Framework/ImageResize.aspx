@@ -1,0 +1,2 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ImageResize.aspx.cs" Inherits="TaeYoung.Resources.Framework.ImageResize" %>
+<script type="text/javascript" src="/Resources/Script/Domain.js"></script>

@@ -1,0 +1,2311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{680A9C58-C520-4DB7-881A-BB73899D550F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TaeYoung.Portal</RootNamespace>
+    <AssemblyName>TaeYoung.Portal</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+      </Objects>
+    </PublishDatabaseSettings>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ext.Net, Version=1.7.0.0, Culture=neutral, PublicKeyToken=2e12ce3d0176cd87, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\참조프로그램\참조DLL\Ext.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Ext.Net.Utilities, Version=2.2.0.0, Culture=neutral, PublicKeyToken=2c34ac34702a3c23, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\참조프로그램\참조DLL\Ext.Net.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Chart">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Core.Rendering">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Core.Rendering.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Design.Win">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Design.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Document">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Document.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Pdf">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Export.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="JINI">
+      <HintPath>..\참조프로그램\참조DLL\JINI.dll</HintPath>
+    </Reference>
+    <Reference Include="JINI.Control">
+      <HintPath>..\참조프로그램\참조DLL\JINI.Control.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\참조프로그램\참조DLL\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Transformer.NET">
+      <HintPath>..\참조프로그램\참조DLL\Transformer.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="TYPSM.Report">
+      <HintPath>..\TYPSM.Report\bin\Release\TYPSM.Report.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\Cmn\AM102020.aspx" />
+    <Content Include="Admin\Cmn\AM102021P.aspx" />
+    <Content Include="Admin\Cmn\AM102030.aspx" />
+    <Content Include="Admin\Cmn\AM102031P.aspx" />
+    <Content Include="Admin\Cmn\AM102032P.aspx" />
+    <Content Include="Admin\Cmn\AM102033P.aspx" />
+    <Content Include="Admin\Cmn\CommonCode.aspx" />
+    <Content Include="Admin\Cmn\Manual.aspx" />
+    <Content Include="Admin\Cmn\MenuLangCode.aspx" />
+    <Content Include="Admin\Cmn\MenuLangCodeExcelDown.aspx" />
+    <Content Include="Admin\Cmn\MenuLangCodeExcelUpload.aspx" />
+    <Content Include="Admin\Cmn\Switch.aspx" />
+    <Content Include="Admin\Cmn\AM103010.aspx" />
+    <Content Include="Admin\Log\ProgramLog.aspx" />
+    <Content Include="Admin\Log\TimeStampChart.aspx" />
+    <Content Include="Admin\Log\TimeStampChartNew.aspx" />
+    <Content Include="ChangePwdPopup.aspx" />
+    <Content Include="Common\iframe_msg_box.aspx" />
+    <Content Include="Common\iframe_user_select.aspx" />
+    <Content Include="Common\LanguageJS.aspx" />
+    <Content Include="Common\OrgChart\Common\ext\adapter\ext\ext-base.js" />
+    <Content Include="Common\OrgChart\Common\ext\adapter\jquery\ext-jquery-adapter.js" />
+    <Content Include="Common\OrgChart\Common\ext\adapter\jquery\jquery.js" />
+    <Content Include="Common\OrgChart\Common\ext\adapter\prototype\effects.js" />
+    <Content Include="Common\OrgChart\Common\ext\adapter\prototype\ext-prototype-adapter.js" />
+    <Content Include="Common\OrgChart\Common\ext\adapter\prototype\prototype.js" />
+    <Content Include="Common\OrgChart\Common\ext\adapter\prototype\scriptaculous.js" />
+    <Content Include="Common\OrgChart\Common\ext\adapter\yui\ext-yui-adapter.js" />
+    <Content Include="Common\OrgChart\Common\ext\ext-all-debug.js" />
+    <Content Include="Common\OrgChart\Common\ext\ext-all.js" />
+    <Content Include="Common\OrgChart\Common\ext\ext-all.original.js" />
+    <Content Include="Common\OrgChart\Common\ext\ext-core-debug.js" />
+    <Content Include="Common\OrgChart\Common\ext\ext-core.js" />
+    <Content Include="Common\OrgChart\Common\ext\ext-ux.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-af.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-bg.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-ca.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-cs.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-da.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-de.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-el_GR.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-en.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-en_UK.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-es.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-fa.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-fr.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-fr_CA.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-gr.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-he.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-hr.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-hu.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-id.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-it.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-ja.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-ko.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-lt.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-lv.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-mk.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-nl.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-no_NB.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-no_NN.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-pl.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-pt.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-pt_BR.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-ro.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-ru.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-sk.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-sl.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-sr.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-sr_RS.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-sv_SE.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-th.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-tr.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-ukr.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-vn.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-zh_CN.js" />
+    <Content Include="Common\OrgChart\Common\ext\locale\ext-lang-zh_TW.js" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\borders.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\box.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\button.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\combo.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\core.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\date-picker.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\dd.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\debug.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\dialog.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\editor.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\ext-all.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\form.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\grid.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\layout.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\menu.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\panel.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\progress.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\qtips.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\README.txt" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\reset-min.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\reset.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\resizable.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\slider.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\tabs.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\toolbar.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\tree.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\window.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\xtheme-aero.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\css\xtheme-gray.css" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\add.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\china.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\cn.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\contact.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\cross.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\box\corners-blue.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\box\corners.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\box\l-blue.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\box\l.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\box\r-blue.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\box\r.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\box\tb-blue.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\box\tb.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\button\btn-arrow.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\button\btn-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\dd\drop-add.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\dd\drop-no.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\dd\drop-yes.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\editor\tb-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\form\checkbox.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\form\clear-trigger.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\form\date-trigger.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\form\error-tip-corners.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\form\exclamation.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\form\radio.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\form\search-trigger.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\form\text-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\form\trigger-tpl.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\form\trigger.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\gradient-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\arrow-left-white.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\arrow-right-white.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\col-move-bottom.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\col-move-top.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\columns.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\dirty.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\done.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\drop-no.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\drop-yes.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\footer-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\grid-blue-hd.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\grid-blue-split.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\grid-hrow.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\grid-loading.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\grid-split.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\grid-vista-hd.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\grid3-hd-btn.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\grid3-hrow-over.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\grid3-hrow.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\grid3-special-col-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\grid3-special-col-sel-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\group-by.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\group-expand-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\hd-pop.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\hmenu-asc.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\hmenu-desc.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\hmenu-lock.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\hmenu-lock.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\hmenu-unlock.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\hmenu-unlock.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\invalid_line.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\loading.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\mso-hd.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\nowait.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\page-first-disabled.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\page-first.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\page-last-disabled.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\page-last.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\page-next-disabled.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\page-next.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\page-prev-disabled.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\page-prev.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\pick-button.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\refresh.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\row-check-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\row-expand-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\row-over.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\row-sel.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\sort_asc.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\sort_desc.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\grid\wait.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\collapse.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\expand.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\gradient-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\mini-bottom.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\mini-left.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\mini-right.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\mini-top.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\ns-collapse.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\ns-expand.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\panel-close.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\panel-title-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\panel-title-light-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\stick.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\stuck.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\tab-close-on.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\layout\tab-close.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\menu\checked.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\menu\group-checked.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\menu\item-over.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\menu\menu-parent.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\menu\menu.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\menu\unchecked.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\panel\corners-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\panel\left-right.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\panel\light-hd.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\panel\tool-sprite-tpl.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\panel\tool-sprites.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\panel\tools-sprites-trans.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\panel\top-bottom.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\panel\top-bottom.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\panel\white-corners-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\panel\white-left-right.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\panel\white-top-bottom.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\progress\progress-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\qtip\bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\qtip\close.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\qtip\tip-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\s.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\shadow-c.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\shadow-lr.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\shadow.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\shared\blue-loading.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\shared\calendar.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\shared\glass-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\shared\hd-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\shared\large-loading.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\shared\left-btn.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\shared\loading-balls.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\shared\right-btn.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\shared\warning.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\sizer\e-handle-dark.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\sizer\e-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\sizer\ne-handle-dark.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\sizer\ne-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\sizer\nw-handle-dark.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\sizer\nw-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\sizer\s-handle-dark.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\sizer\s-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\sizer\se-handle-dark.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\sizer\se-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\sizer\square.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\sizer\sw-handle-dark.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\sizer\sw-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\slider\slider-bg.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\slider\slider-thumb.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\slider\slider-v-bg.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\slider\slider-v-thumb.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tabs\scroll-left.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tabs\scroll-right.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tabs\scroller-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tabs\tab-btm-inactive-left-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tabs\tab-btm-inactive-right-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tabs\tab-btm-left-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tabs\tab-btm-right-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tabs\tab-close.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tabs\tab-strip-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tabs\tab-strip-bg.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tabs\tab-strip-btm-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tabs\tabs-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\toolbar\bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\toolbar\btn-arrow-light.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\toolbar\btn-arrow.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\toolbar\btn-over-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\toolbar\gray-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\toolbar\tb-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\toolbar\tb-btn-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\arrows.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\drop-add.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\drop-between.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\drop-no.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\drop-over.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\drop-under.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\drop-yes.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\elbow-end-minus-nl.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\elbow-end-minus.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\elbow-end-plus-nl.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\elbow-end-plus.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\elbow-end.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\elbow-line.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\elbow-minus-nl.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\elbow-minus.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\elbow-plus-nl.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\elbow-plus.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\elbow.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\folder-open.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\folder.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\leaf.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\loading.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\tree\s.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\window\icon-error.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\window\icon-info.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\window\icon-question.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\window\icon-warning.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\window\left-corners.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\window\left-right.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\window\right-corners.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\default\window\top-bottom.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\delete.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\down.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\en.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\english.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\es.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\button\btn-arrow.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\button\btn-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\gradient-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\panel\corners-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\panel\left-right.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\panel\light-hd.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\panel\tool-sprite-tpl.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\panel\tool-sprites.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\panel\tools-sprites-trans.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\panel\top-bottom.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\panel\top-bottom.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\panel\white-corners-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\panel\white-left-right.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\panel\white-top-bottom.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\qtip\bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\qtip\close.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\qtip\tip-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\s.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\tabs\scroll-left.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\tabs\scroll-right.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\tabs\scroller-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\tabs\tab-btm-inactive-left-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\tabs\tab-btm-inactive-right-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\tabs\tab-btm-left-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\tabs\tab-btm-right-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\tabs\tab-close.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\tabs\tab-strip-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\tabs\tab-strip-bg.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\tabs\tab-strip-btm-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\tabs\tabs-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\toolbar\bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\toolbar\btn-arrow-light.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\toolbar\btn-arrow.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\toolbar\btn-over-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\toolbar\gray-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\toolbar\tb-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\toolbar\tb-btn-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\window\icon-error.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\window\icon-info.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\window\icon-question.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\window\icon-warning.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\window\left-corners.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\window\left-right.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\window\right-corners.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\gray\window\top-bottom.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\hd-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\ko.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\korea.png" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\load.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\treeLeaf.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\up.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\basic-dialog\bg-center.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\basic-dialog\bg-left.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\basic-dialog\bg-right.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\basic-dialog\close.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\basic-dialog\collapse.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\basic-dialog\dlg-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\basic-dialog\e-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\basic-dialog\expand.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\basic-dialog\hd-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\basic-dialog\s-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\basic-dialog\se-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\basic-dialog\w-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\gradient-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\grid\grid-split.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\grid\grid-vista-hd.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\layout\collapse.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\layout\expand.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\layout\gradient-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\layout\ns-collapse.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\layout\ns-expand.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\layout\panel-close.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\layout\panel-title-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\layout\panel-title-light-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\layout\stick.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\layout\tab-close-on.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\layout\tab-close.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\qtip\bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\qtip\tip-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\s.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\sizer\e-handle-dark.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\sizer\e-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\sizer\ne-handle-dark.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\sizer\ne-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\sizer\nw-handle-dark.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\sizer\nw-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\sizer\s-handle-dark.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\sizer\s-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\sizer\se-handle-dark.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\sizer\se-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\sizer\sw-handle-dark.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\sizer\sw-handle.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\tabs\tab-btm-inactive-left-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\tabs\tab-btm-inactive-right-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\tabs\tab-btm-left-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\tabs\tab-btm-right-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\tabs\tab-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\toolbar\gray-bg.gif" />
+    <Content Include="Common\OrgChart\Common\ext\resources\images\vista\toolbar\tb-btn-sprite.gif" />
+    <Content Include="Common\OrgChart\Common\GW.Presence.js" />
+    <Content Include="Common\OrgChart\Common\OrgMail.js" />
+    <Content Include="Common\OrgChart\Common\OrgMap.App.js" />
+    <Content Include="Common\OrgChart\Common\OrgMap.Common.css" />
+    <Content Include="Common\OrgChart\Common\OrgMap.Common.js" />
+    <Content Include="Common\OrgChart\Common\OrgMap.css" />
+    <Content Include="Common\OrgChart\Common\OrgMap.Mail.js" />
+    <Content Include="Common\OrgChart\Common\OrgMap.Ocs.js" />
+    <Content Include="Common\OrgChart\Common\OrgMap.Org.js" />
+    <Content Include="Common\OrgChart\Common\OrgMap.Org.Presence.js" />
+    <Content Include="Common\OrgChart\Common\OrgMap.Resource.js" />
+    <Content Include="Common\OrgChart\Common\presence.image\BLANK.GIF" />
+    <Content Include="Common\OrgChart\Common\presence.image\IMNAWAY.PNG" />
+    <Content Include="Common\OrgChart\Common\presence.image\IMNAWAYOOF.PNG" />
+    <Content Include="Common\OrgChart\Common\presence.image\IMNBLOCKED.PNG" />
+    <Content Include="Common\OrgChart\Common\presence.image\IMNBUSY.PNG" />
+    <Content Include="Common\OrgChart\Common\presence.image\IMNBUSYOOF.PNG" />
+    <Content Include="Common\OrgChart\Common\presence.image\IMNDND.PNG" />
+    <Content Include="Common\OrgChart\Common\presence.image\IMNDNDOOF.PNG" />
+    <Content Include="Common\OrgChart\Common\presence.image\IMNHDR.GIF" />
+    <Content Include="Common\OrgChart\Common\presence.image\IMNIDLE.PNG" />
+    <Content Include="Common\OrgChart\Common\presence.image\imnidlebusy.png" />
+    <Content Include="Common\OrgChart\Common\presence.image\imnidlebusyoof.png" />
+    <Content Include="Common\OrgChart\Common\presence.image\IMNIDLEOOF.PNG" />
+    <Content Include="Common\OrgChart\Common\presence.image\IMNOFF.PNG" />
+    <Content Include="Common\OrgChart\Common\presence.image\IMNOFFOOF.PNG" />
+    <Content Include="Common\OrgChart\Common\presence.image\IMNON.PNG" />
+    <Content Include="Common\OrgChart\Common\presence.image\IMNONOOF.PNG" />
+    <Content Include="Common\OrgChart\Common\presence.image\IMNUNK.PNG" />
+    <Content Include="Common\OrgChart\Common\Recipients.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.Acl.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.AclArchive.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.AclArchiveWord.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.AppArchive.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.AppArchiveWord.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.ApproverAgree.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.Charge.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.ChargeAgree.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.ClxCharger.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.Common.css" />
+    <Content Include="Common\OrgChart\Common\SetLine.Common.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.IcoClxCharger.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.Main.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.Org.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.Org.Presence.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.Receive.js" />
+    <Content Include="Common\OrgChart\Common\SetLine.Resource.js" />
+    <Content Include="Common\OrgChart\OrgMap.aspx" />
+    <Content Include="Common\OrgChart\OrgMapiFrame.aspx" />
+    <Content Include="Common\OrgChart\OrgMapServer.aspx" />
+    <Content Include="Common\OrgChart\OrgServer.aspx" />
+    <Content Include="Common\OrgChart\SetLine.aspx" />
+    <Content Include="Common\OrgChart\SetLineMain.aspx" />
+    <Content Include="Common\OrgChart\Xml\118_Multi_Send_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\118_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\133A_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\133QDS_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\133_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\140.aspx" />
+    <Content Include="Common\OrgChart\Xml\140_Multi_Send_Copy_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\140_Multi_Send_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\140_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\140_Send.aspx" />
+    <Content Include="Common\OrgChart\Xml\160.aspx" />
+    <Content Include="Common\OrgChart\Xml\160_Multi_Send_Copy_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\160_Multi_Send_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\160_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\160_Send.aspx" />
+    <Content Include="Common\OrgChart\Xml\168.aspx" />
+    <Content Include="Common\OrgChart\Xml\1688_Multi_Send_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\1688_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\168A_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\168_Multi_Send_Copy_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\168_Multi_Send_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\168_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\2118_Multi_Send_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\2118_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\233QDS_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\33.aspx" />
+    <Content Include="Common\OrgChart\Xml\44.aspx" />
+    <Content Include="Common\OrgChart\Xml\44_Send_Copy.aspx" />
+    <Content Include="Common\OrgChart\Xml\50.aspx" />
+    <Content Include="Common\OrgChart\Xml\50ClxDataChangeCharge.aspx" />
+    <Content Include="Common\OrgChart\Xml\50LobChange_Send.aspx" />
+    <Content Include="Common\OrgChart\Xml\50LobDoc_Copy.aspx" />
+    <Content Include="Common\OrgChart\Xml\50_After.aspx" />
+    <Content Include="Common\OrgChart\Xml\50_After_Send_Copy.aspx" />
+    <Content Include="Common\OrgChart\Xml\50_Before_After.aspx" />
+    <Content Include="Common\OrgChart\Xml\50_Before_After_Send_Copy.aspx" />
+    <Content Include="Common\OrgChart\Xml\50_Multi_Copy_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\50_Multi_Send_Copy.aspx" />
+    <Content Include="Common\OrgChart\Xml\50_Multi_Send_Copy_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\50_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\50_Send_Copy.aspx" />
+    <Content Include="Common\OrgChart\Xml\53.aspx" />
+    <Content Include="Common\OrgChart\Xml\55_Charge.aspx" />
+    <Content Include="Common\OrgChart\Xml\60.aspx" />
+    <Content Include="Common\OrgChart\Xml\600.aspx" />
+    <Content Include="Common\OrgChart\Xml\600_Send.aspx" />
+    <Content Include="Common\OrgChart\Xml\60_Multi_Send_Copy_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\60_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\60_Send_Copy.aspx" />
+    <Content Include="Common\OrgChart\Xml\610.aspx" />
+    <Content Include="Common\OrgChart\Xml\610_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\611.aspx" />
+    <Content Include="Common\OrgChart\Xml\66.aspx" />
+    <Content Include="Common\OrgChart\Xml\66_Send_Copy.aspx" />
+    <Content Include="Common\OrgChart\Xml\700A_Multi_Send_Copy_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\700A_Multi_Send_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\780A.aspx" />
+    <Content Include="Common\OrgChart\Xml\780A_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\80.aspx" />
+    <Content Include="Common\OrgChart\Xml\800.aspx" />
+    <Content Include="Common\OrgChart\Xml\800O.aspx" />
+    <Content Include="Common\OrgChart\Xml\800_Multi_Send_Copy_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\800_Multi_Send_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\800_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\800_Send.aspx" />
+    <Content Include="Common\OrgChart\Xml\80_Multi_Send_Copy_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\861A_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\880.aspx" />
+    <Content Include="Common\OrgChart\Xml\880B_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\880_Charge_Multi_Send_Copy_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\880_Multi_Send_Copy_Change_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\880_Multi_Send_Copy_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\880_Multi_Send_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\880_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\880_Send.aspx" />
+    <Content Include="Common\OrgChart\Xml\880_Send_Copy.aspx" />
+    <Content Include="Common\OrgChart\Xml\880_Send_Copy_Change.aspx" />
+    <Content Include="Common\OrgChart\Xml\888.aspx" />
+    <Content Include="Common\OrgChart\Xml\8888.aspx" />
+    <Content Include="Common\OrgChart\Xml\8888_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\888ISR.aspx" />
+    <Content Include="Common\OrgChart\Xml\888ISR_Multi_Send_Copy_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\888ISR_Multi_Send_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\888ISR_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\888N.aspx" />
+    <Content Include="Common\OrgChart\Xml\888N_Multi_Send_Copy_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\888N_Multi_Send_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\888N_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\888_Multi_Send_Copy_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\888_Multi_Send_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\888_Multi_Word.aspx" />
+    <Content Include="Common\OrgChart\Xml\ChangeWorker.aspx" />
+    <Content Include="Common\OrgChart\Xml\사본 - 50LobCharger.aspx" />
+    <Content Include="Common\OrgSearch\OrgMap.aspx" />
+    <Content Include="Common\ReportView.aspx" />
+    <Content Include="PortalLogin.aspx" />
+    <Content Include="OpenPopup.htm" />
+    <Content Include="PSM\POP\SabunMultiChkPopup8.aspx" />
+    <Content Include="PSM\POP\SabunMultiChkPopup7.aspx" />
+    <Content Include="PSM\PSM40\PSM4031.aspx" />
+    <Content Include="PSM\PSM40\PSM4030.aspx" />
+    <Content Include="PSM\PSM40\PSM4021.aspx" />
+    <Content Include="PSM\PSM40\PSM4020.aspx" />
+    <Content Include="PSM\PSM40\PSM4043.aspx" />
+    <Content Include="PSM\CCTVPage_SILO.aspx" />
+    <Content Include="PSM\CCTVPage_UTT.aspx" />
+    <Content Include="PSM\PlantsSafetyMonitoring_SILO.aspx" />
+    <Content Include="PSM\POP\PSP1032.aspx" />
+    <Content Include="PSM\POP\PSP1031.aspx" />
+    <Content Include="PSM\POP\PSP1030.aspx" />
+    <Content Include="PSM\POP\PSP1090.aspx" />
+    <Content Include="PSM\POP\PSP1091.aspx" />
+    <Content Include="PSM\POP\PSP1092.aspx" />
+    <Content Include="PSM\POP\PurchsePoPopup.aspx" />
+    <Content Include="PSM\POP\SabunMultiChkPopup6.aspx" />
+    <Content Include="PSM\PSM10\PSM1060.aspx" />
+    <Content Include="PSM\PSM10\PSM1092_Down.aspx" />
+    <Content Include="PSM\PSM10\PSM1113.aspx" />
+    <Content Include="PSM\PSM10\PSM1112.aspx" />
+    <Content Include="PSM\PSM10\PSM1091.aspx" />
+    <Content Include="PSM\PSM10\PSM1092.aspx" />
+    <Content Include="PSM\PSM10\PSM1093.aspx" />
+    <Content Include="PSM\PSM10\PSM1110.aspx" />
+    <Content Include="PSM\PSM10\PSM1111.aspx" />
+    <Content Include="PSM\PSM10\PSM1020.aspx" />
+    <Content Include="PSM\PSM10\PSM1021.aspx" />
+    <Content Include="PSM\PSM10\PSM1022.aspx" />
+    <Content Include="PSM\PSM10\PSM1023.aspx" />
+    <Content Include="PSM\PSM10\PSM1030.aspx" />
+    <Content Include="PSM\PSM10\PSM1031.aspx" />
+    <Content Include="PSM\POP\SabunMultiChkPopup5.aspx" />
+    <Content Include="PSM\PSM10\PSM1032.aspx" />
+    <Content Include="PSM\PSM10\PSM1033.aspx" />
+    <Content Include="PSM\PSM10\PSM1040.aspx" />
+    <Content Include="PSM\PSM10\PSM1050.aspx" />
+    <Content Include="PSM\PSM10\PSM1051.aspx" />
+    <Content Include="PSM\PSM10\PSM1052.aspx" />
+    <Content Include="PSM\PSM10\PSM1053.aspx" />
+    <Content Include="PSM\PSM10\PSM1070.aspx" />
+    <Content Include="PSM\PSM10\PSM1071.aspx" />
+    <Content Include="PSM\PSM10\PSM1072.aspx" />
+    <Content Include="PSM\PSM10\PSM1080.aspx" />
+    <Content Include="PSM\PSM10\PSM1081.aspx" />
+    <Content Include="PSM\PSM10\PSM1082.aspx" />
+    <Content Include="PSM\PSM10\PSM1083.aspx" />
+    <Content Include="PSM\PSM10\PSM1090.aspx" />
+    <Content Include="PSM\PSM20\PSM2011.aspx" />
+    <Content Include="PSM\PSM30\PSM3010.aspx" />
+    <Content Include="PSM\PSM30\PSM3011.aspx" />
+    <Content Include="PSM\PSM40\PSM4010.aspx" />
+    <Content Include="PSM\PSM40\PSM4011.aspx" />
+    <Content Include="PSM\PSM40\PSM4012.aspx" />
+    <Content Include="PSM\PSM40\PSM4013.aspx" />
+    <Content Include="PSM\PSM40\PSM4040.aspx" />
+    <Content Include="PSM\PSM40\PSM4041.aspx" />
+    <Content Include="PSM\PSM40\PSM4042.aspx" />
+    <Content Include="PSM\PSM40\PSM4045.aspx" />
+    <Content Include="PSM\PSM40\PSM4046.aspx" />
+    <Content Include="PSM\PSM40\PSM4047.aspx" />
+    <Content Include="PSM\PSM40\PSM4048.aspx" />
+    <Content Include="PSM\PSM40\PSM4061.aspx" />
+    <Content Include="PSM\PSM40\PSM4060.aspx" />
+    <Content Include="PSM\PSM40\PSM4050.aspx" />
+    <Content Include="PSM\PSM40\PSM4070.aspx" />
+    <Content Include="PSM\PSM40\PSM4071.aspx" />
+    <Content Include="PSM\PSM40\PSM4072.aspx" />
+    <Content Include="PSM\PSM40\PSM4073.aspx" />
+    <Content Include="PSM\PSM40\PSM4074.aspx" />
+    <Content Include="PSM\PSM40\PSM4080.aspx" />
+    <Content Include="PSM\PSM40\PSM4081.aspx" />
+    <Content Include="PSM\PSM40\PSM4090.aspx" />
+    <Content Include="PSM\PSM40\PSM4091.aspx" />
+    <Content Include="PSM\PSM40\PSM4100.aspx" />
+    <Content Include="PSM\PSM40\PSM4101.aspx" />
+    <Content Include="PSM\PSM50\PSM5010.aspx" />
+    <Content Include="PSM\PSM50\PSM5011.aspx" />
+    <Content Include="PSM\Resources\Scripts\Common.js" />
+    <Content Include="PSM\Resources\Scripts\jquery-ui.min.js" />
+    <Content Include="PSM\Resources\Scripts\jquery.min.js" />
+    <Content Include="PSM\Resources\Scripts\showModalDialog.js" />
+    <Content Include="PSM\Resources\Scripts\showModalDialogCallee.js" />
+    <Content Include="PSM\Resources\Styles\Common.css" />
+    <Content Include="PSM\Resources\Styles\ext-all.css" />
+    <Content Include="PSM\Resources\Styles\FontStyle.css" />
+    <Content Include="PSM\Resources\Styles\Login.css" />
+    <Content Include="PSM\SafeOrderService.asmx" />
+    <Content Include="SitePostUrl.aspx" />
+    <Content Include="SMS\SMS10\SMS1020.aspx" />
+    <Content Include="SMS\SMS10\SMS1021.aspx" />
+    <Content Include="SMS\SMS10\SMS1022.aspx" />
+    <Content Include="SMS\SMS10\SMS1032.aspx" />
+    <Content Include="SMS\SMS10\SMS1031.aspx" />
+    <Content Include="SMS\SMS10\SMS1030.aspx" />
+    <Content Include="SMS\SMS10\SMS1010.aspx" />
+    <Content Include="SMS\SMS10\SMS1040.aspx" />
+    <Content Include="SMS\SMSHome.aspx" />
+    <Content Include="TGCSI\CSI\CSG1010.aspx" />
+    <Content Include="TGCSI\CSI\CSG1020.aspx" />
+    <Content Include="TGCSI\CSI\CSG1030.aspx" />
+    <Content Include="TGCSI\CSI\CSG1040.aspx" />
+    <Content Include="TGCSI\CSI\CSG1050.aspx" />
+    <Content Include="TYCSI\CSI\CSB0002.aspx" />
+    <Content Include="TYCSI\CSI\CSB0003.aspx" />
+    <Content Include="TYCSI\CSI\CSB0004.aspx" />
+    <Content Include="TYCSI\CSI\CSB0005.aspx" />
+    <Content Include="TYCSI\CSI\CSB0006.aspx" />
+    <Content Include="TYCSI\CSI\CSB0007.aspx" />
+    <Content Include="TYCSI\CSI\CSI1040.aspx" />
+    <Content Include="LocationChange.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="LoginAdmin.aspx" />
+    <Content Include="LogOut.aspx" />
+    <Content Include="Main.aspx" />
+    <Content Include="OrgChart.aspx" />
+    <Content Include="PSM\PlantsSafetyMonitoring.aspx" />
+    <Content Include="PSM\PlantsSafetyMonitoring_UTT.aspx" />
+    <Content Include="PSM\PSM10\PSM1100_Sign.aspx" />
+    <Content Include="PSM\PSM10\PSM1010.aspx" />
+    <Content Include="PSM\PSM10\PSM1100.aspx" />
+    <Content Include="PSM\PSM10\PSM1100_Down.aspx" />
+    <Content Include="PSM\PSM20\PSM2010.aspx" />
+    <Content Include="PSM\PSMHome.aspx" />
+    <Content Include="PSM\PSMImageViewer.aspx" />
+    <Content Include="TANK\SILOBIN.aspx" />
+    <Content Include="TANK\TankMonitor3.aspx" />
+    <Content Include="TANK\TankPressMonitor.aspx" />
+    <Content Include="Test.aspx" />
+    <Content Include="TGCSI\CSIHome.aspx" />
+    <Content Include="TYCSI\CSIHome.aspx" />
+    <Content Include="TYCSI\CSI\CSI1030.aspx" />
+    <Content Include="TYCSI\CSI\CSI1050.aspx" />
+    <Content Include="TYCSI\CSI\CSI1060.aspx" />
+    <Content Include="TYCSI\CSI\CSI1120.aspx" />
+    <Content Include="TYCSI\CSI\CSI3010.aspx" />
+    <Content Include="TYCSI\CSI\CSI3011.aspx" />
+    <Content Include="TYCSI\CSI\CSB0001.aspx" />
+    <Content Include="TYCSI\CSI\CSI1070.aspx" />
+    <Content Include="TYCSI\CSI\CSI1080.aspx" />
+    <Content Include="TYCSI\CSI\CSI1090.aspx" />
+    <Content Include="TYCSI\CSI\CSI1100.aspx" />
+    <Content Include="TYCSI\CSI\CSI1110.aspx" />
+    <Content Include="TYCSI\CSI\CSI2020.aspx" />
+    <Content Include="TYCSI\CSI\CSI2030.aspx" />
+    <Content Include="TYCSI\CSI\CSI2010.aspx" />
+    <Content Include="TYCSI\CSI\CSI3020.aspx" />
+    <Content Include="TYCSI\CSI\CSI3021.aspx" />
+    <Content Include="TYCSI\CSI\CSI3031.aspx" />
+    <Content Include="TYCSI\CSI\CSI3030.aspx" />
+    <Content Include="TYCSS\CSSHome.aspx" />
+    <Content Include="TYCSI\CSI\CSI1010.aspx" />
+    <Content Include="TYCSI\CSI\CSI1020.aspx" />
+    <Content Include="TYCSS\CSS\CSS1010.aspx" />
+    <Content Include="TYCSS\CSS\CSS1020.aspx" />
+    <Content Include="TYCSS\CSS\CSS1030.aspx" />
+    <Content Include="TYCSS\CSS\CSS1040.aspx" />
+    <Content Include="TYCSS\CSS\CSS1050.aspx" />
+    <Content Include="TYCSS\CSS\CSS1060.aspx" />
+    <Content Include="TYCSS\CSS\CSS1070.aspx" />
+    <Content Include="TYCSS\CSS\CSS1080.aspx" />
+    <Content Include="TYCSS\CSS\CSS1090.aspx" />
+    <Content Include="TYCSS\CSS\CSS1100.aspx" />
+    <Content Include="TYCSS\CSS\CSS2010.aspx" />
+    <Content Include="TYCSS\CSS\CSS2020.aspx" />
+    <Content Include="TYCSS\CSS\CSS2030.aspx" />
+    <Content Include="TYCSS\CSS\CSS2040.aspx" />
+    <Content Include="TYCSS\CSS\CSS2050.aspx" />
+    <Content Include="TYCSS\CSS\CSS2060.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\Cmn\AM102020.aspx.cs">
+      <DependentUpon>AM102020.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Cmn\AM102020.aspx.designer.cs">
+      <DependentUpon>AM102020.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Cmn\AM102021P.aspx.cs">
+      <DependentUpon>AM102021P.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Cmn\AM102021P.aspx.designer.cs">
+      <DependentUpon>AM102021P.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Cmn\AM102030.aspx.cs">
+      <DependentUpon>AM102030.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Cmn\AM102030.aspx.designer.cs">
+      <DependentUpon>AM102030.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Cmn\AM102031P.aspx.cs">
+      <DependentUpon>AM102031P.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Cmn\AM102031P.aspx.designer.cs">
+      <DependentUpon>AM102031P.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Cmn\AM102032P.aspx.cs">
+      <DependentUpon>AM102032P.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Cmn\AM102032P.aspx.designer.cs">
+      <DependentUpon>AM102032P.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Cmn\AM102033P.aspx.cs">
+      <DependentUpon>AM102033P.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Cmn\AM102033P.aspx.designer.cs">
+      <DependentUpon>AM102033P.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Cmn\CommonCode.aspx.cs">
+      <DependentUpon>CommonCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Cmn\CommonCode.aspx.designer.cs">
+      <DependentUpon>CommonCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Cmn\Manual.aspx.cs">
+      <DependentUpon>Manual.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Cmn\Manual.aspx.designer.cs">
+      <DependentUpon>Manual.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Cmn\MenuLangCode.aspx.cs">
+      <DependentUpon>MenuLangCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Cmn\MenuLangCode.aspx.designer.cs">
+      <DependentUpon>MenuLangCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Cmn\MenuLangCodeExcelDown.aspx.cs">
+      <DependentUpon>MenuLangCodeExcelDown.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Cmn\MenuLangCodeExcelDown.aspx.designer.cs">
+      <DependentUpon>MenuLangCodeExcelDown.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Cmn\MenuLangCodeExcelUpload.aspx.cs">
+      <DependentUpon>MenuLangCodeExcelUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Cmn\MenuLangCodeExcelUpload.aspx.designer.cs">
+      <DependentUpon>MenuLangCodeExcelUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Cmn\Switch.aspx.cs">
+      <DependentUpon>Switch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Cmn\Switch.aspx.designer.cs">
+      <DependentUpon>Switch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Cmn\AM103010.aspx.cs">
+      <DependentUpon>AM103010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Cmn\AM103010.aspx.designer.cs">
+      <DependentUpon>AM103010.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Log\ProgramLog.aspx.cs">
+      <DependentUpon>ProgramLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Log\ProgramLog.aspx.designer.cs">
+      <DependentUpon>ProgramLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Log\TimeStampChart.aspx.cs">
+      <DependentUpon>TimeStampChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Log\TimeStampChart.aspx.designer.cs">
+      <DependentUpon>TimeStampChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Log\TimeStampChartNew.aspx.cs">
+      <DependentUpon>TimeStampChartNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Log\TimeStampChartNew.aspx.designer.cs">
+      <DependentUpon>TimeStampChartNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePwdPopup.aspx.cs">
+      <DependentUpon>ChangePwdPopup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePwdPopup.aspx.designer.cs">
+      <DependentUpon>ChangePwdPopup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\iframe_msg_box.aspx.cs">
+      <DependentUpon>iframe_msg_box.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\iframe_msg_box.aspx.designer.cs">
+      <DependentUpon>iframe_msg_box.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\iframe_user_select.aspx.cs">
+      <DependentUpon>iframe_user_select.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\iframe_user_select.aspx.designer.cs">
+      <DependentUpon>iframe_user_select.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\LanguageJS.aspx.cs">
+      <DependentUpon>LanguageJS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\LanguageJS.aspx.designer.cs">
+      <DependentUpon>LanguageJS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\OrgChart\OrgMap.aspx.cs">
+      <DependentUpon>OrgMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\OrgChart\OrgMap.aspx.designer.cs">
+      <DependentUpon>OrgMap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\OrgChart\OrgMapiFrame.aspx.cs">
+      <DependentUpon>OrgMapiFrame.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\OrgChart\OrgMapiFrame.aspx.designer.cs">
+      <DependentUpon>OrgMapiFrame.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\OrgChart\OrgMapServer.aspx.cs">
+      <DependentUpon>OrgMapServer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\OrgChart\OrgMapServer.aspx.designer.cs">
+      <DependentUpon>OrgMapServer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\OrgChart\OrgServer.aspx.cs">
+      <DependentUpon>OrgServer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\OrgChart\OrgServer.aspx.designer.cs">
+      <DependentUpon>OrgServer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\OrgChart\SetLine.aspx.cs">
+      <DependentUpon>SetLine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\OrgChart\SetLine.aspx.designer.cs">
+      <DependentUpon>SetLine.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\OrgChart\SetLineMain.aspx.cs">
+      <DependentUpon>SetLineMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\OrgChart\SetLineMain.aspx.designer.cs">
+      <DependentUpon>SetLineMain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\OrgSearch\OrgMap.aspx.cs">
+      <DependentUpon>OrgMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\OrgSearch\OrgMap.aspx.designer.cs">
+      <DependentUpon>OrgMap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ReportView.aspx.cs">
+      <DependentUpon>ReportView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\ReportView.aspx.designer.cs">
+      <DependentUpon>ReportView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PortalLogin.aspx.cs">
+      <DependentUpon>PortalLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PortalLogin.aspx.designer.cs">
+      <DependentUpon>PortalLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\POP\SabunMultiChkPopup8.aspx.cs">
+      <DependentUpon>SabunMultiChkPopup8.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\POP\SabunMultiChkPopup8.aspx.designer.cs">
+      <DependentUpon>SabunMultiChkPopup8.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\POP\SabunMultiChkPopup7.aspx.cs">
+      <DependentUpon>SabunMultiChkPopup7.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\POP\SabunMultiChkPopup7.aspx.designer.cs">
+      <DependentUpon>SabunMultiChkPopup7.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4031.aspx.cs">
+      <DependentUpon>PSM4031.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4031.aspx.designer.cs">
+      <DependentUpon>PSM4031.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4030.aspx.cs">
+      <DependentUpon>PSM4030.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4030.aspx.designer.cs">
+      <DependentUpon>PSM4030.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4021.aspx.cs">
+      <DependentUpon>PSM4021.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4021.aspx.designer.cs">
+      <DependentUpon>PSM4021.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4020.aspx.cs">
+      <DependentUpon>PSM4020.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4020.aspx.designer.cs">
+      <DependentUpon>PSM4020.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4043.aspx.cs">
+      <DependentUpon>PSM4043.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4043.aspx.designer.cs">
+      <DependentUpon>PSM4043.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\CCTVPage_SILO.aspx.cs">
+      <DependentUpon>CCTVPage_SILO.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\CCTVPage_SILO.aspx.designer.cs">
+      <DependentUpon>CCTVPage_SILO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\CCTVPage_UTT.aspx.cs">
+      <DependentUpon>CCTVPage_UTT.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\CCTVPage_UTT.aspx.designer.cs">
+      <DependentUpon>CCTVPage_UTT.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PlantsSafetyMonitoring_SILO.aspx.cs">
+      <DependentUpon>PlantsSafetyMonitoring_SILO.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\POP\PSP1032.aspx.cs">
+      <DependentUpon>PSP1032.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\POP\PSP1032.aspx.designer.cs">
+      <DependentUpon>PSP1032.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\POP\PSP1031.aspx.cs">
+      <DependentUpon>PSP1031.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\POP\PSP1031.aspx.designer.cs">
+      <DependentUpon>PSP1031.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\POP\PSP1030.aspx.cs">
+      <DependentUpon>PSP1030.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\POP\PSP1030.aspx.designer.cs">
+      <DependentUpon>PSP1030.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\POP\PSP1090.aspx.cs">
+      <DependentUpon>PSP1090.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\POP\PSP1090.aspx.designer.cs">
+      <DependentUpon>PSP1090.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\POP\PSP1091.aspx.cs">
+      <DependentUpon>PSP1091.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\POP\PSP1091.aspx.designer.cs">
+      <DependentUpon>PSP1091.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\POP\PSP1092.aspx.cs">
+      <DependentUpon>PSP1092.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\POP\PSP1092.aspx.designer.cs">
+      <DependentUpon>PSP1092.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\POP\PurchsePoPopup.aspx.cs">
+      <DependentUpon>PurchsePoPopup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\POP\PurchsePoPopup.aspx.designer.cs">
+      <DependentUpon>PurchsePoPopup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\POP\SabunMultiChkPopup6.aspx.cs">
+      <DependentUpon>SabunMultiChkPopup6.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\POP\SabunMultiChkPopup6.aspx.designer.cs">
+      <DependentUpon>SabunMultiChkPopup6.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\POP\SabunMultiChkPopup5.aspx.cs">
+      <DependentUpon>SabunMultiChkPopup5.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\POP\SabunMultiChkPopup5.aspx.designer.cs">
+      <DependentUpon>SabunMultiChkPopup5.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1060.aspx.cs">
+      <DependentUpon>PSM1060.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1060.aspx.designer.cs">
+      <DependentUpon>PSM1060.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1092_Down.aspx.cs">
+      <DependentUpon>PSM1092_Down.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1092_Down.aspx.designer.cs">
+      <DependentUpon>PSM1092_Down.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1113.aspx.cs">
+      <DependentUpon>PSM1113.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1113.aspx.designer.cs">
+      <DependentUpon>PSM1113.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1112.aspx.cs">
+      <DependentUpon>PSM1112.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1112.aspx.designer.cs">
+      <DependentUpon>PSM1112.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1091.aspx.cs">
+      <DependentUpon>PSM1091.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1091.aspx.designer.cs">
+      <DependentUpon>PSM1091.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1092.aspx.cs">
+      <DependentUpon>PSM1092.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1092.aspx.designer.cs">
+      <DependentUpon>PSM1092.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1093.aspx.cs">
+      <DependentUpon>PSM1093.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1093.aspx.designer.cs">
+      <DependentUpon>PSM1093.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1110.aspx.cs">
+      <DependentUpon>PSM1110.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1110.aspx.designer.cs">
+      <DependentUpon>PSM1110.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1111.aspx.cs">
+      <DependentUpon>PSM1111.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1111.aspx.designer.cs">
+      <DependentUpon>PSM1111.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1020.aspx.cs">
+      <DependentUpon>PSM1020.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1020.aspx.designer.cs">
+      <DependentUpon>PSM1020.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1021.aspx.cs">
+      <DependentUpon>PSM1021.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1021.aspx.designer.cs">
+      <DependentUpon>PSM1021.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1022.aspx.cs">
+      <DependentUpon>PSM1022.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1022.aspx.designer.cs">
+      <DependentUpon>PSM1022.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1023.aspx.cs">
+      <DependentUpon>PSM1023.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1023.aspx.designer.cs">
+      <DependentUpon>PSM1023.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1030.aspx.cs">
+      <DependentUpon>PSM1030.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1030.aspx.designer.cs">
+      <DependentUpon>PSM1030.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1031.aspx.cs">
+      <DependentUpon>PSM1031.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1031.aspx.designer.cs">
+      <DependentUpon>PSM1031.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1032.aspx.cs">
+      <DependentUpon>PSM1032.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1032.aspx.designer.cs">
+      <DependentUpon>PSM1032.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1033.aspx.cs">
+      <DependentUpon>PSM1033.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1033.aspx.designer.cs">
+      <DependentUpon>PSM1033.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1040.aspx.cs">
+      <DependentUpon>PSM1040.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1040.aspx.designer.cs">
+      <DependentUpon>PSM1040.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1050.aspx.cs">
+      <DependentUpon>PSM1050.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1050.aspx.designer.cs">
+      <DependentUpon>PSM1050.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1051.aspx.cs">
+      <DependentUpon>PSM1051.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1051.aspx.designer.cs">
+      <DependentUpon>PSM1051.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1052.aspx.cs">
+      <DependentUpon>PSM1052.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1052.aspx.designer.cs">
+      <DependentUpon>PSM1052.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1053.aspx.cs">
+      <DependentUpon>PSM1053.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1053.aspx.designer.cs">
+      <DependentUpon>PSM1053.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1070.aspx.cs">
+      <DependentUpon>PSM1070.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1070.aspx.designer.cs">
+      <DependentUpon>PSM1070.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1071.aspx.cs">
+      <DependentUpon>PSM1071.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1071.aspx.designer.cs">
+      <DependentUpon>PSM1071.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1072.aspx.cs">
+      <DependentUpon>PSM1072.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1072.aspx.designer.cs">
+      <DependentUpon>PSM1072.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1080.aspx.cs">
+      <DependentUpon>PSM1080.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1080.aspx.designer.cs">
+      <DependentUpon>PSM1080.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1081.aspx.cs">
+      <DependentUpon>PSM1081.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1081.aspx.designer.cs">
+      <DependentUpon>PSM1081.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1082.aspx.cs">
+      <DependentUpon>PSM1082.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1082.aspx.designer.cs">
+      <DependentUpon>PSM1082.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1083.aspx.cs">
+      <DependentUpon>PSM1083.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1083.aspx.designer.cs">
+      <DependentUpon>PSM1083.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1090.aspx.cs">
+      <DependentUpon>PSM1090.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1090.aspx.designer.cs">
+      <DependentUpon>PSM1090.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM20\PSM2011.aspx.cs">
+      <DependentUpon>PSM2011.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM20\PSM2011.aspx.designer.cs">
+      <DependentUpon>PSM2011.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM30\PSM3010.aspx.cs">
+      <DependentUpon>PSM3010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM30\PSM3010.aspx.designer.cs">
+      <DependentUpon>PSM3010.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM30\PSM3011.aspx.cs">
+      <DependentUpon>PSM3011.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM30\PSM3011.aspx.designer.cs">
+      <DependentUpon>PSM3011.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4010.aspx.cs">
+      <DependentUpon>PSM4010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4010.aspx.designer.cs">
+      <DependentUpon>PSM4010.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4011.aspx.cs">
+      <DependentUpon>PSM4011.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4011.aspx.designer.cs">
+      <DependentUpon>PSM4011.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4012.aspx.cs">
+      <DependentUpon>PSM4012.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4012.aspx.designer.cs">
+      <DependentUpon>PSM4012.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4013.aspx.cs">
+      <DependentUpon>PSM4013.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4013.aspx.designer.cs">
+      <DependentUpon>PSM4013.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4040.aspx.cs">
+      <DependentUpon>PSM4040.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4040.aspx.designer.cs">
+      <DependentUpon>PSM4040.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4041.aspx.cs">
+      <DependentUpon>PSM4041.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4041.aspx.designer.cs">
+      <DependentUpon>PSM4041.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4042.aspx.cs">
+      <DependentUpon>PSM4042.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4042.aspx.designer.cs">
+      <DependentUpon>PSM4042.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4045.aspx.cs">
+      <DependentUpon>PSM4045.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4045.aspx.designer.cs">
+      <DependentUpon>PSM4045.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4046.aspx.cs">
+      <DependentUpon>PSM4046.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4046.aspx.designer.cs">
+      <DependentUpon>PSM4046.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4047.aspx.cs">
+      <DependentUpon>PSM4047.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4047.aspx.designer.cs">
+      <DependentUpon>PSM4047.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4048.aspx.cs">
+      <DependentUpon>PSM4048.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4048.aspx.designer.cs">
+      <DependentUpon>PSM4048.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4061.aspx.cs">
+      <DependentUpon>PSM4061.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4061.aspx.designer.cs">
+      <DependentUpon>PSM4061.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4060.aspx.cs">
+      <DependentUpon>PSM4060.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4060.aspx.designer.cs">
+      <DependentUpon>PSM4060.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4050.aspx.cs">
+      <DependentUpon>PSM4050.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4050.aspx.designer.cs">
+      <DependentUpon>PSM4050.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4070.aspx.cs">
+      <DependentUpon>PSM4070.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4070.aspx.designer.cs">
+      <DependentUpon>PSM4070.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4071.aspx.cs">
+      <DependentUpon>PSM4071.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4071.aspx.designer.cs">
+      <DependentUpon>PSM4071.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4072.aspx.cs">
+      <DependentUpon>PSM4072.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4072.aspx.designer.cs">
+      <DependentUpon>PSM4072.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4073.aspx.cs">
+      <DependentUpon>PSM4073.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4073.aspx.designer.cs">
+      <DependentUpon>PSM4073.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4074.aspx.cs">
+      <DependentUpon>PSM4074.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4074.aspx.designer.cs">
+      <DependentUpon>PSM4074.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4080.aspx.cs">
+      <DependentUpon>PSM4080.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4080.aspx.designer.cs">
+      <DependentUpon>PSM4080.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4081.aspx.cs">
+      <DependentUpon>PSM4081.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4081.aspx.designer.cs">
+      <DependentUpon>PSM4081.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4090.aspx.cs">
+      <DependentUpon>PSM4090.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4090.aspx.designer.cs">
+      <DependentUpon>PSM4090.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4091.aspx.cs">
+      <DependentUpon>PSM4091.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4091.aspx.designer.cs">
+      <DependentUpon>PSM4091.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4100.aspx.cs">
+      <DependentUpon>PSM4100.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4100.aspx.designer.cs">
+      <DependentUpon>PSM4100.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4101.aspx.cs">
+      <DependentUpon>PSM4101.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM40\PSM4101.aspx.designer.cs">
+      <DependentUpon>PSM4101.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM50\PSM5010.aspx.cs">
+      <DependentUpon>PSM5010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM50\PSM5010.aspx.designer.cs">
+      <DependentUpon>PSM5010.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM50\PSM5011.aspx.cs">
+      <DependentUpon>PSM5011.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM50\PSM5011.aspx.designer.cs">
+      <DependentUpon>PSM5011.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\SafeOrderService.asmx.cs">
+      <DependentUpon>SafeOrderService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SitePostUrl.aspx.cs">
+      <DependentUpon>SitePostUrl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SitePostUrl.aspx.designer.cs">
+      <DependentUpon>SitePostUrl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1020.aspx.cs">
+      <DependentUpon>SMS1020.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1020.aspx.designer.cs">
+      <DependentUpon>SMS1020.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1021.aspx.cs">
+      <DependentUpon>SMS1021.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1021.aspx.designer.cs">
+      <DependentUpon>SMS1021.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1022.aspx.cs">
+      <DependentUpon>SMS1022.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1022.aspx.designer.cs">
+      <DependentUpon>SMS1022.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1032.aspx.cs">
+      <DependentUpon>SMS1032.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1032.aspx.designer.cs">
+      <DependentUpon>SMS1032.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1031.aspx.cs">
+      <DependentUpon>SMS1031.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1031.aspx.designer.cs">
+      <DependentUpon>SMS1031.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1030.aspx.cs">
+      <DependentUpon>SMS1030.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1030.aspx.designer.cs">
+      <DependentUpon>SMS1030.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1010.aspx.cs">
+      <DependentUpon>SMS1010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1010.aspx.designer.cs">
+      <DependentUpon>SMS1010.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1040.aspx.cs">
+      <DependentUpon>SMS1040.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SMS\SMS10\SMS1040.aspx.designer.cs">
+      <DependentUpon>SMS1040.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SMS\SMSHome.aspx.cs">
+      <DependentUpon>SMSHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SMS\SMSHome.aspx.designer.cs">
+      <DependentUpon>SMSHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TGCSI\CSI\CSG1010.aspx.cs">
+      <DependentUpon>CSG1010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TGCSI\CSI\CSG1010.aspx.designer.cs">
+      <DependentUpon>CSG1010.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TGCSI\CSI\CSG1020.aspx.cs">
+      <DependentUpon>CSG1020.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TGCSI\CSI\CSG1020.aspx.designer.cs">
+      <DependentUpon>CSG1020.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TGCSI\CSI\CSG1030.aspx.cs">
+      <DependentUpon>CSG1030.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TGCSI\CSI\CSG1030.aspx.designer.cs">
+      <DependentUpon>CSG1030.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TGCSI\CSI\CSG1040.aspx.cs">
+      <DependentUpon>CSG1040.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TGCSI\CSI\CSG1040.aspx.designer.cs">
+      <DependentUpon>CSG1040.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TGCSI\CSI\CSG1050.aspx.cs">
+      <DependentUpon>CSG1050.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TGCSI\CSI\CSG1050.aspx.designer.cs">
+      <DependentUpon>CSG1050.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSB0002.aspx.cs">
+      <DependentUpon>CSB0002.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSB0002.aspx.designer.cs">
+      <DependentUpon>CSB0002.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSB0003.aspx.cs">
+      <DependentUpon>CSB0003.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSB0003.aspx.designer.cs">
+      <DependentUpon>CSB0003.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSB0004.aspx.cs">
+      <DependentUpon>CSB0004.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSB0004.aspx.designer.cs">
+      <DependentUpon>CSB0004.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSB0005.aspx.cs">
+      <DependentUpon>CSB0005.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSB0005.aspx.designer.cs">
+      <DependentUpon>CSB0005.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSB0006.aspx.cs">
+      <DependentUpon>CSB0006.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSB0006.aspx.designer.cs">
+      <DependentUpon>CSB0006.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSB0007.aspx.cs">
+      <DependentUpon>CSB0007.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSB0007.aspx.designer.cs">
+      <DependentUpon>CSB0007.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1040.aspx.cs">
+      <DependentUpon>CSI1040.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1040.aspx.designer.cs">
+      <DependentUpon>CSI1040.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Library\EncryptionManager.cs" />
+    <Compile Include="Library\Svcdominoadmin.cs" />
+    <Compile Include="LocationChange.aspx.cs">
+      <DependentUpon>LocationChange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LocationChange.aspx.designer.cs">
+      <DependentUpon>LocationChange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginAdmin.aspx.cs">
+      <DependentUpon>LoginAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginAdmin.aspx.designer.cs">
+      <DependentUpon>LoginAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogOut.aspx.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogOut.aspx.designer.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Main.aspx.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main.aspx.designer.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrgChart.aspx.cs">
+      <DependentUpon>OrgChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrgChart.aspx.designer.cs">
+      <DependentUpon>OrgChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PlantsSafetyMonitoring.aspx.cs">
+      <DependentUpon>PlantsSafetyMonitoring.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PlantsSafetyMonitoring.aspx.designer.cs">
+      <DependentUpon>PlantsSafetyMonitoring.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PlantsSafetyMonitoring_UTT.aspx.cs">
+      <DependentUpon>PlantsSafetyMonitoring_UTT.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PlantsSafetyMonitoring_UTT.aspx.designer.cs">
+      <DependentUpon>PlantsSafetyMonitoring_UTT.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1100_Sign.aspx.cs">
+      <DependentUpon>PSM1100_Sign.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1100_Sign.aspx.designer.cs">
+      <DependentUpon>PSM1100_Sign.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1010.aspx.cs">
+      <DependentUpon>PSM1010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1010.aspx.designer.cs">
+      <DependentUpon>PSM1010.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1100.aspx.cs">
+      <DependentUpon>PSM1100.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1100.aspx.designer.cs">
+      <DependentUpon>PSM1100.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1100_Down.aspx.cs">
+      <DependentUpon>PSM1100_Down.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM10\PSM1100_Down.aspx.designer.cs">
+      <DependentUpon>PSM1100_Down.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSM20\PSM2010.aspx.cs">
+      <DependentUpon>PSM2010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSM20\PSM2010.aspx.designer.cs">
+      <DependentUpon>PSM2010.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSMHome.aspx.cs">
+      <DependentUpon>PSMHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSMHome.aspx.designer.cs">
+      <DependentUpon>PSMHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PSM\PSMImageViewer.aspx.cs">
+      <DependentUpon>PSMImageViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PSM\PSMImageViewer.aspx.designer.cs">
+      <DependentUpon>PSMImageViewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TANK\SILOBIN.aspx.cs">
+      <DependentUpon>SILOBIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TANK\SILOBIN.aspx.designer.cs">
+      <DependentUpon>SILOBIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TANK\TankMonitor3.aspx.cs">
+      <DependentUpon>TankMonitor3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TANK\TankMonitor3.aspx.designer.cs">
+      <DependentUpon>TankMonitor3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TANK\TankPressMonitor.aspx.cs">
+      <DependentUpon>TankPressMonitor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TANK\TankPressMonitor.aspx.designer.cs">
+      <DependentUpon>TankPressMonitor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TGCSI\CSIHome.aspx.cs">
+      <DependentUpon>CSIHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TGCSI\CSIHome.aspx.designer.cs">
+      <DependentUpon>CSIHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSIHome.aspx.cs">
+      <DependentUpon>CSIHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSIHome.aspx.designer.cs">
+      <DependentUpon>CSIHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1030.aspx.cs">
+      <DependentUpon>CSI1030.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1030.aspx.designer.cs">
+      <DependentUpon>CSI1030.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1050.aspx.cs">
+      <DependentUpon>CSI1050.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1050.aspx.designer.cs">
+      <DependentUpon>CSI1050.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1060.aspx.cs">
+      <DependentUpon>CSI1060.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1060.aspx.designer.cs">
+      <DependentUpon>CSI1060.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1120.aspx.cs">
+      <DependentUpon>CSI1120.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1120.aspx.designer.cs">
+      <DependentUpon>CSI1120.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI3010.aspx.cs">
+      <DependentUpon>CSI3010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI3010.aspx.designer.cs">
+      <DependentUpon>CSI3010.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI3011.aspx.cs">
+      <DependentUpon>CSI3011.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI3011.aspx.designer.cs">
+      <DependentUpon>CSI3011.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSB0001.aspx.cs">
+      <DependentUpon>CSB0001.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSB0001.aspx.designer.cs">
+      <DependentUpon>CSB0001.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1070.aspx.cs">
+      <DependentUpon>CSI1070.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1070.aspx.designer.cs">
+      <DependentUpon>CSI1070.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1080.aspx.cs">
+      <DependentUpon>CSI1080.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1080.aspx.designer.cs">
+      <DependentUpon>CSI1080.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1090.aspx.cs">
+      <DependentUpon>CSI1090.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1090.aspx.designer.cs">
+      <DependentUpon>CSI1090.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1100.aspx.cs">
+      <DependentUpon>CSI1100.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1100.aspx.designer.cs">
+      <DependentUpon>CSI1100.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1110.aspx.cs">
+      <DependentUpon>CSI1110.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1110.aspx.designer.cs">
+      <DependentUpon>CSI1110.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI2020.aspx.cs">
+      <DependentUpon>CSI2020.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI2020.aspx.designer.cs">
+      <DependentUpon>CSI2020.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI2030.aspx.cs">
+      <DependentUpon>CSI2030.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI2030.aspx.designer.cs">
+      <DependentUpon>CSI2030.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI2010.aspx.cs">
+      <DependentUpon>CSI2010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI2010.aspx.designer.cs">
+      <DependentUpon>CSI2010.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI3020.aspx.cs">
+      <DependentUpon>CSI3020.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI3020.aspx.designer.cs">
+      <DependentUpon>CSI3020.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI3021.aspx.cs">
+      <DependentUpon>CSI3021.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI3021.aspx.designer.cs">
+      <DependentUpon>CSI3021.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI3031.aspx.cs">
+      <DependentUpon>CSI3031.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI3031.aspx.designer.cs">
+      <DependentUpon>CSI3031.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI3030.aspx.cs">
+      <DependentUpon>CSI3030.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI3030.aspx.designer.cs">
+      <DependentUpon>CSI3030.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSSHome.aspx.cs">
+      <DependentUpon>CSSHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSSHome.aspx.designer.cs">
+      <DependentUpon>CSSHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1010.aspx.cs">
+      <DependentUpon>CSI1010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1010.aspx.designer.cs">
+      <DependentUpon>CSI1010.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1020.aspx.cs">
+      <DependentUpon>CSI1020.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSI\CSI\CSI1020.aspx.designer.cs">
+      <DependentUpon>CSI1020.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1010.aspx.cs">
+      <DependentUpon>CSS1010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1010.aspx.designer.cs">
+      <DependentUpon>CSS1010.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1020.aspx.cs">
+      <DependentUpon>CSS1020.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1020.aspx.designer.cs">
+      <DependentUpon>CSS1020.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1030.aspx.cs">
+      <DependentUpon>CSS1030.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1030.aspx.designer.cs">
+      <DependentUpon>CSS1030.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1040.aspx.cs">
+      <DependentUpon>CSS1040.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1040.aspx.designer.cs">
+      <DependentUpon>CSS1040.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1050.aspx.cs">
+      <DependentUpon>CSS1050.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1050.aspx.designer.cs">
+      <DependentUpon>CSS1050.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1060.aspx.cs">
+      <DependentUpon>CSS1060.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1060.aspx.designer.cs">
+      <DependentUpon>CSS1060.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1070.aspx.cs">
+      <DependentUpon>CSS1070.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1070.aspx.designer.cs">
+      <DependentUpon>CSS1070.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1080.aspx.cs">
+      <DependentUpon>CSS1080.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1080.aspx.designer.cs">
+      <DependentUpon>CSS1080.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1090.aspx.cs">
+      <DependentUpon>CSS1090.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1090.aspx.designer.cs">
+      <DependentUpon>CSS1090.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1100.aspx.cs">
+      <DependentUpon>CSS1100.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS1100.aspx.designer.cs">
+      <DependentUpon>CSS1100.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS2010.aspx.cs">
+      <DependentUpon>CSS2010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS2010.aspx.designer.cs">
+      <DependentUpon>CSS2010.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS2020.aspx.cs">
+      <DependentUpon>CSS2020.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS2020.aspx.designer.cs">
+      <DependentUpon>CSS2020.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS2030.aspx.cs">
+      <DependentUpon>CSS2030.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS2030.aspx.designer.cs">
+      <DependentUpon>CSS2030.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS2040.aspx.cs">
+      <DependentUpon>CSS2040.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS2040.aspx.designer.cs">
+      <DependentUpon>CSS2040.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS2050.aspx.cs">
+      <DependentUpon>CSS2050.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS2050.aspx.designer.cs">
+      <DependentUpon>CSS2050.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS2060.aspx.cs">
+      <DependentUpon>CSS2060.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS2060.aspx.designer.cs">
+      <DependentUpon>CSS2060.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS9000.aspx.cs">
+      <DependentUpon>CSS9000.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TYCSS\CSS\CSS9000.aspx.designer.cs">
+      <DependentUpon>CSS9000.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\RemotePrint\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\wsdominoadmin\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Common\OrgChart\Common\ext\resources\images\default\form\clear-trigger.psd" />
+    <None Include="Common\OrgChart\Common\ext\resources\images\default\form\date-trigger.psd" />
+    <None Include="Common\OrgChart\Common\ext\resources\images\default\form\search-trigger.psd" />
+    <None Include="Common\OrgChart\Common\ext\resources\images\default\form\trigger.psd" />
+    <None Include="Common\OrgChart\Common\ext\resources\images\default\shadow-c.psd" />
+    <None Include="Common\OrgChart\Common\ext\resources\images\default\window\left-corners.psd" />
+    <None Include="Common\OrgChart\Common\ext\resources\images\default\window\left-right.psd" />
+    <None Include="Common\OrgChart\Common\ext\resources\images\default\window\right-corners.psd" />
+    <None Include="Common\OrgChart\Common\ext\resources\images\default\window\top-bottom.psd" />
+    <None Include="Common\OrgChart\Common\ext\resources\images\gray\window\left-corners.pspimage" />
+    <None Include="Common\OrgChart\Common\ext\resources\resources.jsb" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\RemotePrint\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\RemotePrint\SafeOrderService.wsdl" />
+    <None Include="Web References\wsdominoadmin\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsdominoadmin\wsdominoadmin.wsdl" />
+    <Content Include="TYCSS\CSS\CSS9000.aspx" />
+    <None Include="Web References\RemotePrint\SafeOrderService.disco" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaeYoung.Biz\TaeYoung.Biz.csproj">
+      <Project>{AF480D12-B59D-433C-9194-5922CFABA493}</Project>
+      <Name>TaeYoung.Biz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaeYoung.Common\TaeYoung.Common.csproj">
+      <Project>{A0364021-790B-4B76-87BA-EF34A52002D1}</Project>
+      <Name>TaeYoung.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaeYoung.Logging\TaeYoung.Logging.csproj">
+      <Project>{2A05D871-E22D-484D-AEE1-26E8B885E669}</Project>
+      <Name>TaeYoung.Logging</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://emg.taeyoung.co.kr/Portal/PSM/SafeOrderService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\RemotePrint\</RelPath>
+      <UpdateFromURL>http://emg.taeyoung.co.kr/Portal/PSM/SafeOrderService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>TaeYoung_Portal_kr_co_taeyoung_emg_SafeOrderService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://gw.taeyoung.co.kr/pilot/webservice.nsf/wsdominoadmin%3fWSDL">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wsdominoadmin\</RelPath>
+      <UpdateFromURL>http://gw.taeyoung.co.kr/pilot/webservice.nsf/wsdominoadmin%3fWSDL</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>TaeYoung_Portal_wsdominoadmin_wsDominoAdminElement</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55742</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8110/Portal</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>http://192.168.100.29/</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="GatherAllFilesToPublish">
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

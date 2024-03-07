@@ -1,0 +1,835 @@
+DROP PROCEDURE TYJINFWLIB.SP_TGCSI_CSG1030_LIST;
+--  Generate SQL 
+--  Version:                   	V7R4M0 190621 
+--  Generated on:              	23-04-13 10:15:00 
+--  Relational Database:       	S78E0180 
+--  Standards Option:          	Db2 for i 
+SET PATH "QSYS","QSYS2","SYSPROC","SYSIBMADM","KSGPDM" ; 
+  
+CREATE PROCEDURE TYJINFWLIB.SP_TGCSI_CSG1030_LIST ( 
+	IN P_CURRENTPAGEINDEX INTEGER , 
+	IN P_PAGESIZE INTEGER , 
+	IN P_DATE VARCHAR(8) , 
+	IN P_HWAJU VARCHAR(50) , 
+	IN P_GUBUN VARCHAR(1) ) 
+	DYNAMIC RESULT SETS 2 
+	LANGUAGE SQL 
+	SPECIFIC TYJINFWLIB.SP_TGCSI_CSG1030_LIST 
+	NOT DETERMINISTIC 
+	MODIFIES SQL DATA 
+	CALLED ON NULL INPUT 
+	SET OPTION  ALWBLK = *ALLREAD , 
+	ALWCPYDTA = *OPTIMIZE , 
+	COMMIT = *NONE , 
+	DECRESULT = (31, 31, 00) , 
+	DYNDFTCOL = *NO , 
+	DYNUSRPRF = *USER , 
+	SRTSEQ = *HEX   
+	P1 : BEGIN  -- 시작 
+	DECLARE P_STNUM INTEGER ; 
+	DECLARE P_FNNUM INTEGER ; 
+	DECLARE P_SQLSTRING VARCHAR ( 4000 ) ; 
+	DECLARE P_SQLTOTALROWCOUNT VARCHAR ( 4000 ) ; 
+	DECLARE P_TABLE_QUERY VARCHAR ( 5000 ) ; 
+	DECLARE P_COUNT_QUERY VARCHAR ( 5000 ) ; 
+  
+	DECLARE V_IHIPHANG VARCHAR ( 10 ) ; 
+	DECLARE V_JGHANGCHA VARCHAR ( 7 ) ; 
+	DECLARE V_VSDESC1 VARCHAR ( 50 ) ; 
+	DECLARE V_GKDESC1 VARCHAR ( 50 ) ; 
+	DECLARE V_JGGOKJONG VARCHAR ( 2 ) ; 
+	DECLARE V_JGBEJNQTY NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_JGHWAKQTY NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_JGYDQTY NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_JGYSQTY NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_JGYSYDQTY NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_JGCSQTY NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_JGCHQTY NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_JGYSCHQTY NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_JGJEGOQTY NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_IPIPSTDAT VARCHAR ( 10 ) ; 
+  
+	DECLARE V_IBHWAKQTY NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_CSQTY NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_CHMTQTY NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_CHYNCHQTY NUMERIC ( 12 , 3 ) ; 
+  
+	DECLARE V_YNQTY NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_YSQTY NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_YSYDQTY NUMERIC ( 12 , 3 ) ; 
+  
+	DECLARE V_ROWNO INTEGER ; 
+	DECLARE V_HAPBAE NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_HAPHWAK NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_HAPCS NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_HAPCHUL NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_HAPJEGO NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_HAPYD NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_HAPYS NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_HAPYSYD NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_HAPYSCH NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_HAPJAE NUMERIC ( 12 , 3 ) ; 
+	DECLARE V_COMPANY VARCHAR ( 30 ) ; 
+	DECLARE V_RECORDGB VARCHAR ( 50 ) ; 
+	DECLARE V_GUBUN VARCHAR ( 1 ) ; 
+  
+	DECLARE V_COUNT INTEGER ; 
+  
+	 -- 일수 증가 변수 
+	DECLARE V_DATE VARCHAR ( 10 ) ; 
+	DECLARE V_INC_DATE VARCHAR ( 10 ) ; 
+	DECLARE V_WKDATE VARCHAR ( 8 ) ; 
+  
+	SET V_IHIPHANG = '' ; 
+	SET V_JGHANGCHA = '' ; 
+	SET V_VSDESC1 = '' ; 
+	SET V_GKDESC1 = '' ; 
+	SET V_JGGOKJONG = '' ; 
+	SET V_JGBEJNQTY = 0 ; 
+	SET V_JGHWAKQTY = 0 ; 
+	SET V_JGYDQTY = 0 ; 
+	SET V_JGYSQTY = 0 ; 
+	SET V_JGYSYDQTY = 0 ; 
+	SET V_JGCSQTY = 0 ; 
+	SET V_JGCHQTY = 0 ; 
+	SET V_JGYSCHQTY = 0 ; 
+	SET V_JGJEGOQTY = 0 ; 
+	SET V_IPIPSTDAT = '' ; 
+  
+	SET V_IBHWAKQTY = 0 ; 
+	SET V_CSQTY = 0 ; 
+	SET V_CHMTQTY = 0 ; 
+	SET V_CHYNCHQTY = 0 ; 
+  
+	SET V_YNQTY = 0 ; 
+	SET V_YSQTY = 0 ; 
+	SET V_YSYDQTY = 0 ; 
+  
+	SET V_COUNT = 0 ; 
+  
+	SET V_ROWNO = 0 ; 
+	SET V_HAPBAE = 0 ; 
+	SET V_HAPHWAK = 0 ; 
+	SET V_HAPCS = 0 ; 
+	SET V_HAPCHUL = 0 ; 
+	SET V_HAPJEGO = 0 ; 
+	SET V_HAPYD = 0 ; 
+	SET V_HAPYS = 0 ; 
+	SET V_HAPYSYD = 0 ; 
+	SET V_HAPYSCH = 0 ; 
+	SET V_HAPJAE = 0 ; 
+	SET V_VSDESC1 = '' ; 
+	SET V_GKDESC1 = '' ; 
+	SET V_IPIPSTDAT = '' ; 
+	SET V_IHIPHANG = '' ; 
+	SET V_COMPANY = '' ; 
+	SET V_RECORDGB = '' ; 
+	SET V_GUBUN = '' ; 
+  
+	SET V_DATE = SUBSTR ( P_DATE , 1 , 4 ) || '-' || SUBSTR ( P_DATE , 5 , 2 ) || '-01' ; 
+	SET V_WKDATE = SUBSTR ( P_DATE , 1 , 6 ) || '01' ; 
+  
+	PREV : BEGIN  -- 값 설정 
+		SET P_STNUM = ( P_PAGESIZE * ( P_CURRENTPAGEINDEX - 1 ) ) + 1 ; 
+		SET P_FNNUM = P_PAGESIZE * P_CURRENTPAGEINDEX ; 
+	END PREV ; 
+  
+  
+	 -- 임시테이블부 
+	DECLARE GLOBAL TEMPORARY TABLE SESSION . SILO_JGJEGO ( 
+			ROWNO INTEGER 
+		,	JGDATE VARCHAR ( 10 ) 
+		,	COMPANY VARCHAR ( 30 ) 
+		,	HAPBAE NUMERIC ( 12 , 3 ) 
+		,	HAPHWAK NUMERIC ( 12 , 3 ) 
+		,	HAPCS NUMERIC ( 12 , 3 ) 
+		,	HAPCHUL NUMERIC ( 12 , 3 ) 
+		,	HAPJEGO NUMERIC ( 12 , 3 ) 
+		,	HAPYD NUMERIC ( 12 , 3 ) 
+		,	HAPYS NUMERIC ( 12 , 3 ) 
+		,	HAPYSYD NUMERIC ( 12 , 3 ) 
+		,	HAPYSCH NUMERIC ( 12 , 3 ) 
+		,	HAPJAE NUMERIC ( 12 , 3 ) 
+		,	VSDESC1 VARCHAR ( 50 ) 
+		,	GKDESC1 VARCHAR ( 50 ) 
+		,	IPIPSTDAT VARCHAR ( 10 ) 
+		,	IHIPHANG VARCHAR ( 10 ) 
+		,	RECORDGB VARCHAR ( 50 ) 
+		,	GUBUN VARCHAR ( 1 ) 
+	) WITH REPLACE ; 
+  
+	L1 : LOOP 
+  
+		IF V_WKDATE > P_DATE THEN 
+			LEAVE L1 ; 
+		END IF ; 
+  
+		R1 : FOR C1 AS 
+	 
+				SELECT 
+				COMPANY , 
+				IHIPHANG , 
+				JGHANGCHA , 
+				JGGOKJONG , 
+				JGBEJNQTY , 
+				JGHWAKQTY , 
+				JGYDQTY , 
+				JGYSQTY , 
+				JGYSYDQTY , 
+				JGCSQTY , 
+				JGCHQTY , 
+				JGYSCHQTY , 
+				JGJEGOQTY , 
+				VSDESC1 , 
+				GKDESC1 , 
+				IPIPSTDAT , 
+				GUBUN , 
+				( GUBUN || COMPANY || JGGOKJONG ) AS RECORDGB 
+				FROM 
+				( 
+					SELECT 
+					'(주)태영그레인터미널' AS COMPANY , 
+					'G' AS GUBUN , 
+					( SUBSTR ( CHAR ( IHIPHANG ) , 1 , 4 ) || '-' || SUBSTR ( CHAR ( IHIPHANG ) , 5 , 2 ) || '-' || SUBSTR ( CHAR ( IHIPHANG ) , 7 , 2 ) ) AS IHIPHANG , 
+					JGHANGCHA , 
+					JGGOKJONG , 
+					( JGBEJNQTY + JGBEIPQTY - JGBECHQTY ) AS JGBEJNQTY , 
+					( JGHWAKQTY + JGHWIPQTY - JGHWCHQTY ) AS JGHWAKQTY , 
+					JGYDQTY , 
+					JGYSQTY , 
+					JGYSYDQTY , 
+					JGCSQTY , 
+					JGCHQTY , 
+					JGYSCHQTY , 
+					JGJEGOQTY , 
+					VSCODE . CDDESC1 AS VSDESC1 , 
+					GKCODE . CDDESC1 AS GKDESC1 , 
+					( SUBSTR ( CHAR ( IPIPSTDAT ) , 1 , 4 ) || '/' || SUBSTR ( CHAR ( IPIPSTDAT ) , 5 , 2 ) || '/' || SUBSTR ( CHAR ( IPIPSTDAT ) , 7 , 2 ) ) AS IPIPSTDAT 
+					FROM TGSCMLIB . USIJEGOF AS JEGO 
+					LEFT OUTER JOIN TGSCMLIB . USIIPGOF AS IPGO 
+					ON JEGO . JGHANGCHA = IPGO . IPHANGCHA 
+					AND JEGO . JGGOKJONG = IPGO . IPGOKJONG 
+					LEFT OUTER JOIN TGSCMLIB . USIIPHAF AS IPHA 
+					ON JEGO . JGHANGCHA = IPHA . IHHANGCHA 
+					LEFT OUTER JOIN TGSCMLIB . USICODEF AS VSCODE 
+					ON 'VS' = VSCODE . CDINDEX 
+					AND JEGO . JGHANGCHA = VSCODE . CDCODE 
+					LEFT OUTER JOIN TGSCMLIB . USICODEF AS GKCODE 
+					ON 'GK' = GKCODE . CDINDEX 
+					AND JEGO . JGGOKJONG = GKCODE . CDCODE 
+					WHERE JGHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+					AND JGHANGCHA >= '2009001' 
+	 
+					UNION ALL 
+	 
+					SELECT 
+					'주식회사 평택싸이로' AS COMPANY , 
+					'P' AS GUBUN , 
+					( SUBSTR ( CHAR ( IHIPHANG ) , 1 , 4 ) || '-' || SUBSTR ( CHAR ( IHIPHANG ) , 5 , 2 ) || '-' || SUBSTR ( CHAR ( IHIPHANG ) , 7 , 2 ) ) AS IHIPHANG , 
+					JGHANGCHA , 
+					JGGOKJONG , 
+					( JGBEJNQTY + JGBEIPQTY - JGBECHQTY ) AS JGBEJNQTY , 
+					( JGHWAKQTY + JGHWIPQTY - JGHWCHQTY ) AS JGHWAKQTY , 
+					JGYDQTY , 
+					JGYSQTY , 
+					JGYSYDQTY , 
+					JGCSQTY , 
+					JGCHQTY , 
+					JGYSCHQTY , 
+					JGJEGOQTY , 
+					VSCODE . CDDESC1 AS VSDESC1 , 
+					GKCODE . CDDESC1 AS GKDESC1 , 
+					( SUBSTR ( CHAR ( IPIPSTDAT ) , 1 , 4 ) || '/' || SUBSTR ( CHAR ( IPIPSTDAT ) , 5 , 2 ) || '/' || SUBSTR ( CHAR ( IPIPSTDAT ) , 7 , 2 ) ) AS IPIPSTDAT 
+					FROM PTSCMLIB . USIJEGOF AS JEGO 
+					LEFT OUTER JOIN PTSCMLIB . USIIPGOF AS IPGO 
+					ON JEGO . JGHANGCHA = IPGO . IPHANGCHA 
+					AND JEGO . JGGOKJONG = IPGO . IPGOKJONG 
+					LEFT OUTER JOIN PTSCMLIB . USIIPHAF AS IPHA 
+					ON JEGO . JGHANGCHA = IPHA . IHHANGCHA 
+					LEFT OUTER JOIN TGSCMLIB . USICODEF AS VSCODE 
+					ON 'VP' = VSCODE . CDINDEX 
+					AND JEGO . JGHANGCHA = VSCODE . CDCODE 
+					LEFT OUTER JOIN TGSCMLIB . USICODEF AS GKCODE 
+					ON 'GK' = GKCODE . CDINDEX 
+					AND JEGO . JGGOKJONG = GKCODE . CDCODE 
+					WHERE JGHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+					AND JGHANGCHA >= '2009001' 
+				) AS TEMP 
+				ORDER BY GUBUN , COMPANY , IHIPHANG , JGHANGCHA , JGGOKJONG 
+	 
+			DO 
+	 
+			SET V_IHIPHANG = '' ; 
+			SET V_JGHANGCHA = '' ; 
+			SET V_VSDESC1 = '' ; 
+			SET V_GKDESC1 = '' ; 
+			SET V_JGGOKJONG = '' ; 
+			SET V_JGBEJNQTY = 0 ; 
+			SET V_JGHWAKQTY = 0 ; 
+			SET V_JGYDQTY = 0 ; 
+			SET V_JGYSQTY = 0 ; 
+			SET V_JGYSYDQTY = 0 ; 
+			SET V_JGCSQTY = 0 ; 
+			SET V_JGCHQTY = 0 ; 
+			SET V_JGYSCHQTY = 0 ; 
+			SET V_JGJEGOQTY = 0 ; 
+			SET V_IPIPSTDAT = '' ; 
+			SET V_COMPANY = '' ; 
+			SET V_RECORDGB = '' ; 
+			SET V_GUBUN = '' ; 
+	 
+			SET V_IHIPHANG = IHIPHANG ; 
+			SET V_JGHANGCHA = JGHANGCHA ; 
+			SET V_VSDESC1 = VSDESC1 ; 
+			SET V_JGGOKJONG = JGGOKJONG ; 
+			SET V_GKDESC1 = GKDESC1 ; 
+			SET V_JGBEJNQTY = JGBEJNQTY ; 
+			SET V_JGHWAKQTY = JGHWAKQTY ; 
+			SET V_JGYDQTY = JGYDQTY ; 
+			SET V_JGYSQTY = JGYSQTY ; 
+			SET V_JGYSYDQTY = JGYSYDQTY ; 
+			SET V_JGCSQTY = JGCSQTY ; 
+			SET V_JGCHQTY = JGCHQTY ; 
+			SET V_JGYSCHQTY = JGYSCHQTY ; 
+			SET V_JGJEGOQTY = JGJEGOQTY ; 
+			SET V_IPIPSTDAT = IPIPSTDAT ; 
+	 
+			SET V_COMPANY = COMPANY ; 
+			SET V_RECORDGB = RECORDGB ; 
+			SET V_GUBUN = GUBUN ; 
+	 
+	 
+			SET V_IBHWAKQTY = 0 ; 
+			SET V_CSQTY = 0 ; 
+			SET V_CHMTQTY = 0 ; 
+			SET V_CHYNCHQTY = 0 ; 
+	 
+			IF ( V_GUBUN = 'G' ) THEN 
+	 
+				SELECT 
+				COALESCE ( SUM ( IBHWAKQTY + IBHWIPQTY - IBHWCHQTY ) , 0 ) INTO V_IBHWAKQTY 
+				FROM TGSCMLIB . USIIPBLF 
+				WHERE IBHANGCHA = V_JGHANGCHA 
+				AND IBGOKJONG = V_JGGOKJONG 
+				AND IBHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+				AND IBDATE > INT ( V_WKDATE ) ; 
+	 
+			ELSE 
+	 
+				SELECT 
+				COALESCE ( SUM ( IBHWAKQTY + IBHWIPQTY - IBHWCHQTY ) , 0 ) INTO V_IBHWAKQTY 
+				FROM PTSCMLIB . USIIPBLF 
+				WHERE IBHANGCHA = V_JGHANGCHA 
+				AND IBGOKJONG = V_JGGOKJONG 
+				AND IBHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+				AND IBDATE > INT ( V_WKDATE ) ; 
+	 
+			END IF ; 
+	 
+			IF ( V_IBHWAKQTY <> 0 AND V_JGHWAKQTY = V_IBHWAKQTY ) THEN 
+	 
+				SET V_COUNT = 0 ; 
+			ELSE 
+	 
+				SET V_CSQTY = 0 ; 
+	 
+				IF ( V_GUBUN = 'G' ) THEN 
+	 
+					SELECT 
+					COALESCE ( SUM ( CSQTY ) , 0 ) INTO V_CSQTY 
+					FROM TGSCMLIB . USICUSTF 
+					WHERE CSHANGCHA = V_JGHANGCHA 
+					AND CSGOKJONG = V_JGGOKJONG 
+					AND CSHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+					AND CSDATE > INT ( V_WKDATE ) ; 
+	 
+				ELSE 
+					 
+					SELECT 
+					COALESCE ( SUM ( CSQTY ) , 0 ) INTO V_CSQTY 
+					FROM PTSCMLIB . USICUSTF 
+					WHERE CSHANGCHA = V_JGHANGCHA 
+					AND CSGOKJONG = V_JGGOKJONG 
+					AND CSHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+					AND CSDATE > INT ( V_WKDATE ) ; 
+	 
+				END IF ; 
+	 
+				SET V_CHMTQTY = 0 ; 
+				SET V_CHYNCHQTY = 0 ; 
+	 
+				IF ( V_GUBUN = 'G' ) THEN 
+	 
+					SELECT 
+					COALESCE ( SUM ( CASE WHEN CHYNCHQTY = 0 THEN CHMTQTY ELSE 0 END ) , 0 ) , 
+					COALESCE ( SUM ( CHYNCHQTY ) , 0 ) 
+					INTO V_CHMTQTY , V_CHYNCHQTY 
+					FROM TGSCMLIB . USICHULF 
+					WHERE CHHANGCHA = V_JGHANGCHA 
+					AND CHGOKJONG = V_JGGOKJONG 
+					AND CHHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+					AND CHCHULDAT > INT ( V_WKDATE ) ; 
+	 
+				ELSE 
+	 
+					SELECT 
+					COALESCE ( SUM ( CASE WHEN CHYNCHQTY = 0 THEN CHMTQTY ELSE 0 END ) , 0 ) , 
+					COALESCE ( SUM ( CHYNCHQTY ) , 0 ) 
+					INTO V_CHMTQTY , V_CHYNCHQTY 
+					FROM PTSCMLIB . USICHULF 
+					WHERE CHHANGCHA = V_JGHANGCHA 
+					AND CHGOKJONG = V_JGGOKJONG 
+					AND CHHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+					AND CHCHULDAT > INT ( V_WKDATE ) ; 
+	 
+				END IF ; 
+	 
+				SET V_COUNT = 0 ; 
+	 
+				SET V_YNQTY = 0 ; 
+				SET V_YSQTY = 0 ; 
+				SET V_YSYDQTY = 0 ; 
+	 
+				IF ( V_GUBUN = 'G' ) THEN 
+	 
+					R11_G : FOR C11_G AS 
+		 
+								 -- 양도량 
+								SELECT 
+								COALESCE ( SUM ( YNQTY ) , 0 ) AS YNQTY 
+								FROM TGSCMLIB . USIYANGNF 
+								WHERE YNHANGCHA = V_JGHANGCHA 
+								AND YNGOKJONG = V_JGGOKJONG 
+								AND YNHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+								AND YNYNHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+								AND YNYSDATE > INT ( V_WKDATE ) 
+								AND YNQTY > 0 
+								UNION ALL 
+								 -- 양수량 
+								SELECT 
+								COALESCE ( SUM ( YNQTY + YNYSYDQTY ) , 0 ) AS YNQTY 
+								FROM TGSCMLIB . USIYANGNF 
+								WHERE YNHANGCHA = V_JGHANGCHA 
+								AND YNGOKJONG = V_JGGOKJONG 
+								AND YNYSHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+								AND YNYSDATE > INT ( V_WKDATE ) 
+								UNION ALL 
+								 -- 양수양도량 
+								SELECT 
+								COALESCE ( SUM ( YNYSYDQTY ) , 0 ) AS YNQTY 
+								FROM TGSCMLIB . USIYANGNF 
+								WHERE YNHANGCHA = V_JGHANGCHA 
+								AND YNGOKJONG = V_JGGOKJONG 
+								AND YNHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+								AND YNYSDATE > INT ( V_WKDATE ) 
+								AND YNYSYDQTY > 0 
+	 
+							DO 
+	 
+							IF V_COUNT = 0 THEN 
+	 
+								SET V_YNQTY = YNQTY ; 
+	 
+							ELSEIF V_COUNT = 1 THEN 
+	 
+								SET V_YSQTY = YNQTY ; 
+	 
+							ELSEIF V_COUNT = 2 THEN 
+	 
+								SET V_YSYDQTY = YNQTY ; 
+	 
+							END IF ; 
+	 
+							SET V_COUNT = V_COUNT + 1 ; 
+	 
+					END FOR R11_G ; 
+	 
+				ELSE 
+	 
+					R11_P : FOR C11_P AS 
+		 
+								 -- 양도량 
+								SELECT 
+								COALESCE ( SUM ( YNQTY ) , 0 ) AS YNQTY 
+								FROM PTSCMLIB . USIYANGNF 
+								WHERE YNHANGCHA = V_JGHANGCHA 
+								AND YNGOKJONG = V_JGGOKJONG 
+								AND YNHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+								AND YNYNHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+								AND YNYSDATE > INT ( V_WKDATE ) 
+								AND YNQTY > 0 
+								UNION ALL 
+								 -- 양수량 
+								SELECT 
+								COALESCE ( SUM ( YNQTY + YNYSYDQTY ) , 0 ) AS YNQTY 
+								FROM PTSCMLIB . USIYANGNF 
+								WHERE YNHANGCHA = V_JGHANGCHA 
+								AND YNGOKJONG = V_JGGOKJONG 
+								AND YNYSHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+								AND YNYSDATE > INT ( V_WKDATE ) 
+								UNION ALL 
+								 -- 양수양도량 
+								SELECT 
+								COALESCE ( SUM ( YNYSYDQTY ) , 0 ) AS YNQTY 
+								FROM PTSCMLIB . USIYANGNF 
+								WHERE YNHANGCHA = V_JGHANGCHA 
+								AND YNGOKJONG = V_JGGOKJONG 
+								AND YNHWAJU IN ( SELECT * FROM TABLE ( PTSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) ) AS INTABLE ) 
+								AND YNYSDATE > INT ( V_WKDATE ) 
+								AND YNYSYDQTY > 0 
+	 
+							DO 
+	 
+							IF V_COUNT = 0 THEN 
+	 
+								SET V_YNQTY = YNQTY ; 
+	 
+							ELSEIF V_COUNT = 1 THEN 
+	 
+								SET V_YSQTY = YNQTY ; 
+	 
+							ELSEIF V_COUNT = 2 THEN 
+	 
+								SET V_YSYDQTY = YNQTY ; 
+	 
+							END IF ; 
+	 
+							SET V_COUNT = V_COUNT + 1 ; 
+	 
+					END FOR R11_P ; 
+	 
+				END IF ; 
+	 
+				SET V_HAPBAE = 0 ; 
+				SET V_HAPHWAK = 0 ; 
+				SET V_HAPCS = 0 ; 
+				SET V_HAPCHUL = 0 ; 
+				SET V_HAPJEGO = 0 ; 
+				SET V_HAPYD = 0 ; 
+				SET V_HAPYS = 0 ; 
+				SET V_HAPYSYD = 0 ; 
+				SET V_HAPYSCH = 0 ; 
+				SET V_HAPJAE = 0 ; 
+	 
+				SET V_HAPBAE = V_JGBEJNQTY ; 
+				SET V_HAPHWAK = V_JGHWAKQTY ; 
+				SET V_HAPCS = V_JGCSQTY - V_CSQTY ; 
+				SET V_HAPCHUL = V_JGCHQTY - V_CHMTQTY ; 
+				SET V_HAPJEGO = V_HAPCS - V_HAPCHUL ; 
+				SET V_HAPYD = V_JGYDQTY - V_YNQTY ; 
+				SET V_HAPYS = V_JGYSQTY - V_YSQTY ; 
+				SET V_HAPYSYD = V_JGYSYDQTY - V_YSYDQTY ; 
+				SET V_HAPYSCH = V_JGYSCHQTY - V_CHYNCHQTY ; 
+				SET V_HAPJAE = ( V_HAPYS + V_HAPHWAK ) - ( V_HAPYD + V_HAPCHUL + V_HAPYSYD + V_HAPYSCH ) ; 
+	 
+				IF V_HAPJAE <> 0 THEN 
+	 
+					SET V_ROWNO = V_ROWNO + 1 ; 
+	 
+					SET V_COUNT = 0 ; 
+	 
+					INSERT INTO SESSION . SILO_JGJEGO 
+					( 
+						ROWNO , 
+						JGDATE , 
+						COMPANY , 
+						HAPBAE , 
+						HAPHWAK , 
+						HAPCS , 
+						HAPCHUL , 
+						HAPJEGO , 
+						HAPYD , 
+						HAPYS , 
+						HAPYSYD , 
+						HAPYSCH , 
+						HAPJAE , 
+						VSDESC1 , 
+						GKDESC1 , 
+						IPIPSTDAT , 
+						IHIPHANG , 
+						RECORDGB , 
+						GUBUN 
+					) 
+					VALUES 
+					( 
+						V_ROWNO , 
+						SUBSTR ( V_WKDATE , 1 , 4 ) || '-' || SUBSTR ( V_WKDATE , 5 , 2 ) || '-' || SUBSTR ( V_WKDATE , 7 , 2 ) , 
+						V_COMPANY , 
+						V_HAPBAE , 
+						V_HAPHWAK , 
+						V_HAPCS , 
+						V_HAPCHUL , 
+						V_HAPJEGO , 
+						V_HAPYD , 
+						V_HAPYS , 
+						V_HAPYSYD , 
+						V_HAPYSCH , 
+						V_HAPJAE , 
+						V_VSDESC1 , 
+						V_GKDESC1 , 
+						V_IPIPSTDAT , 
+						V_IHIPHANG , 
+						V_RECORDGB , 
+						V_GUBUN 
+					) ; 
+	 
+				END IF ; 
+	 
+			END IF ; 
+	 
+		END FOR R1 ; 
+  
+	L1_END : 
+  
+		 -- 일수 증가 
+		SET V_DATE = SUBSTR ( V_WKDATE , 1 , 4 ) || '-' || SUBSTR ( V_WKDATE , 5 , 2 ) || '-' || SUBSTR ( V_WKDATE , 7 , 2 ) ; 
+  
+		R5 : FOR C5 AS 
+  
+				SELECT 
+				( DATE ( V_DATE ) + 1 DAY ) AS DATE 
+				FROM SYSIBM . SYSDUMMY1 
+  
+			DO 
+  
+			SET V_INC_DATE = DATE ; 
+  
+			SET V_WKDATE = SUBSTR ( V_INC_DATE , 1 , 4 ) || SUBSTR ( V_INC_DATE , 6 , 2 ) || SUBSTR ( V_INC_DATE , 9 , 2 ) ; 
+  
+		END FOR R5 ; 
+  
+	END LOOP L1 ; 
+  
+	MAIN : BEGIN  -- 실행부 
+		IF P_GUBUN = 'S' THEN 
+  
+			LIST : BEGIN  -- 리스트 
+				DECLARE REFCURSOR CURSOR WITH RETURN FOR 
+					 
+					WITH MAST AS 
+					( 
+						SELECT 
+						ROW_NUMBER ( ) OVER ( ORDER BY JGDATE DESC, GUBUN , RECORDGB , SEQ ) AS ROWNO , 
+						SUBSTR ( JGDATE , 6 , 5 ) AS JGDATE , 
+						SEQ , 
+						( CASE WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND ( GUBUN = '' OR GUBUN IS NULL ) THEN '<div style="color:blue" >' || '일자별 계' || '</div>' 
+						ELSE COMPANY END ) AS COMPANY , 
+						( CASE WHEN SEQ = 'D' THEN TRIM ( TO_CHAR ( HAPBAE , '9,999,990.000' ) ) 
+						WHEN SEQ = 'S' AND RECORDGB <> '' AND GUBUN <> '' THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPBAE , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND GUBUN <> '' THEN '<div style="color:red" >' || TRIM ( TO_CHAR ( HAPBAE , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND ( GUBUN = '' OR GUBUN IS NULL ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPBAE , '9,999,990.000' ) ) || '</div>' 
+						END ) AS HAPBAE , 
+						( CASE WHEN SEQ = 'D' THEN TRIM ( TO_CHAR ( HAPHWAK , '9,999,990.000' ) ) 
+						WHEN SEQ = 'S' AND RECORDGB <> '' AND GUBUN <> '' THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPHWAK , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND GUBUN <> '' THEN '<div style="color:red" >' || TRIM ( TO_CHAR ( HAPHWAK , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND ( GUBUN = '' OR GUBUN IS NULL ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPHWAK , '9,999,990.000' ) ) || '</div>' 
+						END ) AS HAPHWAK , 
+						( CASE WHEN SEQ = 'D' THEN TRIM ( TO_CHAR ( HAPCS , '9,999,990.000' ) ) 
+						WHEN SEQ = 'S' AND RECORDGB <> '' AND GUBUN <> '' THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPCS , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND GUBUN <> '' THEN '<div style="color:red" >' || TRIM ( TO_CHAR ( HAPCS , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND ( GUBUN = '' OR GUBUN IS NULL ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPCS , '9,999,990.000' ) ) || '</div>' 
+						END ) AS HAPCS , 
+						( CASE WHEN SEQ = 'D' THEN TRIM ( TO_CHAR ( HAPCHUL , '9,999,990.000' ) ) 
+						WHEN SEQ = 'S' AND RECORDGB <> '' AND GUBUN <> '' THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPCHUL , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND GUBUN <> '' THEN '<div style="color:red" >' || TRIM ( TO_CHAR ( HAPCHUL , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND ( GUBUN = '' OR GUBUN IS NULL ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPCHUL , '9,999,990.000' ) ) || '</div>' 
+						END ) AS HAPCHUL , 
+						( CASE WHEN SEQ = 'D' THEN TRIM ( TO_CHAR ( HAPJEGO , '9,999,990.000' ) ) 
+						WHEN SEQ = 'S' AND RECORDGB <> '' AND GUBUN <> '' THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPJEGO , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND GUBUN <> '' THEN '<div style="color:red" >' || TRIM ( TO_CHAR ( HAPJEGO , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND ( GUBUN = '' OR GUBUN IS NULL ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPJEGO , '9,999,990.000' ) ) || '</div>' 
+						END ) AS HAPJEGO , 
+						( CASE WHEN SEQ = 'D' THEN TRIM ( TO_CHAR ( HAPYD , '9,999,990.000' ) ) 
+						WHEN SEQ = 'S' AND RECORDGB <> '' AND GUBUN <> '' THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPYD , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND GUBUN <> '' THEN '<div style="color:red" >' || TRIM ( TO_CHAR ( HAPYD , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND ( GUBUN = '' OR GUBUN IS NULL ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPYD , '9,999,990.000' ) ) || '</div>' 
+						END ) AS HAPYD , 
+						( CASE WHEN SEQ = 'D' THEN TRIM ( TO_CHAR ( HAPYS , '9,999,990.000' ) ) 
+						WHEN SEQ = 'S' AND RECORDGB <> '' AND GUBUN <> '' THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPYS , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND GUBUN <> '' THEN '<div style="color:red" >' || TRIM ( TO_CHAR ( HAPYS , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND ( GUBUN = '' OR GUBUN IS NULL ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPYS , '9,999,990.000' ) ) || '</div>' 
+						END ) AS HAPYS , 
+						( CASE WHEN SEQ = 'D' THEN TRIM ( TO_CHAR ( HAPYSYD , '9,999,990.000' ) ) 
+						WHEN SEQ = 'S' AND RECORDGB <> '' AND GUBUN <> '' THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPYSYD , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND GUBUN <> '' THEN '<div style="color:red" >' || TRIM ( TO_CHAR ( HAPYSYD , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND ( GUBUN = '' OR GUBUN IS NULL ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPYSYD , '9,999,990.000' ) ) || '</div>' 
+						END ) AS HAPYSYD , 
+						( CASE WHEN SEQ = 'D' THEN TRIM ( TO_CHAR ( HAPYSCH , '9,999,990.000' ) ) 
+						WHEN SEQ = 'S' AND RECORDGB <> '' AND GUBUN <> '' THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPYSCH , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND GUBUN <> '' THEN '<div style="color:red" >' || TRIM ( TO_CHAR ( HAPYSCH , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND ( GUBUN = '' OR GUBUN IS NULL ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPYSCH , '9,999,990.000' ) ) || '</div>' 
+						END ) AS HAPYSCH , 
+						( CASE WHEN SEQ = 'D' THEN TRIM ( TO_CHAR ( HAPJAE , '9,999,990.000' ) ) 
+						WHEN SEQ = 'S' AND RECORDGB <> '' AND GUBUN <> '' THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPJAE , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND GUBUN <> '' THEN '<div style="color:red" >' || TRIM ( TO_CHAR ( HAPJAE , '9,999,990.000' ) ) || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND ( GUBUN = '' OR GUBUN IS NULL ) THEN '<div style="color:blue" >' || TRIM ( TO_CHAR ( HAPJAE , '9,999,990.000' ) ) || '</div>' 
+						END ) AS HAPJAE , 
+						VSDESC1 , 
+						( CASE WHEN SEQ = 'D' THEN GKDESC1 
+						WHEN SEQ = 'S' AND RECORDGB <> '' AND GUBUN <> '' THEN '<div style="color:blue" >' || '곡종별 소계' || '</div>' 
+						WHEN SEQ = 'S' AND ( RECORDGB = '' OR RECORDGB IS NULL ) AND GUBUN <> '' THEN '<div style="color:red" >' || '하역회사별 소계' || '</div>' 
+						END ) AS GKDESC1 , 
+						IPIPSTDAT , 
+						IHIPHANG , 
+						RECORDGB , 
+						GUBUN 
+						FROM 
+						( 
+							SELECT 
+							'D' AS SEQ , 
+							JGDATE , 
+							COMPANY , 
+							HAPBAE , 
+							HAPHWAK , 
+							HAPCS , 
+							HAPCHUL , 
+							HAPJEGO , 
+							HAPYD , 
+							HAPYS , 
+							HAPYSYD , 
+							HAPYSCH , 
+							HAPJAE , 
+							VSDESC1 , 
+							GKDESC1 , 
+							IPIPSTDAT , 
+							IHIPHANG , 
+							RECORDGB , 
+							GUBUN 
+							FROM SESSION . SILO_JGJEGO 
+  
+							UNION ALL 
+  
+							SELECT 
+							'S' AS SEQ , 
+							JGDATE , 
+							COMPANY , 
+							SUM ( HAPBAE ) AS HAPBAEC , 
+							SUM ( HAPHWAK ) AS HAPHWAK , 
+							SUM ( HAPCS ) AS HAPCS , 
+							SUM ( HAPCHUL ) AS HAPCHUL , 
+							SUM ( HAPJEGO ) AS HAPJEGO , 
+							SUM ( HAPYD ) AS HAPYD , 
+							SUM ( HAPYS ) AS HAPYS , 
+							SUM ( HAPYSYD ) AS HAPYSYD , 
+							SUM ( HAPYSCH ) AS HAPYSCH , 
+							SUM ( HAPJAE ) AS HAPJAE , 
+							'' AS VSDESC1 , 
+							'' AS GKDESC1 , 
+							'' AS IPIPSTDAT , 
+							'' AS IHIPHANG , 
+							RECORDGB , 
+							GUBUN 
+							FROM SESSION . SILO_JGJEGO 
+							GROUP BY GROUPING SETS ( ( JGDATE , COMPANY , GUBUN ) , ( JGDATE , COMPANY , RECORDGB , GUBUN ) , ( JGDATE ) ) 
+						) AS TEMP 
+					) 
+					SELECT 
+					* 
+					FROM MAST 
+					WHERE ROWNO BETWEEN CAST ( P_STNUM AS VARCHAR ( 100 ) ) AND CAST ( P_FNNUM AS VARCHAR ( 100 ) ) ; 
+  
+				OPEN REFCURSOR ; 
+  
+			END LIST ; 
+  
+			PAGING : BEGIN  -- 페이징 
+				DECLARE REFCURSOR3 CURSOR WITH RETURN FOR 
+  
+					SELECT 
+					COUNT ( * ) AS TOTALCOUNT 
+					FROM 
+					( 
+  
+						SELECT 
+						'D' AS SEQ , 
+						JGDATE , 
+						COMPANY , 
+						HAPBAE , 
+						HAPHWAK , 
+						HAPCS , 
+						HAPCHUL , 
+						HAPJEGO , 
+						HAPYD , 
+						HAPYS , 
+						HAPYSYD , 
+						HAPYSCH , 
+						HAPJAE , 
+						VSDESC1 , 
+						GKDESC1 , 
+						IPIPSTDAT , 
+						IHIPHANG , 
+						RECORDGB , 
+						GUBUN 
+						FROM SESSION . SILO_JGJEGO 
+  
+						UNION ALL 
+  
+						SELECT 
+						'S' AS SEQ , 
+						JGDATE , 
+						COMPANY , 
+						SUM ( HAPBAE ) AS HAPBAEC , 
+						SUM ( HAPHWAK ) AS HAPHWAK , 
+						SUM ( HAPCS ) AS HAPCS , 
+						SUM ( HAPCHUL ) AS HAPCHUL , 
+						SUM ( HAPJEGO ) AS HAPJEGO , 
+						SUM ( HAPYD ) AS HAPYD , 
+						SUM ( HAPYS ) AS HAPYS , 
+						SUM ( HAPYSYD ) AS HAPYSYD , 
+						SUM ( HAPYSCH ) AS HAPYSCH , 
+						SUM ( HAPJAE ) AS HAPJAE , 
+						'' AS VSDESC1 , 
+						'' AS GKDESC1 , 
+						'' AS IPIPSTDAT , 
+						'' AS IHIPHANG , 
+						RECORDGB , 
+						GUBUN 
+						FROM SESSION . SILO_JGJEGO 
+						GROUP BY GROUPING SETS ( ( JGDATE , COMPANY , GUBUN ) , ( JGDATE , COMPANY , RECORDGB , GUBUN ) , '' ) 
+					) AS TEMP ; 
+  
+  
+				OPEN REFCURSOR3 ; 
+  
+			END PAGING ; 
+  
+		ELSE 
+  
+			PRINT : BEGIN  -- 페이징 
+				DECLARE REFCURSOR5 CURSOR WITH RETURN FOR 
+  
+					SELECT 
+					ROWNO , 
+					JGDATE , 
+					COMPANY , 
+					HAPBAE , 
+					HAPHWAK , 
+					HAPCS , 
+					HAPCHUL , 
+					HAPJEGO , 
+					HAPYD , 
+					HAPYS , 
+					HAPYSYD , 
+					HAPYSCH , 
+					HAPJAE , 
+					VSDESC1 , 
+					GKDESC1 , 
+					IPIPSTDAT , 
+					IHIPHANG , 
+					RECORDGB , 
+					GUBUN 
+					FROM SESSION . SILO_JGJEGO 
+					ORDER BY JGDATE DESC, RECORDGB , IHIPHANG ; 
+  
+				OPEN REFCURSOR5 ; 
+  
+			END PRINT ; 
+  
+		END IF ; 
+  
+	END MAIN ; 
+END P1  ; 
+  
+GRANT ALTER , EXECUTE   
+ON SPECIFIC PROCEDURE TYJINFWLIB.SP_TGCSI_CSG1030_LIST 
+TO LSHPDM WITH GRANT OPTION ;

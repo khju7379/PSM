@@ -1,0 +1,123 @@
+﻿<%@ Master Language="C#" AutoEventWireup="false" CodeBehind="Mobile.master.cs" Inherits="TaeYoung.Common.VirtualPath.Mobile"
+    ViewStateMode="Disabled" Debug="false" %>
+
+<!DOCTYPE html>
+<head id="Head1" runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi" />
+    <link rel="shortcut icon" href="~/favicon.ico" />
+    <link rel="apple-touch-icon" href="~/apple-touch-icon.png" />
+    <title>태영 통합 고객정보 시스템</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/Resources/Images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/Resources/Css/Mobile/Import.css" />
+    <script type="text/javascript" src="/Resources/Script/Domain.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/moxie.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/plupload.dev.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery.ui.plupload.js"></script>
+    <script type="text/javascript">
+        //사이트맵
+        function SiteMap() {
+
+            var factor = 2; // getFactorX();
+
+            // 디자인 변경
+            //$("#Popup").css("top", "100px");
+            //$("#Popup iframe").contents().find("#menu").css("margin", "0px");
+            $("#PreDataPop_bx").css("width", $(document).width() + "px");
+            $("#PreDataPop_bx").css("height", $(document).height() + "px");
+            //$("#Popup").css("margin", "30px");
+
+            //alert(factor);
+            //$("#Popup").css("Transform", "scaleX(" + factor + ") scaleY(" + factor + ")");
+            //$("#Popup").css("width", (($(window).width() - 60) / factor + 7) + "px");
+            //$("#Popup iframe").css("width", (($(window).width() - 60) / factor + 7) + "px");
+            $("#Popup").css("width", "312px");
+            $("#Popup iframe").css("width", "312px");
+
+            var doc_width = $(window).width();
+            var padding_width = (doc_width - 312) / 2;
+            $("#Popup").css("margin-top", "30px");
+            $("#Popup").css("margin-left", padding_width + "px");
+
+            $("#PreDataPop_bx").show();
+            $("#Popup").show();
+        }
+
+        function SiteMapOff() {
+            $("#PreDataPop_bx").hide();
+            $("#Popup").hide();
+        }
+
+        function getFactorX() {
+            var width = 360;
+            var bW = (window.innerWidth ? window.innerWidth : document.documentElement.clientWidth);
+            var factorX = bW / width;
+            return factorX;
+        }
+
+        $(window).resize(function () {
+            $("#PreDataPop_bx").css("width", $(document).width() + "px");
+            $("#PreDataPop_bx").css("height", $(document).height() + "px");
+
+            var doc_width = $(window).width();
+            var padding_width = (doc_width - 312) / 2;
+            $("#Popup").css("margin-top", "30px");
+            $("#Popup").css("margin-left", padding_width + "px");
+        });
+
+    </script>
+    <asp:ContentPlaceHolder ID="conHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+     <div style="display:none;">
+        <input type="textbox" />
+    </div>
+    <script type="text/javascript" src="/Resources/Framework/JIS.Control.js"></script>
+    <script type="text/javascript">
+        var ControlLoad = [];
+    </script>
+    <div id="list">
+        <div id="header">
+            <a class="btn_left" href="javascript:history.back();">
+                <img alt="" src="/Resources/Images/Mobile/btn_prev.png"></a>
+            <%--<center>--%>
+            <a class="btn_center" href="http://tos.nvhkorea.com/pilot/mMain.nsf/main?ReadForm">
+                <img class="logo_img" title="" alt="" src="/Resources/Images/Mobile/logo_NVH.gif" />
+            </a>
+            <%--</center>--%>
+            <a class="btn_right" href="javascript:SiteMap();">
+                <img alt="" src="/Resources/Images/Mobile/btn_next.png"></a>
+        </div>
+        <!--컨테이너시작-->
+        <div id="container">
+            <asp:ContentPlaceHolder ID="conBody" runat="server">
+            </asp:ContentPlaceHolder>
+            <!--하단시작-->
+            <div id="bottom">
+                <div class="btn_bottom">
+                    <a href="http://tos.nvhkorea.com/pilot/Main.nsf/Main_Frame?OpenForm">PC버전</a> <a
+                        href="http://tos.nvhkorea.com/pilot/mMain.nsf/login?ReadForm">로그아웃</a>
+                </div>
+                <img src="/Resources/Images/Mobile/copyright.gif" alt="Copyright 2016 by  NVH KOREA .Inc Corporation All rights reserved." />
+            </div>
+            <!--//하단끝-->
+        </div>
+        <div id="PreDataPop_bx" style="background: rgb(255, 255, 255); left: 0px; top: 0px;
+            width: 100%; height: 100%; position: absolute; z-index: 10000; opacity: 0.6;
+            display: none;" onclick="SiteMapOff();">
+        </div>
+        <div id="Popup" style="transform-origin: left top; border: 0px solid rgb(0, 0, 0);
+            border-image: none; left: 0px; top: 0px; width: 100px; height: 510px; display: none;
+            position: absolute; z-index: 10001;">
+            <iframe style="border: 0px; width: 100px; height: 510px;" src="http://tos.nvhkorea.com/pilot/mmain.nsf/menu?ReadForm"
+                scrolling="no"></iframe>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

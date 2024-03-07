@@ -1,0 +1,991 @@
+DROP PROCEDURE TYJINFWLIB.SP_TYCSI_CSI1060_LIST;
+--  Generate SQL 
+--  Version:                   	V7R4M0 190621 
+--  Generated on:              	21-07-14 16:53:45 
+--  Relational Database:       	S78E0180 
+--  Standards Option:          	Db2 for i 
+SET PATH "QSYS","QSYS2","SYSPROC","SYSIBMADM","LSHPDM" ; 
+  
+CREATE PROCEDURE TYJINFWLIB.SP_TYCSI_CSI1060_LIST ( 
+	IN P_CURRENTPAGEINDEX INTEGER , 
+	IN P_PAGESIZE INTEGER , 
+	IN P_DATE VARCHAR(8) , 
+	IN P_HWAJU VARCHAR(50) , 
+	IN P_GUBUN VARCHAR(1) ) 
+	DYNAMIC RESULT SETS 2 
+	LANGUAGE SQL 
+	SPECIFIC TYJINFWLIB.SP_TYCSI_CSI1060_LIST 
+	NOT DETERMINISTIC 
+	MODIFIES SQL DATA 
+	CALLED ON NULL INPUT 
+	SET OPTION  ALWBLK = *ALLREAD , 
+	ALWCPYDTA = *OPTIMIZE , 
+	COMMIT = *NONE , 
+	DECRESULT = (31, 31, 00) , 
+	DFTRDBCOL = *NONE , 
+	DYNDFTCOL = *NO , 
+	DYNUSRPRF = *USER , 
+	SRTSEQ = *HEX   
+	P1 : BEGIN  -- 시작 
+	DECLARE P_STNUM INTEGER ; 
+	DECLARE P_FNNUM INTEGER ; 
+	DECLARE P_SQLSTRING VARCHAR ( 4000 ) ; 
+	DECLARE P_SQLTOTALROWCOUNT VARCHAR ( 4000 ) ; 
+	DECLARE P_TABLE_QUERY VARCHAR ( 15000 ) ; 
+	DECLARE P_COUNT_QUERY VARCHAR ( 15000 ) ; 
+	DECLARE P_SEARCHCONDITION VARCHAR( 5000 ) ;
+	DECLARE P_CNT INTEGER;
+	DECLARE P_ROWCNT INTEGER;
+	
+
+  
+PREV : BEGIN  -- 값 설정 
+		SET P_STNUM = ( P_PAGESIZE * ( P_CURRENTPAGEINDEX - 1 ) ) + 1 ; 
+		SET P_FNNUM = P_PAGESIZE * P_CURRENTPAGEINDEX ; 
+		SET P_CNT = 0;
+		SET P_ROWCNT = 0;
+		SET P_SEARCHCONDITION = '';
+
+
+	END PREV ; 
+  
+MAIN : BEGIN  -- 실행부 
+
+	SELECT COUNT(*) INTO P_ROWCNT FROM TABLE ( TYSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) );
+
+		C1 : FOR C1 AS 
+
+			SELECT DATA FROM TABLE ( TYSCMLIB . SF_GB_REVCOLROW ( CAST ( P_HWAJU AS VARCHAR ( 100 ) ) , ',' ) )
+
+		DO 
+
+			SET P_CNT = P_CNT + 1;
+			
+			IF P_ROWCNT = 1 THEN 
+
+				SET P_SEARCHCONDITION = '
+
+				AND ''' || C1.DATA || ''' IN (SELECT CSACTHJ              
+				   FROM TYSCMLIB.UTICUSTF     
+				   WHERE CSIPHANG = IPIPHANG   
+				   AND   CSBONSUN = IPBONSUN   
+				   AND   CSHWAJU  = IPHWAJU    
+				   AND   CSHWAMUL = IPHWAMUL   
+				   AND   CSBLNO   = IPBLNO     
+				   AND   CSMSNSEQ = IPMSNSEQ   
+				   AND   CSHSNSEQ = IPHSNSEQ   
+				   AND   CSCUSTIL <= ' || P_DATE || ' ) ';
+
+			ELSE
+
+				IF P_CNT = 1 THEN 
+
+					SET P_SEARCHCONDITION = '
+
+					AND (''' || C1.DATA || ''' IN (SELECT CSACTHJ              
+					   FROM TYSCMLIB.UTICUSTF     
+					   WHERE CSIPHANG = IPIPHANG   
+					   AND   CSBONSUN = IPBONSUN   
+					   AND   CSHWAJU  = IPHWAJU    
+					   AND   CSHWAMUL = IPHWAMUL   
+					   AND   CSBLNO   = IPBLNO     
+					   AND   CSMSNSEQ = IPMSNSEQ   
+					   AND   CSHSNSEQ = IPHSNSEQ   
+					   AND   CSCUSTIL <= ' || P_DATE || ' ) ';
+
+				ELSE	
+
+					SET P_SEARCHCONDITION = P_SEARCHCONDITION || '
+
+					OR ''' || C1.DATA || ''' IN (SELECT CSACTHJ              
+					   FROM TYSCMLIB.UTICUSTF     
+					   WHERE CSIPHANG = IPIPHANG   
+					   AND   CSBONSUN = IPBONSUN   
+					   AND   CSHWAJU  = IPHWAJU    
+					   AND   CSHWAMUL = IPHWAMUL   
+					   AND   CSBLNO   = IPBLNO     
+					   AND   CSMSNSEQ = IPMSNSEQ   
+					   AND   CSHSNSEQ = IPHSNSEQ   
+					   AND   CSCUSTIL <= ' || P_DATE || ' ) ';
+
+				END IF;
+
+			END IF;
+
+		END FOR C1 ; 
+
+		IF P_ROWCNT > 1 THEN 
+
+			SET P_SEARCHCONDITION = P_SEARCHCONDITION || ')';
+
+		END IF;
+
+	IF P_GUBUN = 'S' THEN
+	  
+		LIST : BEGIN  -- 리스트 
+			DECLARE REFCURSOR INSENSITIVE SCROLL CURSOR WITH RETURN FOR CUR1 ;  -- 커서생성 
+
+			SET P_TABLE_QUERY = '
+				WITH TABLE1 AS 
+				(
+				SELECT                     
+				IPIPHANG,                  
+				IPBONSUN,                  
+				VSCODE.CDDESC1 AS VSDESC1, 
+				IPHWAJU,                   
+				VEND.VNSANGHO AS HJDESC1,  
+				IPHWAMUL,                  
+				HMCODE.CDDESC1 AS HMDESC1, 
+				IPBLNO,                    
+				DIGITS(IPMSNSEQ) AS IPMSNSEQ, 
+				DIGITS(IPHSNSEQ) AS IPHSNSEQ, 
+				(CASE WHEN IPHWAJU NOT IN ( ''' || REPLACE(P_HWAJU,',',''',''') || ''' ) THEN 0 ELSE IPMTQTY END) AS IPMTQTY, 
+				IPCHQTY,                   
+				IPPAQTY,                   
+				CASE WHEN IPHWAJU NOT IN ( ''' || REPLACE(P_HWAJU,',',''',''') || ''' ) THEN  
+				( SELECT SUM(CSCUQTY) AS CSCUQTY 
+				    FROM TYSCMLIB.UTICUSTF      
+				   WHERE   CSIPHANG = IPIPHANG   
+				     AND   CSBONSUN = IPBONSUN   
+				     AND   CSHWAJU  = IPHWAJU    
+				     AND   CSHWAMUL = IPHWAMUL   
+				     AND   CSBLNO   = IPBLNO     
+				     AND   CSMSNSEQ = IPMSNSEQ   
+				     AND   CSHSNSEQ = IPHSNSEQ   
+				     AND   CSACTHJ  IN ( ''' || REPLACE(P_HWAJU,',',''',''') || ''' )
+				     AND   CSCUSTIL <= ' || P_DATE || ' ) 
+				ELSE 
+				( SELECT SUM(CSCUQTY) AS CSCUQTY 
+				    FROM TYSCMLIB.UTICUSTF      
+				   WHERE   CSIPHANG = IPIPHANG   
+				     AND   CSBONSUN = IPBONSUN   
+				     AND   CSHWAJU  = IPHWAJU    
+				     AND   CSHWAMUL = IPHWAMUL   
+				     AND   CSBLNO   = IPBLNO     
+				     AND   CSMSNSEQ = IPMSNSEQ   
+				     AND   CSHSNSEQ = IPHSNSEQ   
+				     AND   CSCUSTIL <= ' || P_DATE || ' ) 
+				END AS CSCUQTY,                            
+				COALESCE(SUM(CHUL.CHMTQTY),0) AS CHMTQTY,
+				(SELECT VALUE(SUM(IPMTQTY),0) 
+					FROM TYSCMLIB.UTIIPGOF
+					WHERE IPIPHANG = IPGO.IPIPHANG
+					AND   IPBONSUN = IPGO.IPBONSUN
+					AND   IPHWAJU = IPGO.IPHWAJU
+					AND   IPHWAMUL = IPGO.IPHWAMUL
+					AND   IPBLNO = IPGO.IPBLNO
+					AND   IPMSNSEQ = IPGO.IPMSNSEQ
+					AND   IPJNHSNSEQ = IPGO.IPHSNSEQ
+					AND   IPCHGUBN = ''Y'' ) AS JUNIPMTQTY,
+				(SELECT COALESCE(SUM(CHMTQTY),0) 
+					FROM TYSCMLIB.UTICHULF 
+					WHERE CHIPHANG = IPGO.IPIPHANG
+					AND    CHBONSUN = IPGO.IPBONSUN
+					AND    CHHWAJU = IPGO.IPHWAJU
+					AND    CHHWAMUL = IPGO.IPHWAMUL
+					AND    CHBLNO = IPGO.IPBLNO
+					AND    CHMSNSEQ = IPGO.IPMSNSEQ
+					AND    CHHSNSEQ = IPGO.IPHSNSEQ
+					AND    CHCHULIL <= ' || P_DATE || ') AS CHMTQTY1,
+				(SELECT COALESCE(SUM(CHMTQTY),0) 
+					FROM TYSCMLIB.UTICHULF 
+					WHERE CHIPHANG = IPGO.IPIPHANG
+					AND    CHBONSUN = IPGO.IPBONSUN
+					AND    CHHWAJU = IPGO.IPHWAJU
+					AND    CHHWAMUL = IPGO.IPHWAMUL
+					AND    CHBLNO = IPGO.IPBLNO
+					AND    CHMSNSEQ = IPGO.IPMSNSEQ
+					AND    CHHSNSEQ = IPGO.IPHSNSEQ
+						      AND    CHACTHJ IN ( ''' || REPLACE(P_HWAJU,',',''',''') || ''' )
+					AND    CHCHULIL <= ' || P_DATE || ') AS CHMTQTY2
+				FROM TYSCMLIB.UTIIPGOF AS IPGO       
+				LEFT OUTER JOIN TYSCMLIB.UTICODEF AS VSCODE        
+				ON                  ''VS'' = VSCODE.CDINDEX          
+				AND        IPGO.IPBONSUN = VSCODE.CDCODE           
+				LEFT OUTER JOIN TYSCMLIB.UTIVENDF AS VEND          
+				ON         IPGO.IPHWAJU  = VEND.VNCODE             
+				LEFT OUTER JOIN TYSCMLIB.UTICODEF AS HMCODE        
+				ON                  ''HM'' = HMCODE.CDINDEX           
+				AND        IPGO.IPHWAMUL = HMCODE.CDCODE            
+				LEFT OUTER JOIN ( SELECT CHIPHANG, 
+							 CHBONSUN, 
+								 CHHWAJU,  
+								 CHHWAMUL, 
+							 CHBLNO,   
+							 CHMSNSEQ, 
+							 CHHSNSEQ, 
+								 CHCUSTIL, 
+								 CHACTHJ,  
+								 SUM(CHMTQTY) AS CHMTQTY 
+						  FROM TYSCMLIB.UTICHULF 
+					   WHERE  CHCHULIL <= ' || P_DATE || '
+					     AND  CHCUSTIL <= ' || P_DATE || '
+					   GROUP BY CHIPHANG, CHBONSUN, CHHWAJU, CHHWAMUL,CHBLNO,CHMSNSEQ, CHHSNSEQ ,CHCUSTIL, CHACTHJ ) CHUL 
+				ON         IPGO.IPIPHANG = CHUL.CHIPHANG             
+				AND        IPGO.IPBONSUN = CHUL.CHBONSUN             
+				AND        IPGO.IPHWAJU  = CHUL.CHHWAJU              
+				AND        IPGO.IPHWAMUL = CHUL.CHHWAMUL             
+				AND        IPGO.IPBLNO   = CHUL.CHBLNO               
+				AND        IPGO.IPMSNSEQ = CHUL.CHMSNSEQ             
+				AND        IPGO.IPHSNSEQ = CHUL.CHHSNSEQ             
+				WHERE      IPGO.IPIPHANG BETWEEN 20060101 AND ' || P_DATE || '
+
+				' || P_SEARCHCONDITION || '
+
+				GROUP BY IPIPHANG,IPBONSUN,IPHWAJU,IPHWAMUL,IPBLNO,IPMSNSEQ,IPHSNSEQ, 
+					 IPMTQTY,IPCHQTY,IPPAQTY,VSCODE.CDDESC1,    
+					 VEND.VNSANGHO,HMCODE.CDDESC1              
+				HAVING IPPAQTY - COALESCE(SUM(CHMTQTY),0) > 0       
+				ORDER BY IPHWAMUL,IPIPHANG DESC  
+				), TABLE2 AS (
+				SELECT
+					IPIPHANG,
+					IPBONSUN,
+					VSDESC1, 
+					IPHWAJU,
+					HJDESC1,  
+					IPHWAMUL,
+					HMDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY, 
+					IPCHQTY,
+					IPPAQTY,
+					CSCUQTY,
+					CHMTQTY,
+					JUNIPMTQTY,
+					CHMTQTY1,
+					CHMTQTY2,
+					CASE WHEN IPMTQTY > 0 THEN CHMTQTY1 ELSE CHMTQTY2 END AS PCHQTY,
+					CSCUQTY AS PPAQTY,
+					CSCUQTY - (CASE WHEN IPMTQTY > 0 THEN CHMTQTY1 ELSE CHMTQTY2 END) AS BCHQTY,
+					IPMTQTY - CSCUQTY AS BPAQTY
+				FROM TABLE1	
+				), TABLE3 AS (
+				SELECT
+					IPHWAMUL,
+					HMDESC1,
+					IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY, 
+					PPAQTY AS CSCUQTY,
+					PCHQTY AS CHMTQTY,
+					JUNIPMTQTY,
+					BCHQTY AS REJEGOQTY,
+					BPAQTY - JUNIPMTQTY AS REPAQTY
+				FROM TABLE2
+				WHERE IPMTQTY <> 0
+				AND    ((IPMTQTY - JUNIPMTQTY) <> PCHQTY OR (IPMTQTY - JUNIPMTQTY) <> PPAQTY)
+
+				UNION ALL
+
+				SELECT
+					IPHWAMUL,
+					HMDESC1,
+					IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY,
+					CSCUQTY,
+					CHMTQTY2 AS CHMTQTY,
+					JUNIPMTQTY,
+					CSCUQTY - CHMTQTY2 AS REJEGOQTY,
+					0 AS REPAQTY
+				FROM TABLE2
+				WHERE IPMTQTY = 0 
+				), TABLE4 AS (
+				SELECT
+					''A'' AS GUBUN,
+					ROW_NUMBER() OVER(ORDER BY IPHWAMUL,IPIPHANG DESC) AS ROWNO,   
+					IPHWAMUL,
+					HMDESC1,
+					SUBSTR(IPIPHANG,1,4) || ''/'' || SUBSTR(IPIPHANG,5,2) || ''/'' || SUBSTR(IPIPHANG,7,2) AS IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY,
+					CSCUQTY,
+					CHMTQTY,
+					JUNIPMTQTY,
+					REJEGOQTY,
+					REPAQTY
+				FROM TABLE3
+				), TABLE_HAP AS (
+				SELECT
+					''B'' AS GUBUN,
+					ROW_NUMBER() OVER( ORDER BY IPHWAMUL) AS ROWNO,      
+					IPHWAMUL,
+					'''' AS HMDESC1,
+					'''' AS IPIPHANG,
+					'''' AS VSDESC1, 
+					'''' AS HJDESC1, 
+					'''' AS IPBLNO,
+					'''' AS IPMSNSEQ,
+					'''' AS IPHSNSEQ,
+					SUM(IPMTQTY) AS IPMTQTY,
+					SUM(CSCUQTY) AS CSCUQTY,
+					SUM(CHMTQTY) AS CHMTQTY,
+					SUM(JUNIPMTQTY) AS JUNIPMTQTY,
+					SUM(REJEGOQTY) AS REJEGOQTY,
+					SUM(REPAQTY) AS REPAQTY
+				FROM TABLE3
+				GROUP BY IPHWAMUL
+				), TABLE_LIST AS (
+				SELECT
+					GUBUN,
+					ROWNO,
+					IPHWAMUL,
+					HMDESC1,
+					IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY,
+					CSCUQTY,
+					CHMTQTY,
+					JUNIPMTQTY,
+					REJEGOQTY,
+					REPAQTY
+				FROM TABLE4
+
+				UNION ALL
+
+				SELECT
+					GUBUN,
+					ROWNO,
+					IPHWAMUL,
+					HMDESC1,
+					IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY,
+					CSCUQTY,
+					CHMTQTY,
+					JUNIPMTQTY,
+					REJEGOQTY,
+					REPAQTY
+				FROM TABLE_HAP
+
+				UNION ALL
+
+				SELECT
+					''C'' AS GUBUN,
+					9999 AS ROWNO,      
+					''0'' AS IPHWAMUL,
+					'''' AS HMDESC1,
+					'''' AS IPIPHANG,
+					'''' AS VSDESC1, 
+					'''' AS HJDESC1, 
+					'''' AS IPBLNO,
+					'''' AS IPMSNSEQ,
+					'''' AS IPHSNSEQ,
+					SUM(IPMTQTY) AS IPMTQTY,
+					SUM(CSCUQTY) AS CSCUQTY,
+					SUM(CHMTQTY) AS CHMTQTY,
+					SUM(JUNIPMTQTY) AS JUNIPMTQTY,
+					SUM(REJEGOQTY) AS REJEGOQTY,
+					SUM(REPAQTY) AS REPAQTY
+				FROM TABLE_HAP
+				) , ORIGINAL_DATA AS  (
+				SELECT
+					GUBUN,    					
+					ROW_NUMBER() OVER(ORDER BY IPHWAMUL, GUBUN, ROWNO) AS ROWNO,     
+					IPHWAMUL,
+					CASE WHEN GUBUN = ''B'' THEN ''<div style="text-align:center;width:120px;margin-right:10px;font-size:13px;height:18px;padding-top:2px;float:left;color:blue" >화 물 계</div>'' 
+					      WHEN GUBUN = ''C'' THEN ''<div style="text-align:center;width:120px;margin-right:10px;font-size:13px;height:18px;padding-top:2px;float:left;color:red" >총 합 계</div>'' 
+					      ELSE HMDESC1 END AS HMDESC1,
+					IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					CASE WHEN GUBUN = ''B'' THEN ''<div style="text-align:right;width:110px;margin-right:1px;font-size:13px;height:18px;padding-top:2px;float:right;color:blue" > ''||TRIM(TO_CHAR(IPMTQTY, ''9,999,990.000''))|| ''</div>'' 
+					      WHEN GUBUN = ''C'' THEN ''<div style="text-align:right;width:110px;margin-right:1px;font-size:13px;height:18px;padding-top:2px;float:right;color:red;" > ''||TRIM(TO_CHAR(IPMTQTY, ''9,999,990.000''))||''</div>''
+					      ELSE TRIM(TO_CHAR(IPMTQTY, ''9,999,990.000'')) END AS IPMTQTY,  
+					CASE WHEN GUBUN = ''B'' THEN ''<div style="text-align:right;width:110px;margin-right:1px;font-size:13px;height:18px;padding-top:2px;float:right;color:blue" > ''||TRIM(TO_CHAR(CSCUQTY, ''9,999,990.000''))|| ''</div>''
+					      WHEN GUBUN = ''C'' THEN ''<div style="text-align:right;width:110px;margin-right:1px;font-size:13px;height:18px;padding-top:2px;float:right;color:red;" > ''||TRIM(TO_CHAR(CSCUQTY, ''9,999,990.000''))||''</div>''
+					      ELSE TRIM(TO_CHAR(CSCUQTY, ''9,999,990.000'')) END AS CSCUQTY,  
+					CASE WHEN GUBUN = ''B'' THEN ''<div style="text-align:right;width:110px;margin-right:1px;font-size:13px;height:18px;padding-top:2px;float:right;color:blue" > ''||TRIM(TO_CHAR(CHMTQTY, ''9,999,990.000''))|| ''</div>'' 
+					      WHEN GUBUN = ''C'' THEN ''<div style="text-align:right;width:110px;margin-right:1px;font-size:13px;height:18px;padding-top:2px;float:right;color:red;" > ''||TRIM(TO_CHAR(CHMTQTY, ''9,999,990.000''))||''</div>''
+					      ELSE TRIM(TO_CHAR(CHMTQTY, ''9,999,990.000'')) END AS CHMTQTY,  
+					CASE WHEN GUBUN = ''B'' THEN ''<div style="text-align:right;width:110px;margin-right:1px;font-size:13px;height:18px;padding-top:2px;float:right;color:blue" > ''||TRIM(TO_CHAR(JUNIPMTQTY, ''9,999,990.000''))|| ''</div>'' 
+					      WHEN GUBUN = ''C'' THEN ''<div style="text-align:right;width:110px;margin-right:1px;font-size:13px;height:18px;padding-top:2px;float:right;color:red;" > ''||TRIM(TO_CHAR(JUNIPMTQTY, ''9,999,990.000''))||''</div>''
+					      ELSE TRIM(TO_CHAR(JUNIPMTQTY, ''9,999,990.000'')) END AS JUNIPMTQTY,  
+					CASE WHEN GUBUN = ''B'' THEN ''<div style="text-align:right;width:110px;margin-right:1px;font-size:13px;height:18px;padding-top:2px;float:right;color:blue" > ''||TRIM(TO_CHAR(REJEGOQTY, ''9,999,990.000''))|| ''</div>'' 
+					      WHEN GUBUN = ''C'' THEN ''<div style="text-align:right;width:110px;margin-right:1px;font-size:13px;height:18px;padding-top:2px;float:right;color:red;" > ''||TRIM(TO_CHAR(REJEGOQTY, ''9,999,990.000''))||''</div>''
+					      ELSE TRIM(TO_CHAR(REJEGOQTY, ''9,999,990.000'')) END AS REJEGOQTY,  
+					CASE WHEN GUBUN = ''B'' THEN ''<div style="text-align:right;width:110px;margin-right:1px;font-size:13px;height:18px;padding-top:2px;float:right;color:blue" > ''||TRIM(TO_CHAR(REPAQTY, ''9,999,990.000''))|| ''</div>''
+					      WHEN GUBUN = ''C'' THEN ''<div style="text-align:right;width:110px;margin-right:1px;font-size:13px;height:18px;padding-top:2px;float:right;color:red;" > ''||TRIM(TO_CHAR(REPAQTY, ''9,999,990.000''))||''</div>''
+					      ELSE TRIM(TO_CHAR(REPAQTY, ''9,999,990.000'')) END AS REPAQTY
+				FROM TABLE_LIST
+				)
+				SELECT
+					GUBUN,
+					ROWNO,
+					IPHWAMUL,
+					HMDESC1,
+					IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY,
+					CSCUQTY,
+					CHMTQTY,
+					JUNIPMTQTY,
+					REJEGOQTY,
+					REPAQTY
+				FROM ORIGINAL_DATA
+				WHERE ROWNO BETWEEN ' || CAST ( P_STNUM AS VARCHAR ( 100 ) ) || ' AND ' || CAST ( P_FNNUM AS VARCHAR ( 100 ) ) || '
+				ORDER BY ROWNO ASC 		'       ;   
+				
+			PREPARE CUR1 FROM P_TABLE_QUERY ; 
+			OPEN REFCURSOR ; 
+		END LIST ; 
+
+		PAGING : BEGIN  -- 페이징 
+
+
+			DECLARE REFCURSOR2 INSENSITIVE SCROLL CURSOR WITH RETURN FOR CUR2 ;  -- 커서생성 
+
+			SET P_TABLE_QUERY = '
+				WITH TABLE1 AS 
+				(
+				SELECT                     
+				IPIPHANG,                  
+				IPBONSUN,                  
+				VSCODE.CDDESC1 AS VSDESC1, 
+				IPHWAJU,                   
+				VEND.VNSANGHO AS HJDESC1,  
+				IPHWAMUL,                  
+				HMCODE.CDDESC1 AS HMDESC1, 
+				IPBLNO,                    
+				DIGITS(IPMSNSEQ) AS IPMSNSEQ, 
+				DIGITS(IPHSNSEQ) AS IPHSNSEQ, 
+				(CASE WHEN IPHWAJU NOT IN ( ''' || REPLACE(P_HWAJU,',',''',''') || ''' ) THEN 0 ELSE IPMTQTY END) AS IPMTQTY, 
+				IPCHQTY,                   
+				IPPAQTY,                   
+				CASE WHEN IPHWAJU NOT IN ( ''' || REPLACE(P_HWAJU,',',''',''') || ''' ) THEN  
+				( SELECT SUM(CSCUQTY) AS CSCUQTY 
+				    FROM TYSCMLIB.UTICUSTF      
+				   WHERE   CSIPHANG = IPIPHANG   
+				     AND   CSBONSUN = IPBONSUN   
+				     AND   CSHWAJU  = IPHWAJU    
+				     AND   CSHWAMUL = IPHWAMUL   
+				     AND   CSBLNO   = IPBLNO     
+				     AND   CSMSNSEQ = IPMSNSEQ   
+				     AND   CSHSNSEQ = IPHSNSEQ   
+				     AND   CSACTHJ  IN ( ''' || REPLACE(P_HWAJU,',',''',''') || ''' )
+				     AND   CSCUSTIL <= ' || P_DATE || ' ) 
+				ELSE 
+				( SELECT SUM(CSCUQTY) AS CSCUQTY 
+				    FROM TYSCMLIB.UTICUSTF      
+				   WHERE   CSIPHANG = IPIPHANG   
+				     AND   CSBONSUN = IPBONSUN   
+				     AND   CSHWAJU  = IPHWAJU    
+				     AND   CSHWAMUL = IPHWAMUL   
+				     AND   CSBLNO   = IPBLNO     
+				     AND   CSMSNSEQ = IPMSNSEQ   
+				     AND   CSHSNSEQ = IPHSNSEQ   
+				     AND   CSCUSTIL <= ' || P_DATE || ' ) 
+				END AS CSCUQTY,                            
+				COALESCE(SUM(CHUL.CHMTQTY),0) AS CHMTQTY,
+				(SELECT VALUE(SUM(IPMTQTY),0) 
+					FROM TYSCMLIB.UTIIPGOF
+					WHERE IPIPHANG = IPGO.IPIPHANG
+					AND   IPBONSUN = IPGO.IPBONSUN
+					AND   IPHWAJU = IPGO.IPHWAJU
+					AND   IPHWAMUL = IPGO.IPHWAMUL
+					AND   IPBLNO = IPGO.IPBLNO
+					AND   IPMSNSEQ = IPGO.IPMSNSEQ
+					AND   IPJNHSNSEQ = IPGO.IPHSNSEQ
+					AND   IPCHGUBN = ''Y'' ) AS JUNIPMTQTY,
+				(SELECT COALESCE(SUM(CHMTQTY),0) 
+					FROM TYSCMLIB.UTICHULF 
+					WHERE CHIPHANG = IPGO.IPIPHANG
+					AND    CHBONSUN = IPGO.IPBONSUN
+					AND    CHHWAJU = IPGO.IPHWAJU
+					AND    CHHWAMUL = IPGO.IPHWAMUL
+					AND    CHBLNO = IPGO.IPBLNO
+					AND    CHMSNSEQ = IPGO.IPMSNSEQ
+					AND    CHHSNSEQ = IPGO.IPHSNSEQ
+					AND    CHCHULIL <= ' || P_DATE || ') AS CHMTQTY1,
+				(SELECT COALESCE(SUM(CHMTQTY),0) 
+					FROM TYSCMLIB.UTICHULF 
+					WHERE CHIPHANG = IPGO.IPIPHANG
+					AND    CHBONSUN = IPGO.IPBONSUN
+					AND    CHHWAJU = IPGO.IPHWAJU
+					AND    CHHWAMUL = IPGO.IPHWAMUL
+					AND    CHBLNO = IPGO.IPBLNO
+					AND    CHMSNSEQ = IPGO.IPMSNSEQ
+					AND    CHHSNSEQ = IPGO.IPHSNSEQ
+						      AND    CHACTHJ IN ( ''' || REPLACE(P_HWAJU,',',''',''') || ''' )
+					AND    CHCHULIL <= ' || P_DATE || ') AS CHMTQTY2
+				FROM TYSCMLIB.UTIIPGOF AS IPGO       
+				LEFT OUTER JOIN TYSCMLIB.UTICODEF AS VSCODE        
+				ON                  ''VS'' = VSCODE.CDINDEX          
+				AND        IPGO.IPBONSUN = VSCODE.CDCODE           
+				LEFT OUTER JOIN TYSCMLIB.UTIVENDF AS VEND          
+				ON         IPGO.IPHWAJU  = VEND.VNCODE             
+				LEFT OUTER JOIN TYSCMLIB.UTICODEF AS HMCODE        
+				ON                  ''HM'' = HMCODE.CDINDEX           
+				AND        IPGO.IPHWAMUL = HMCODE.CDCODE            
+				LEFT OUTER JOIN ( SELECT CHIPHANG, 
+							 CHBONSUN, 
+								 CHHWAJU,  
+								 CHHWAMUL, 
+							 CHBLNO,   
+							 CHMSNSEQ, 
+							 CHHSNSEQ, 
+								 CHCUSTIL, 
+								 CHACTHJ,  
+								 SUM(CHMTQTY) AS CHMTQTY 
+						  FROM TYSCMLIB.UTICHULF 
+					   WHERE  CHCHULIL <= ' || P_DATE || '
+					     AND  CHCUSTIL <= ' || P_DATE || '
+					   GROUP BY CHIPHANG, CHBONSUN, CHHWAJU, CHHWAMUL,CHBLNO,CHMSNSEQ, CHHSNSEQ ,CHCUSTIL, CHACTHJ ) CHUL 
+				ON         IPGO.IPIPHANG = CHUL.CHIPHANG             
+				AND        IPGO.IPBONSUN = CHUL.CHBONSUN             
+				AND        IPGO.IPHWAJU  = CHUL.CHHWAJU              
+				AND        IPGO.IPHWAMUL = CHUL.CHHWAMUL             
+				AND        IPGO.IPBLNO   = CHUL.CHBLNO               
+				AND        IPGO.IPMSNSEQ = CHUL.CHMSNSEQ             
+				AND        IPGO.IPHSNSEQ = CHUL.CHHSNSEQ             
+				WHERE      IPGO.IPIPHANG BETWEEN 20060101 AND ' || P_DATE || '
+
+				' || P_SEARCHCONDITION || '
+
+				GROUP BY IPIPHANG,IPBONSUN,IPHWAJU,IPHWAMUL,IPBLNO,IPMSNSEQ,IPHSNSEQ, 
+					 IPMTQTY,IPCHQTY,IPPAQTY,VSCODE.CDDESC1,    
+					 VEND.VNSANGHO,HMCODE.CDDESC1              
+				HAVING IPPAQTY - COALESCE(SUM(CHMTQTY),0) > 0       
+				ORDER BY IPHWAMUL,IPIPHANG DESC  
+				), TABLE2 AS (
+				SELECT
+					IPIPHANG,
+					IPBONSUN,
+					VSDESC1, 
+					IPHWAJU,
+					HJDESC1,  
+					IPHWAMUL,
+					HMDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY, 
+					IPCHQTY,
+					IPPAQTY,
+					CSCUQTY,
+					CHMTQTY,
+					JUNIPMTQTY,
+					CHMTQTY1,
+					CHMTQTY2,
+					CASE WHEN IPMTQTY > 0 THEN CHMTQTY1 ELSE CHMTQTY2 END AS PCHQTY,
+					CSCUQTY AS PPAQTY,
+					CSCUQTY - (CASE WHEN IPMTQTY > 0 THEN CHMTQTY1 ELSE CHMTQTY2 END) AS BCHQTY,
+					IPMTQTY - CSCUQTY AS BPAQTY
+				FROM TABLE1	
+				), TABLE3 AS (
+				SELECT
+					IPHWAMUL,
+					HMDESC1,
+					IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY, 
+					PPAQTY AS CSCUQTY,
+					PCHQTY AS CHMTQTY,
+					JUNIPMTQTY,
+					BCHQTY AS REJEGOQTY,
+					BPAQTY - JUNIPMTQTY AS REPAQTY
+				FROM TABLE2
+				WHERE IPMTQTY <> 0
+				AND    ((IPMTQTY - JUNIPMTQTY) <> PCHQTY OR (IPMTQTY - JUNIPMTQTY) <> PPAQTY)
+
+				UNION ALL
+
+				SELECT
+					IPHWAMUL,
+					HMDESC1,
+					IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY,
+					CSCUQTY,
+					CHMTQTY2 AS CHMTQTY,
+					JUNIPMTQTY,
+					CSCUQTY - CHMTQTY2 AS REJEGOQTY,
+					0 AS REPAQTY
+				FROM TABLE2
+				WHERE IPMTQTY = 0 
+				), TABLE4 AS (
+				SELECT
+					''A'' AS GUBUN,
+					ROW_NUMBER() OVER(ORDER BY IPHWAMUL,IPIPHANG DESC) AS ROWNO,   
+					IPHWAMUL,
+					HMDESC1,
+					SUBSTR(IPIPHANG,1,4) || ''/'' || SUBSTR(IPIPHANG,5,2) || ''/'' || SUBSTR(IPIPHANG,7,2) AS IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY,
+					CSCUQTY,
+					CHMTQTY,
+					JUNIPMTQTY,
+					REJEGOQTY,
+					REPAQTY
+				FROM TABLE3
+				), TABLE_HAP AS (
+				SELECT
+					''B'' AS GUBUN,
+					ROW_NUMBER() OVER( ORDER BY IPHWAMUL) AS ROWNO,      
+					IPHWAMUL,
+					'''' AS HMDESC1,
+					'''' AS IPIPHANG,
+					'''' AS VSDESC1, 
+					'''' AS HJDESC1, 
+					'''' AS IPBLNO,
+					'''' AS IPMSNSEQ,
+					'''' AS IPHSNSEQ,
+					SUM(IPMTQTY) AS IPMTQTY,
+					SUM(CSCUQTY) AS CSCUQTY,
+					SUM(CHMTQTY) AS CHMTQTY,
+					SUM(JUNIPMTQTY) AS JUNIPMTQTY,
+					SUM(REJEGOQTY) AS REJEGOQTY,
+					SUM(REPAQTY) AS REPAQTY
+				FROM TABLE3
+				GROUP BY IPHWAMUL
+				), TABLE_LIST AS (
+				SELECT
+					GUBUN,
+					ROWNO,
+					IPHWAMUL,
+					HMDESC1,
+					IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY,
+					CSCUQTY,
+					CHMTQTY,
+					JUNIPMTQTY,
+					REJEGOQTY,
+					REPAQTY
+				FROM TABLE4
+
+				UNION ALL
+
+				SELECT
+					GUBUN,
+					ROWNO,
+					IPHWAMUL,
+					HMDESC1,
+					IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY,
+					CSCUQTY,
+					CHMTQTY,
+					JUNIPMTQTY,
+					REJEGOQTY,
+					REPAQTY
+				FROM TABLE_HAP
+
+				UNION ALL
+
+				SELECT
+					''C'' AS GUBUN,
+					9999 AS ROWNO,      
+					''0'' AS IPHWAMUL,
+					'''' AS HMDESC1,
+					'''' AS IPIPHANG,
+					'''' AS VSDESC1, 
+					'''' AS HJDESC1, 
+					'''' AS IPBLNO,
+					'''' AS IPMSNSEQ,
+					'''' AS IPHSNSEQ,
+					SUM(IPMTQTY) AS IPMTQTY,
+					SUM(CSCUQTY) AS CSCUQTY,
+					SUM(CHMTQTY) AS CHMTQTY,
+					SUM(JUNIPMTQTY) AS JUNIPMTQTY,
+					SUM(REJEGOQTY) AS REJEGOQTY,
+					SUM(REPAQTY) AS REPAQTY
+				FROM TABLE_HAP
+				) , ORIGINAL_DATA AS  (
+				SELECT
+					GUBUN,    					
+					ROW_NUMBER() OVER(ORDER BY IPHWAMUL, GUBUN, ROWNO) AS ROWNO,     
+					IPHWAMUL,
+					CASE WHEN GUBUN = ''B'' THEN ''화 물 계'' 
+					      WHEN GUBUN = ''C'' THEN ''총 합 계'' 
+					      ELSE HMDESC1 END AS HMDESC1,
+					IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY,  
+					CSCUQTY,  
+					CHMTQTY,  
+					JUNIPMTQTY,  
+					REJEGOQTY,  
+					REPAQTY
+				FROM TABLE_LIST
+				)
+				SELECT
+					COUNT(*) AS TOTALCOUNT
+				FROM ORIGINAL_DATA 		'       ;   
+				
+			PREPARE CUR2 FROM P_TABLE_QUERY ; 
+			OPEN REFCURSOR2 ; 
+		
+		END PAGING ; 
+		 
+	ELSE
+
+		PRINT : BEGIN  -- 출력
+
+			DECLARE REFCURSOR3 INSENSITIVE SCROLL CURSOR WITH RETURN FOR CUR3 ;  -- 커서생성 
+
+			SET P_TABLE_QUERY = '
+				WITH TABLE1 AS 
+				(
+				SELECT                     
+				IPIPHANG,                  
+				IPBONSUN,                  
+				VSCODE.CDDESC1 AS VSDESC1, 
+				IPHWAJU,                   
+				VEND.VNSANGHO AS HJDESC1,  
+				IPHWAMUL,                  
+				HMCODE.CDDESC1 AS HMDESC1, 
+				IPBLNO,                    
+				DIGITS(IPMSNSEQ) AS IPMSNSEQ, 
+				DIGITS(IPHSNSEQ) AS IPHSNSEQ, 
+				(CASE WHEN IPHWAJU NOT IN ( ''' || REPLACE(P_HWAJU,',',''',''') || ''' ) THEN 0 ELSE IPMTQTY END) AS IPMTQTY, 
+				IPCHQTY,                   
+				IPPAQTY,                   
+				CASE WHEN IPHWAJU NOT IN ( ''' || REPLACE(P_HWAJU,',',''',''') || ''' ) THEN  
+				( SELECT SUM(CSCUQTY) AS CSCUQTY 
+				    FROM TYSCMLIB.UTICUSTF      
+				   WHERE   CSIPHANG = IPIPHANG   
+				     AND   CSBONSUN = IPBONSUN   
+				     AND   CSHWAJU  = IPHWAJU    
+				     AND   CSHWAMUL = IPHWAMUL   
+				     AND   CSBLNO   = IPBLNO     
+				     AND   CSMSNSEQ = IPMSNSEQ   
+				     AND   CSHSNSEQ = IPHSNSEQ   
+				     AND   CSACTHJ  IN ( ''' || REPLACE(P_HWAJU,',',''',''') || ''' )
+				     AND   CSCUSTIL <= ' || P_DATE || ' ) 
+				ELSE 
+				( SELECT SUM(CSCUQTY) AS CSCUQTY 
+				    FROM TYSCMLIB.UTICUSTF      
+				   WHERE   CSIPHANG = IPIPHANG   
+				     AND   CSBONSUN = IPBONSUN   
+				     AND   CSHWAJU  = IPHWAJU    
+				     AND   CSHWAMUL = IPHWAMUL   
+				     AND   CSBLNO   = IPBLNO     
+				     AND   CSMSNSEQ = IPMSNSEQ   
+				     AND   CSHSNSEQ = IPHSNSEQ   
+				     AND   CSCUSTIL <= ' || P_DATE || ' ) 
+				END AS CSCUQTY,                            
+				COALESCE(SUM(CHUL.CHMTQTY),0) AS CHMTQTY,
+				(SELECT VALUE(SUM(IPMTQTY),0) 
+					FROM TYSCMLIB.UTIIPGOF
+					WHERE IPIPHANG = IPGO.IPIPHANG
+					AND   IPBONSUN = IPGO.IPBONSUN
+					AND   IPHWAJU = IPGO.IPHWAJU
+					AND   IPHWAMUL = IPGO.IPHWAMUL
+					AND   IPBLNO = IPGO.IPBLNO
+					AND   IPMSNSEQ = IPGO.IPMSNSEQ
+					AND   IPJNHSNSEQ = IPGO.IPHSNSEQ
+					AND   IPCHGUBN = ''Y'' ) AS JUNIPMTQTY,
+				(SELECT COALESCE(SUM(CHMTQTY),0) 
+					FROM TYSCMLIB.UTICHULF 
+					WHERE CHIPHANG = IPGO.IPIPHANG
+					AND    CHBONSUN = IPGO.IPBONSUN
+					AND    CHHWAJU = IPGO.IPHWAJU
+					AND    CHHWAMUL = IPGO.IPHWAMUL
+					AND    CHBLNO = IPGO.IPBLNO
+					AND    CHMSNSEQ = IPGO.IPMSNSEQ
+					AND    CHHSNSEQ = IPGO.IPHSNSEQ
+					AND    CHCHULIL <= ' || P_DATE || ') AS CHMTQTY1,
+				(SELECT COALESCE(SUM(CHMTQTY),0) 
+					FROM TYSCMLIB.UTICHULF 
+					WHERE CHIPHANG = IPGO.IPIPHANG
+					AND    CHBONSUN = IPGO.IPBONSUN
+					AND    CHHWAJU = IPGO.IPHWAJU
+					AND    CHHWAMUL = IPGO.IPHWAMUL
+					AND    CHBLNO = IPGO.IPBLNO
+					AND    CHMSNSEQ = IPGO.IPMSNSEQ
+					AND    CHHSNSEQ = IPGO.IPHSNSEQ
+						      AND    CHACTHJ IN ( ''' || REPLACE(P_HWAJU,',',''',''') || ''' )
+					AND    CHCHULIL <= ' || P_DATE || ') AS CHMTQTY2
+				FROM TYSCMLIB.UTIIPGOF AS IPGO       
+				LEFT OUTER JOIN TYSCMLIB.UTICODEF AS VSCODE        
+				ON                  ''VS'' = VSCODE.CDINDEX          
+				AND        IPGO.IPBONSUN = VSCODE.CDCODE           
+				LEFT OUTER JOIN TYSCMLIB.UTIVENDF AS VEND          
+				ON         IPGO.IPHWAJU  = VEND.VNCODE             
+				LEFT OUTER JOIN TYSCMLIB.UTICODEF AS HMCODE        
+				ON                  ''HM'' = HMCODE.CDINDEX           
+				AND        IPGO.IPHWAMUL = HMCODE.CDCODE            
+				LEFT OUTER JOIN ( SELECT CHIPHANG, 
+							 CHBONSUN, 
+								 CHHWAJU,  
+								 CHHWAMUL, 
+							 CHBLNO,   
+							 CHMSNSEQ, 
+							 CHHSNSEQ, 
+								 CHCUSTIL, 
+								 CHACTHJ,  
+								 SUM(CHMTQTY) AS CHMTQTY 
+						  FROM TYSCMLIB.UTICHULF 
+					   WHERE  CHCHULIL <= ' || P_DATE || '
+					     AND  CHCUSTIL <= ' || P_DATE || '
+					   GROUP BY CHIPHANG, CHBONSUN, CHHWAJU, CHHWAMUL,CHBLNO,CHMSNSEQ, CHHSNSEQ ,CHCUSTIL, CHACTHJ ) CHUL 
+				ON         IPGO.IPIPHANG = CHUL.CHIPHANG             
+				AND        IPGO.IPBONSUN = CHUL.CHBONSUN             
+				AND        IPGO.IPHWAJU  = CHUL.CHHWAJU              
+				AND        IPGO.IPHWAMUL = CHUL.CHHWAMUL             
+				AND        IPGO.IPBLNO   = CHUL.CHBLNO               
+				AND        IPGO.IPMSNSEQ = CHUL.CHMSNSEQ             
+				AND        IPGO.IPHSNSEQ = CHUL.CHHSNSEQ             
+				WHERE      IPGO.IPIPHANG BETWEEN 20060101 AND ' || P_DATE || '
+
+				' || P_SEARCHCONDITION || '
+
+				GROUP BY IPIPHANG,IPBONSUN,IPHWAJU,IPHWAMUL,IPBLNO,IPMSNSEQ,IPHSNSEQ, 
+					 IPMTQTY,IPCHQTY,IPPAQTY,VSCODE.CDDESC1,    
+					 VEND.VNSANGHO,HMCODE.CDDESC1              
+				HAVING IPPAQTY - COALESCE(SUM(CHMTQTY),0) > 0       
+				ORDER BY IPHWAMUL,IPIPHANG DESC  
+				), TABLE2 AS (
+				SELECT
+					IPIPHANG,
+					IPBONSUN,
+					VSDESC1, 
+					IPHWAJU,
+					HJDESC1,  
+					IPHWAMUL,
+					HMDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY, 
+					IPCHQTY,
+					IPPAQTY,
+					CSCUQTY,
+					CHMTQTY,
+					JUNIPMTQTY,
+					CHMTQTY1,
+					CHMTQTY2,
+					CASE WHEN IPMTQTY > 0 THEN CHMTQTY1 ELSE CHMTQTY2 END AS PCHQTY,
+					CSCUQTY AS PPAQTY,
+					CSCUQTY - (CASE WHEN IPMTQTY > 0 THEN CHMTQTY1 ELSE CHMTQTY2 END) AS BCHQTY,
+					IPMTQTY - CSCUQTY AS BPAQTY
+				FROM TABLE1	
+				), TABLE3 AS (
+				SELECT
+					IPHWAMUL,
+					HMDESC1,
+					IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY, 
+					PPAQTY AS CSCUQTY,
+					PCHQTY AS CHMTQTY,
+					JUNIPMTQTY,
+					BCHQTY AS REJEGOQTY,
+					BPAQTY - JUNIPMTQTY AS REPAQTY
+				FROM TABLE2
+				WHERE IPMTQTY <> 0
+				AND    ((IPMTQTY - JUNIPMTQTY) <> PCHQTY OR (IPMTQTY - JUNIPMTQTY) <> PPAQTY)
+
+				UNION ALL
+
+				SELECT
+					IPHWAMUL,
+					HMDESC1,
+					IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY,
+					CSCUQTY,
+					CHMTQTY2 AS CHMTQTY,
+					JUNIPMTQTY,
+					CSCUQTY - CHMTQTY2 AS REJEGOQTY,
+					0 AS REPAQTY
+				FROM TABLE2
+				WHERE IPMTQTY = 0 
+				)
+				SELECT
+					''A'' AS GUBUN,
+					ROW_NUMBER() OVER(ORDER BY IPHWAMUL,IPIPHANG DESC) AS ROWNO,   
+					IPHWAMUL,
+					HMDESC1,
+					SUBSTR(IPIPHANG,1,4) || ''/'' || SUBSTR(IPIPHANG,5,2) || ''/'' || SUBSTR(IPIPHANG,7,2) AS IPIPHANG,
+					VSDESC1, 
+					HJDESC1, 
+					IPBLNO,
+					IPMSNSEQ,
+					IPHSNSEQ,
+					IPMTQTY,
+					CSCUQTY,
+					CHMTQTY,
+					JUNIPMTQTY,
+					REJEGOQTY,
+					REPAQTY
+				FROM TABLE3
+				ORDER BY IPHWAMUL,IPIPHANG DESC	'  ;   
+				
+			PREPARE CUR3 FROM P_TABLE_QUERY ; 
+			OPEN REFCURSOR3 ; 
+
+
+		END PRINT;
+
+	END IF;
+
+END MAIN ; 
+END  ; 
+  
+GRANT ALTER , EXECUTE   
+ON SPECIFIC PROCEDURE TYJINFWLIB.SP_TYCSI_CSI1060_LIST 
+TO LSHPDM WITH GRANT OPTION ;

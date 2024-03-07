@@ -1,0 +1,36 @@
+-------------------------------------------------------------------------------------------
+--
+-- 프로시저명 : ORG_COMPANY_LIST
+-- 작성자     : 서정민
+-- 작성일     : 2015-09-02
+-- 설명       : 회사 콤보박스 목록
+-- 예문       : CALL ORG_COMPANY_LIST ('KO')
+--		DB2 변환 : 이전프로시져명 UP_COMPANY_COMBO
+--		프렌지 변환 : PTORGUSR10L1 -> ORG_COMPANY_LIST
+-------------------------------------------------------------------------------------------
+CREATE PROCEDURE TYJINFWLIB.ORG_COMPANY_LIST
+(
+	P_LANGUAGECODE VARCHAR(50)
+)
+	RESULT SETS 2
+	LANGUAGE SQL
+P1: BEGIN
+
+
+	DECLARE REFCURSOR CURSOR WITH RETURN FOR
+
+	SELECT '' AS COMPANYCODE , '' AS COMPANY, '' AS DISPLAYORDER
+	FROM SYSIBM.SYSDUMMY1
+	UNION ALL
+
+	SELECT
+		CP.COMPANYCODE,			-- 회사코드
+		CPG.COMPANY,			-- 회사명
+		CP.DISPLAYORDER
+	FROM
+		TYJINFWLIB.ORG_COMPANY CP
+		LEFT OUTER JOIN TYJINFWLIB.ORG_COMPANYLANG CPG ON CP.COMPANYCODE = CPG.COMPANYCODE 
+		AND CPG.LANGUAGECODE = P_LANGUAGECODE
+	ORDER BY DISPLAYORDER ASC;
+	OPEN REFCURSOR;
+END P1

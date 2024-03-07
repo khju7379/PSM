@@ -1,0 +1,110 @@
+--  Generate SQL 
+--  Version:                   	V7R4M0 190621 
+--  Generated on:              	21-04-14 16:36:31 
+--  Relational Database:       	S78E0180 
+--  Standards Option:          	Db2 for i 
+SET PATH "QSYS","QSYS2","SYSPROC","SYSIBMADM","LSHPDM" ; 
+  
+CREATE FUNCTION TYJINFWLIB.SF_GET_VNCODE ( 
+	IN_COMPANY VARCHAR(1) , 
+	IN_HWAJU VARCHAR(3)  ) 
+	RETURNS VARCHAR(200)   
+	LANGUAGE SQL 
+	SPECIFIC TYJINFWLIB.SF_GET_VNCODE 
+	NOT DETERMINISTIC 
+	READS SQL DATA 
+	CALLED ON NULL INPUT 
+	SET OPTION  ALWBLK = *ALLREAD , 
+	ALWCPYDTA = *OPTIMIZE , 
+	COMMIT = *NONE , 
+	DECRESULT = (31, 31, 00) , 
+	DFTRDBCOL = *NONE , 
+	DLYPRP = *NO , 
+	DYNDFTCOL = *NO , 
+	DYNUSRPRF = *USER , 
+	RDBCNNMTH = *RUW , 
+	SRTSEQ = *HEX   
+	P1 : BEGIN 
+  
+	 -- 변수 선언       
+	DECLARE V_VNCODE VARCHAR ( 100 ) ; 
+	DECLARE V_CNT NUMERIC ( 1 , 0 ) ; 
+  
+	SET V_VNCODE = '' ; 
+	SET V_CNT = 0 ; 
+  
+
+	IF IN_COMPANY = 'T' THEN
+		
+		FOR C1 AS
+
+			SELECT   
+			VNCODE,  
+			VNSANGHO 
+			FROM TYSCMLIB.UTIVENDF AS VEND          
+			LEFT OUTER JOIN (SELECT VNRPCODE         
+					 FROM TYSCMLIB.UTIVENDF 
+					 WHERE VNCODE = IN_HWAJU
+					 AND   VNRPCODE <> ''    
+					 ) AS RPVEND             
+			ON    VEND.VNRPCODE = RPVEND.VNRPCODE    
+			WHERE VEND.VNRPCODE <> ''                
+			AND   RPVEND.VNRPCODE <> ''    
+			
+		DO
+
+			IF V_VNCODE = '' THEN
+
+				SET V_VNCODE = C1.VNCODE;
+			ELSE
+				SET V_VNCODE = V_VNCODE || ',' || C1.VNCODE;
+			END IF;
+
+		END FOR;
+
+	END IF;
+
+	IF IN_COMPANY = 'S' THEN
+
+		FOR C2 AS
+
+			SELECT   
+			VNCODE,  
+			VNSANGHO 
+			FROM TYSCMLIB.USIVENDF AS VEND          
+			LEFT OUTER JOIN (SELECT VNRPCODE        
+					 FROM TYSCMLIB.USIVENDF 
+					 WHERE VNCODE = '" + sVNCODE + "' 
+					 AND   VNRPCODE <> ''   
+					 ) AS RPVEND            
+			ON    VEND.VNRPCODE = RPVEND.VNRPCODE   
+			WHERE VEND.VNRPCODE <> ''               
+			AND   RPVEND.VNRPCODE <> ''     
+			
+		DO
+
+			IF V_VNCODE = '' THEN
+
+				SET V_VNCODE = C2.VNCODE;
+			ELSE
+				SET V_VNCODE = V_VNCODE || ',' || C2.VNCODE;
+			END IF;
+
+		END FOR;
+
+	END IF;
+
+	IF V_VNCODE = '' THEN 
+
+		SET V_VNCODE = IN_HWAJU;
+
+	END IF;
+  
+  
+RETURN V_VNCODE ; 
+  
+END P1  ; 
+  
+GRANT ALTER , EXECUTE   
+ON SPECIFIC FUNCTION TYJINFWLIB.SF_GET_VNCODE 
+TO LSHPDM WITH GRANT OPTION ;

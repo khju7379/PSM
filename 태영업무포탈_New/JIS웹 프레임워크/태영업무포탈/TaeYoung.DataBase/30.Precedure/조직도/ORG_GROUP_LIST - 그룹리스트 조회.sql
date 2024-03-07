@@ -1,0 +1,82 @@
+-------------------------------------------------------------------------------------------
+-- 프로시저명 : ORG_GROUP_LIST
+-- 작성자     : 문광복
+-- 작성일     : 2016-11-11
+-- 설명       : 그룹을 조회한다.
+-- 예문       : CALL ORG_GROUP_LIST 
+-------------------------------------------------------------------------------------------
+--DROP PROCEDURE TYJINFWLIB.ORG_GROUP_LIST
+CREATE PROCEDURE TYJINFWLIB.ORG_GROUP_LIST
+(
+		P_CURRENTPAGEINDEX          INTEGER					-- 목록의 현재페이지 번호  
+	,   P_PAGESIZE                  INTEGER					-- 목록의 한 페이지에 표현되는 글 목록수  	
+	,	P_LANGCODE					VARCHAR(10)				-- 언어코드
+	,   P_GRPTYPE					NVARCHAR(10)			-- 그룹유형	
+	,   P_GRPNAME					NVARCHAR(50)			-- 그룹유형	
+	,	P_GRPID						NVARCHAR(50)			-- 그룹ID
+)
+	RESULT SETS 2
+	LANGUAGE SQL
+P1: BEGIN	-- 시작
+	DECLARE	P_STIDX INTEGER;
+	DECLARE P_FNIDX INTEGER;
+	S1 : BEGIN
+		SET P_STIDX = ((P_CURRENTPAGEINDEX - 1) * P_PAGESIZE) + 1;
+		SET P_FNIDX = P_CURRENTPAGEINDEX * P_PAGESIZE;
+	END S1 ;
+
+	MAIN : BEGIN -- 실행부
+        LIST : BEGIN -- 리스트
+			DECLARE REFCURSOR CURSOR WITH RETURN FOR
+			WITH MST AS (
+				SELECT 
+						ROW_NUMBER() OVER(ORDER BY OG.GRPID ASC) AS ROW_NO
+					,	OG.GRPID
+					,	OG.SHRRNG
+					,	LOWER(OGL.LANGCODE) AS LANGCODE
+					,	OGL.GRPNAME
+					,	'' AS GRPTYPENM -- TYJINFWLIB.UF_GET_CODENAME('', P_LANGCODE, '', '', OG.GRPID) AS GRPTYPENM
+					,	(SELECT COUNT(*) FROM TYJINFWLIB.CMN_ACL WHERE ACL_GRP = OG.GRPID AND ACL_TYPE = 'MENU') AS CNT
+				FROM
+						TYJINFWLIB.ORG_GROUP AS OG
+						LEFT OUTER JOIN TYJINFWLIB.ORG_GROUPLANG AS OGL
+							ON	OG.GRPID 				= OGL.GRPID
+							AND	LOWER(OGL.LANGCODE)		= P_LANGCODE
+				WHERE
+						OG.USEYN						= '1'
+				AND		COALESCE(OG.GRPTYPE,'') 		LIKE P_GRPTYPE || '%'
+				AND		COALESCE(OGL.GRPNAME,'') 		LIKE '%' || P_GRPNAME || '%'
+				AND		COALESCE(OG.GRPID,'') 			LIKE '%' || P_GRPID || '%'
+			)
+			SELECT
+					*
+			FROM
+					MST
+			WHERE
+					ROW_NO BETWEEN P_STIDX AND P_FNIDX
+			ORDER BY ROW_NO ASC
+			;
+			OPEN REFCURSOR ;
+        END LIST ;
+
+        PAGING : BEGIN -- 페이징
+			DECLARE REFCURSOR2 CURSOR WITH RETURN FOR
+			SELECT
+					COUNT(*) AS TOTALCOUNT
+			FROM
+					TYJINFWLIB.ORG_GROUP AS OG
+					LEFT OUTER JOIN TYJINFWLIB.ORG_GROUPLANG AS OGL
+						ON	OG.GRPID 				= OGL.GRPID
+						AND	LOWER(OGL.LANGCODE)		= P_LANGCODE
+			WHERE
+					OG.USEYN						= '1'
+			AND		COALESCE(OG.GRPTYPE,'') 		LIKE P_GRPTYPE || '%'
+			AND		COALESCE(OGL.GRPNAME,'') 		LIKE '%' || P_GRPNAME || '%'
+			AND		COALESCE(OG.GRPID,'') 			LIKE '%' || P_GRPID || '%'
+			;
+			OPEN REFCURSOR2 ;
+		END PAGING ;
+
+    END MAIN ;
+END P1
+	

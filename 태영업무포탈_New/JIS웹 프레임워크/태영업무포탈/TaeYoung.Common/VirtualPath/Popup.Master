@@ -1,0 +1,168 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Popup.master.cs" Inherits="TaeYoung.Common.VirtualPath.Popup"
+    ViewStateMode="Disabled" Debug="false" %>
+
+<!DOCTYPE html>
+<html lang='ko'>
+<head id="Head1" runat="server">
+    <meta charset="utf-8" />
+    <title>태영 통합 고객정보 시스템</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/Resources/Images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/Resources/Css/Import.css" />
+    <link rel="stylesheet" type="text/css" href="/Resources/Css/Control.css" />
+    <link href="/Resources/Framework/JIS.Control.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        <asp:LIteral ID="ltlCustomStyle" runat="server" />
+        #sub_body
+        {
+            position:relative;
+            width:100%;
+            height:100%;
+            min-width:0px !important;
+        }
+        #sub_body #container
+        {
+            padding-top: 0px;
+            top:0px !important;
+        }
+        #sub_body #container #content_bx
+        {
+            margin-left: 0px;
+        }
+        /* 바디 */
+        #sub_body {
+           min-width: 100px;
+           min-height: 100px;
+        }
+        /* 컨테이너 */
+	    #sub_body #container 
+	    {
+		    min-width: 100px;
+            min-height: 100px;
+	    }
+    </style>
+    <script type="text/javascript" src="/Resources/Script/Domain.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery-migrate-3.0.0.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/moxie.min.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/plupload.dev.js"></script>
+    <script type="text/javascript" src="/Resources/Framework/jquery.ui.plupload.js"></script>
+    <script type="text/javascript" src="/Resources/Script/Common.js"></script>
+    <script type="text/javascript" src="/Resources/Script/Site.UI.js"></script>
+    <script type="text/javascript" src="/Resources/Script/Org.js"></script>
+    <script type="text/javascript" src="/Resources/Script/OrgChart.js"></script>
+    <!-- 차트 -->
+    <script type="text/javascript" src="/Resources/RGraph/libraries/RGraph.common.core.js"></script>
+    <script type="text/javascript" src="/Resources/RGraph/libraries/RGraph.common.dynamic.js"></script>
+    <script type="text/javascript" src="/Resources/RGraph/libraries/RGraph.common.tooltips.js"></script>
+    <script type="text/javascript" src="/Resources/RGraph/libraries/RGraph.common.effects.js"></script>
+    <script type="text/javascript" src="/Resources/RGraph/libraries/RGraph.line.js"></script>
+    <script type="text/javascript" src="/Resources/RGraph/libraries/RGraph.bar.js"></script>
+    <script type="text/javascript" src="/Resources/RGraph/libraries/RGraph.pie.js"></script>
+    <script type="text/javascript">
+        //window.onerror = function () {
+        //    var message = "\nMessage: " + arguments[0];
+        //    message += "\nURL: " + arguments[1];
+        //    message += "\nLine: " + arguments[2];
+        //    message += "\nColumn: " + arguments[3];
+        //    alert("스크립트에서 오류가 발생하였습니다."+message);
+        //};
+
+	    var IsPopup = true;
+        var ProgramID = "<asp:LIteral ID="ltlProgramID" runat="server" />";
+		var MenuID = "<asp:LIteral ID="ltlMenuID" runat="server" />";
+        var EMPID = "<%= TaeYoung.Biz.Document.UserInfo.EmpID %>";
+		var COMPANYCODE = "<%= TaeYoung.Biz.Document.UserInfo.CompanyCode %>";
+        var SiteCompanyCode = "<%= TaeYoung.Biz.Document.SiteCompanyCode %>";
+        var Use_Language = "<%= TaeYoung.Biz.Document.ClientCultureName %>"; 
+        var SessionUserInfoString = "<%= HttpContext.Current.Session["UserInfo"] != null ? System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(HttpContext.Current.Session["UserInfo"].ToString())) : "" %>";
+    </script>
+    <asp:ContentPlaceHolder ID="conHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body id="wrapper">
+    <form id="form1" runat="server">
+     <div style="display:none;">
+        <input type="textbox" />
+    </div>
+    <script type="text/javascript" language="javascript" src="/Resources/Framework/JIS.Control.js"></script>
+    <script type="text/javascript">
+        var ControlLoad = [];
+    </script>
+    <!--서브시작-->
+    <div id="sub_body">
+        <!--상단시작-->
+        <div id="header" style="display: none;">
+            <!--탑소메뉴시작-->
+            <div id="topsmenu_bx">
+                <div id="user">
+                    <strong>
+                        <%= TaeYoung.Biz.Document.UserInfo.DeptName %>
+                        <%= TaeYoung.Biz.Document.UserInfo.UserName%>님</strong>
+                    <%= DateTime.Today.ToString("yyyy-MM-dd") %>
+                    접속</div>
+                <ul id="topsmenu">
+                    <li id="help"><span title="HELP"><a href="javascript:OpenHelp();">?</a></span> </li>
+                </ul>
+            </div>
+            <!--//탑소메뉴끝-->
+        </div>
+        <!--//상단끝-->
+        <!--컨테이너시작-->
+        <div id="container">
+            <!--컨텐츠박스시작-->
+            <div id="content_bx">
+                <asp:ContentPlaceHolder ID="conBody" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <!--//컨텐츠박스끝-->
+        </div>
+        <!--//컨테이너끝-->
+    </div>
+    <!--//서브끝-->
+    <!-- 레이어팝업 -->
+    <div id="Search_dView" style="position: absolute; display: none; z-index: 99; height: 240px;
+        padding: 20px; border: 2px solid rgb(125, 140, 220); background-color: White;
+        box-shadow: 0px 0px 10px #000000; -moz-box-shadow: 0px 0px 10px #000000; -webkit-box-shadow: 0px 0px 10px #000000;">
+        <iframe id="Search_iView" name="Search_iView" height="240" src="/Resources/Framework/SearchViewCommon.html"
+            frameborder="0" scrolling="no"></iframe>
+    </div>
+    <div id="Calendar_Layer" style="position: absolute; z-index: 30; display: none; width: 258px;
+        height: 286px; margin-top: 5px;">
+        <iframe id="frmCalendar" name="frmCalendar" src="/Resources/Framework/calendar.html"
+            width="258px" height="286px" frameborder="0" scrolling="no"></iframe>
+        <iframe id="frmCalendar_FT" name="frmCalendar_FT" src="/Resources/Framework/calendar_FT.html"
+            style="width: 660px; height: 286px;" frameborder="0" scrolling="no"></iframe>
+    </div>
+    <div id="Image_Layer" style="display: none; z-index: 10;">
+    </div>
+    <div id="divOrgUser" style="display:none;">
+        <div id="divOrgUser_close" onclick="grdOrgUser_Close()">×</div>
+        <div id="divOrgUser_photo"></div>
+            
+        <ul style="float:left;">
+            <li id="divOrgUser_Cont" style="float:left;">
+                <div id="divOrgUser_Name"></div>
+                <div id="divOrgUser_Company"></div>
+                <div id="divOrgUser_Dept"></div>
+                <div id="divOrgUser_Rank"></div>
+                <div id="divOrgUser_Job"></div>
+                <div id="divOrgUser_Mail"></div>
+                <div id="divOrgUser_Tel1"></div>
+                <div id="divOrgUser_Tel2"></div>
+                <div id="divOrgUser_Tel3" style="display:none;"></div>
+                <div id="divOrgUser_Tel4" style="display:none;"></div>
+                <div id="divOrgUser_Emp" style="display:none;"></div>
+            </li>
+        </ul>
+        <div id="divOrgUser_Bar" style="display:none;">
+            <ul style="float:left;">
+                <li style="float:left;">
+                    <div class="gmail" onclick="SendMailTo();"></div>
+                </li>   
+            </ul>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

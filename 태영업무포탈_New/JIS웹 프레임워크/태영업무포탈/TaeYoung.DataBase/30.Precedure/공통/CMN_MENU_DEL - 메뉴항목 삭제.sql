@@ -1,0 +1,42 @@
+-------------------------------------------------------------------------------------------
+--
+-- 프로시저명 : CMN_MENU_DEL
+-- 작성자     : 문광복
+-- 작성일     : 2014-04-14
+-- 설명       : 메뉴 삭제
+-- 예문       : EXEC CMN_MENU_DEL ''
+--		DB2 변환 : 이전프로시져명 SP_MENU_MANAGEMENT_MENU_DELETE
+--		프렌지 변환 : PTCMMBAS40D1 -> CMN_MENU_DEL 
+-------------------------------------------------------------------------------------------
+CREATE PROCEDURE TYJINFWLIB.CMN_MENU_DEL
+(
+	P_MENUID				VARCHAR(50)				-- 메뉴 아이디
+)
+	LANGUAGE SQL
+
+P1: BEGIN
+
+	-- 다국어 삭제
+	DELETE FROM TYJINFWLIB.CMN_LANG
+	WHERE PROGRAMID IN (SELECT PROGRAMID FROM TYJINFWLIB.CMN_PROGRAM WHERE MENUID = P_MENUID);
+
+	-- 프로그램 삭제
+	DELETE FROM TYJINFWLIB.CMN_PROGRAM
+	WHERE MENUID = P_MENUID;
+
+	-- 해당메뉴의 하위 메뉴 삭제
+	DELETE FROM TYJINFWLIB.CMN_LANG
+	WHERE CODE IN (SELECT MENUID FROM TYJINFWLIB.CMN_MENU WHERE PRTMENU = P_MENUID);
+
+	DELETE FROM TYJINFWLIB.CMN_MENU
+	WHERE PRTMENU = P_MENUID;
+
+	-- 메뉴 삭제
+	DELETE FROM TYJINFWLIB.CMN_LANG
+	WHERE CODE = P_MENUID;
+
+	DELETE FROM TYJINFWLIB.CMN_MENU
+	WHERE MENUID = P_MENUID;
+
+END P1
+

@@ -1,0 +1,56 @@
+-------------------------------------------------------------------------------------------
+-- 프로시저명 : CMN_MENU_TREE_GET_ACLAPP 
+-- 작성자     : 서정민
+-- 작성일     : 2015-09-02
+-- 설명       : 메뉴트리 조회(권한지정용)
+-- 예문       : EXEC CMN_MENU_TREE_GET_ACLAPP  ()
+--		DB2 변환 : 이전프로시져명 SP_TREE_SELECT_MENU_ACL
+--		프렌지 변환 : PTCMMBAS40L3 -> CMN_MENU_TREE_GET_ACLAPP
+-------------------------------------------------------------------------------------------
+CREATE PROCEDURE TYJINFWLIB.CMN_MENU_TREE_GET_ACLAPP()
+	RESULT SETS 1
+	LANGUAGE SQL
+
+P1: BEGIN
+	
+	DECLARE REFCURSOR CURSOR WITH RETURN FOR
+	
+		WITH TREE (MENUID, PROGRAMID, PRTMENU, DISPLAYYN, LEV, SORTNO)  AS
+		(
+			SELECT 
+				MENUID
+			,	PROGRAMID
+			,	PRTMENU
+			,	DISPLAYYN
+			,	1 AS LEV
+			,	SORTNO
+			FROM TYJINFWLIB.CMN_MENU
+			WHERE PRTMENU IS NULL
+	
+			UNION ALL
+	
+			SELECT
+					M.MENUID
+				,	M.PROGRAMID
+				,	CASE WHEN M.PRTMENU IS NULL THEN 'TOP' ELSE M.PRTMENU END AS PRTMENU
+				,	M.DISPLAYYN
+				,	(LEV + 1) AS LVL
+				,	M.SORTNO
+			FROM TYJINFWLIB.CMN_MENU M
+			INNER JOIN TREE T ON T.MENUID = M.PRTMENU
+		)
+		SELECT 
+			A.MENUID AS IDX
+		,	A.PROGRAMID,A.PRTMENU AS PRTIDX
+		,	A.LEV,C.KO AS TEXT
+		,	A.SORTNO 
+		FROM TREE A 
+			LEFT JOIN TYJINFWLIB.CMN_LANG C 
+				ON C.PROGRAMID='MENU' AND A.MENUID=C.CODE
+		WHERE A.DISPLAYYN = 1
+		ORDER BY LEV,PRTMENU, SORTNO;
+		
+	OPEN REFCURSOR;
+
+END P1
+

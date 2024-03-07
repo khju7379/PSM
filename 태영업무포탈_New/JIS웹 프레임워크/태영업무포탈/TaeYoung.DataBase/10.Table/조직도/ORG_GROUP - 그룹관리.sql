@@ -1,0 +1,34 @@
+--DROP TABLE TYJINFWLIB.ORG_GROUP;
+-- 그룹관리
+-- 이전 테이블 명 : PTORGUSR40
+-- TB_Group
+CREATE TABLE TYJINFWLIB.ORG_GROUP
+(
+	  GRPID    	CHAR (10) NOT NULL
+	, SHRRNG   	CHAR (1) 
+	, USEYN    	CHAR (1) 
+	, GRPTYPE  	CHAR (1) 
+	, GRPEMAIL 	CHAR (40) 
+	, GRPEXT   	CHAR (20) 
+	, REGID 	CHAR (12) 
+	, REGDT		DATE
+	, UPDID 	CHAR (12) 
+	, UPDDT    	DATE 
+	, PRIMARY 	KEY (GRPID)
+);
+
+COMMENT ON TABLE TYJINFWLIB.ORG_GROUP IS '공통-그룹정보'; 
+
+COMMENT ON COLUMN TYJINFWLIB.ORG_GROUP
+(
+	GRPID IS '그룹ID' , 
+	SHRRNG IS '공유유무' , 
+	USEYN IS '사용여부' , 
+	GRPTYPE IS '그룹타입' , 
+	GRPEMAIL IS '그룹 대표 Email' , 
+	GRPEXT IS '그룹확장' ,
+	REGID IS '등록자ID' , 
+	REGDT IS '등록일자' ,
+	UPDID IS '수정자ID' , 
+	UPDDT IS '수정일자' 
+); 

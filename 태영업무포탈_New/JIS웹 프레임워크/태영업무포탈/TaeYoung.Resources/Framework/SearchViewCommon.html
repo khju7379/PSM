@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <!--<link rel="stylesheet" type="text/css" href="/Resources/Framework/Font.css" />-->
+    <style type="text/css">
+		/* 공통 */
+		/*@font-face {
+			font-family: NanumGothic;
+			font-style: normal;
+		   font-weight: normal;
+		   src: url('/Resources/Font/NanumGothic.eot');
+		   src: local('?'),
+				url('/Resources/Font/NanumGothic.eot?#iefix') format('embedded-opentype'), 
+				url('/Resources/Font/NanumGothic.ttf') format('truetype'),
+				url('/Resources/Font/NanumGothic.otf') format('opentype'),
+				url('/Resources/Font/NanumGothic.woff') format('woff'),
+				url('/Resources/Font/NanumGothic.svg#NanumGothic') format('svg');
+		}*/
+
+		@font-face {
+			font-family: NanumGothicBold;
+			font-style: normal;
+		   font-weight: normal;
+		   src: url('/Resources/Font/NanumGothicBold.eot');
+		   src: local('?'),
+				url('/Resources/Font/NanumGothicBold.eot?#iefix') format('embedded-opentype'), 
+				url('/Resources/Font/NanumGothicBold.ttf') format('truetype'),
+				url('/Resources/Font/NanumGothicBold.otf') format('opentype'),
+				url('/Resources/Font/NanumGothicBold.woff') format('woff'),
+				url('/Resources/Font/NanumGothicBold.svg#NanumGothicBold') format('svg');
+		}
+		* {
+			margin: 0px; padding: 0px;
+			font-family: NanumGothicBold, 나눔고딕볼드, Dotum, 돋움, Gulim, 굴림, AppleGothic, Sans-serif; font-size: 12px; color: #646464; line-height: 18px;
+			word-break: keep-all;
+		}
+        body
+        {
+            margin: 0px;
+            padding: 0px;
+            position:relative;
+        }
+        .Search_View_Table2
+        {
+            border-collapse: collapse;
+            border-width: 2px 2px 2px 2px;
+            border-style: solid;
+            border-bottom-color: #3D6AAE;
+            border-left-color: #3D6AAE;
+            border-right-color: #3D6AAE;
+            border-top-color: #3D6AAE;
+        }
+        .SearchVIew_Cell
+        {
+            padding-left: 2px;
+            padding-right: 2px;
+            /*font-family: 맑은 고딕;*/
+			color:#7882a0;
+        }
+        .arrow_top
+        {
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-bottom: 7px solid rgba(63, 81, 181, 1);
+            margin-left:10px;
+            margin-bottom:-3px;
+            z-index:2;
+            position:relative;
+        }
+        .arrow_bottom
+        {
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 7px solid rgba(63, 81, 181, 1);
+            margin-left:10px;
+            display:none;
+            margin-top:-3px;
+            z-index:2;
+            position:relative;
+        }
+        td.header
+        {
+            text-align:center;
+            color:#FFFFFF;
+            background:rgba(63, 81, 181, 1);
+            
+        }
+        td.content
+        {
+            border-bottom:1px dotted #DEDEF0;
+            border-right:1px dotted #DEDEF0;
+            padding-left:5px;
+        }
+        td.end
+        {
+            border-right:none;
+        }
+        #Search_Layer
+        {
+            border:3px solid #FFFFFF;
+            position:relative;
+            z-index:1;
+        }
+        .desc
+        {
+            float: right;
+            background: #FFFFFF;
+            padding: 3px;
+            margin-top: -8px;
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(63, 81, 181, 1);
+            margin-right: 3px;
+            border-top: 0px;
+            box-shadow: 0px 4px 0px 3px #FFFFFF; 
+            -moz-box-shadow: 0px 4px 0px 3px #FFFFFF; 
+            -webkit-box-shadow: 0px 4px 0px 3px #FFFFFF;
+        }
+    </style>
+    <script type="text/javascript" src="/Resources/Script/Domain.js"></script>
+    <script type="text/javascript">
+        function DrawSheet(data) {
+            if (document.getElementById("Search_Layer") != null) {
+                document.getElementById("Search_Layer").innerHTML = data;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="arrow_top"></div>
+    <div id="Search_Layer">
+    </div>
+    <div class="arrow_bottom"></div>
+</body>
+</html>

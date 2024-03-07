@@ -1,0 +1,339 @@
+﻿@charset "utf-8"; 
+/* JIS Web Standardization Team (http://www.jisman.co.kr) 권미영 */
+
+/* 공통 */
+@font-face {
+	font-family: NanumGothic;
+	font-style: normal;
+   font-weight: normal;
+   src: url('/Resources/Font/NanumGothic.eot');
+   src: local('?'),
+        url('/Resources/Font/NanumGothic.eot?#iefix') format('embedded-opentype'), 
+        url('/Resources/Font/NanumGothic.ttf') format('truetype'),
+        url('/Resources/Font/NanumGothic.otf') format('opentype'),
+        url('/Resources/Font/NanumGothic.woff') format('woff'),
+        url('/Resources/Font/NanumGothic.svg#NanumGothic') format('svg');
+        }
+
+@font-face {
+			font-family: NanumGothicBold;
+			font-style: normal;
+		   font-weight: normal;
+		   src: url('/Resources/Font/NanumGothicBold.eot');
+		   src: local('?'),
+				url('/Resources/Font/NanumGothicBold.eot?#iefix') format('embedded-opentype'), 
+				url('/Resources/Font/NanumGothicBold.ttf') format('truetype'),
+				url('/Resources/Font/NanumGothicBold.otf') format('opentype'),
+				url('/Resources/Font/NanumGothicBold.woff') format('woff'),
+				url('/Resources/Font/NanumGothicBold.svg#NanumGothicBold') format('svg');
+		}
+
+* {
+	margin: 0px; padding: 0px;
+	font-family: NanumGothicBold, 나눔고딕볼드, Dotum, 돋움, Gulim, 굴림, AppleGothic, Sans-serif; font-size: 13px; color: #646464; line-height: 20px;
+	word-break: keep-all;
+}
+
+/*html, body {width: 100%; height: 100%; background: #F8F8F8;}*/
+html, body {width: 100%; height: 100%;}
+#wrapper {position: relative;}
+
+table {border-collapse: collapse;}
+img, button, fieldset, iframe {border: none;}
+img, input, select {vertical-align: middle;}
+hr, button img {display: none;}
+fieldset {_display: inline;}
+address {font-style: normal;}
+legend, label {position: absolute; top: 0; left: 0; width: 0; height: 0; overflow: hidden; visibility: hidden; font-size: 0; line-height: 0;}
+
+ul, ul li {list-style: none;}
+ul.vertical li {clear: both;}
+ul.horizontal li {float: left;}
+
+ol, ol li {list-style: none;}
+ol.vertical li {clear: both;}
+ol.horizontal li {float: left;}
+
+.group_horizontal {_float: left; overflow: hidden;}
+.para_group {margin-bottom: 50px;}
+.para {margin-bottom: 40px;}
+.para_s {margin-bottom: 30px;}
+.para_ss {margin-bottom: 10px;}
+.object {margin-bottom: 10px;}
+
+.inline {display: inline;}
+.none {display: none;}
+.clear {clear: both;}
+.cursor {cursor: pointer;}
+
+.left {float: left;}
+.center {margin: 0 auto; display: block;} /* 해당 width입력 필(이미지 제외) */
+.right {float: right;}
+.top {vertical-align: top;}
+.middle {position: relative; top: 50%;} /* 상위 wrapper에 hieght입력 필, 해당 margin-top:해당 객체 높이의 반px입력 필 */
+.bottom {position: absolute; bottom: 0px;} /* 상위 wrapper에 position:relative입력 필 */
+
+.text_left {text-align: left;}
+.text_center {text-align: center;}
+.text_right {text-align: right;}
+.text_top {vertical-align: top;}
+.text_middle {vertical-align: middle;}
+.text_bottom {vertical-align: bottom;}
+
+.onmouse a img {display: inline;}
+.onmouse a img.over {display: none;}
+.onmouse a:hover {position: relative;}
+.onmouse a:hover img {display: none;}
+.onmouse a:hover img.over {display: inline;}
+
+a {text-decoration: none; cursor: pointer;}
+a:hover {color: #FF5A00;}
+
+.png24 {tmp:expression(setPng24(this));}
+
+input {width: 128px; height: 23px; border: 1px solid #C3C3C3; background: #FFFFFF;}
+input[type=checkbox] {height:18px;}
+input.readonly {background: #F5F5F5;}
+textarea {width: 100%; height: 98px; overflow: auto; border: 1px solid #C3C3C3; background: #FFFFFF;}
+select {width: 130px; height: 25px; border: 1px solid #C3C3C3; background: #FFFFFF;}
+span input[type=radio],span input[type=checkbox] {width: 13px; border: none; background: none;}
+
+html:first-child select {height: 23px; padding-right: 6px;} /* Opera 9 & Below Fix */ 
+option {padding-right: 6px;} /* Firefox Fix */
+legend {position: absolute; top: 0; left: 0; width: 0; height: 0; overflow: hidden; visibility: hidden; font-size: 0; line-height: 0;} /* Screen Reader */
+
+
+
+/* 특정 */
+.point {color: #FF5A00;}
+
+.color_01 {background: #E15078;}
+.color_02 {background: #A5C31E;}
+.color_03 {background: #1EAFA0;}
+.color_04 {background: #329BFF;}
+.color_05 {background: #F58514;}
+.color_06 {background: #EBAD19;}
+.color_07 {background: #876BF0;}
+.color_08 {background: #4B639F;}
+.color_09 {background: #8DC152;}
+.color_10 {background: #0085B0;}
+.color_11 {background: #55ACEF;}
+
+/* 헤더 */
+#header {
+   position: absolute;
+	z-index: 100000;
+	top: 0px;
+	left: 0px;
+   width: 100%;
+   height: 100px;
+}
+
+   /* 탑소메뉴박스 */
+	#header #topsmenu_bx {
+	   position: relative;
+   	width: 100%;
+   	height: 40px;
+   	padding: 10px;
+	   background: #262626;
+	   -webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	   /* 임직원검색 */
+	   #header #topsmenu_bx #member_search {
+		   position: relative;
+	   	float: left;
+		}
+		   #header #topsmenu_bx #member_search input {
+		   	width: 200px;
+		   	height: 30px;
+		   	font-size: 11px;
+		   	color: #323232;
+		   	line-height: 30px;
+		   	padding: 0 10px 0;
+		   	border: none;
+		   	background: #F5FAFF;
+		   	-moz-border-radius: 15px 0 0 15px;
+				-webkit-border-radius: 15px 0 0 15px;
+				border-radius: 15px 0 0 15px;
+		   }
+	    /* 임직원검색 */
+	   #header #topsmenu_bx #member_search2 {
+		   position: relative;
+	   	float: left;
+		}
+		   #header #topsmenu_bx #member_search2 input {
+		   	width: 200px;
+		   	height: 30px;
+		   	font-size: 11px;
+		   	color: #323232;
+		   	line-height: 30px;
+		   	padding: 0 10px 0;
+		   	border: none;
+		   	background: #F5FAFF;
+		   	-moz-border-radius: 15px 0 0 15px;
+				-webkit-border-radius: 15px 0 0 15px;
+				border-radius: 15px 0 0 15px;
+		   }
+	   /* 탑소메뉴 */
+	   #header #topsmenu_bx #topsmenu {
+		   position: relative;
+	   	float: right;
+	   	line-height: 30px;
+	   	margin-top:-4px;
+		}
+		   #header #topsmenu_bx #topsmenu img {margin-left: 10px;}		   
+		   #header #topsmenu_bx #topsmenu .topsmenu_sub_bx {
+		      position: absolute;
+            z-index: 1000000;
+		      padding: 10px 0px 0px 10px;
+		      border: 1px solid #858585;
+		      background: #FFFFFF;
+		   }
+		   #header #topsmenu_bx #topsmenu #LocationLink {
+		      margin-top: 30px;
+		      right: 61px;
+		   }
+		   #header #topsmenu_bx #topsmenu #worklink {
+		      margin-top: 30px;
+		      right: 70px;
+		   }
+		   #header #topsmenu_bx #topsmenu #sitelink {
+		      margin-top: 30px;
+		      right: 40px;
+		   }
+		   #header #topsmenu_bx #topsmenu #language {
+		      margin-top: 30px;
+		      right: 5px;
+		   }
+			   #header #topsmenu_bx #topsmenu .topsmenu_sub_bx img {
+			      margin: 0px 10px 10px 0px;
+			   }
+		      #header #topsmenu_bx #topsmenu .topsmenu_sub_bx img.arrow {
+			      position: absolute;
+               z-index: 1000000;
+			      top: -4px;
+			      right: 11px;
+			      margin-right: 0px;
+			   }
+
+
+   /* 탑메뉴 */
+   #header #topmenu_bx {
+   	position: relative;
+   	width: 100%;
+   	background: #FFFFFF;
+   }
+      /* 로고 */
+      #header #topmenu_bx h1 a {
+	   	position: relative;
+	   	float: left;
+	   	width: 220px;
+	   	height: 60px;	
+	   	font-size: 16px;
+	   	color: #FFFFFF;
+	   	line-height: 60px;
+	   	padding-left: 1px;	 
+	   	background: #A32958; 
+	   	-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+	   } 
+		#header #topmenu_bx ul#topmenu {
+			position: relative;
+			float: left;
+			width: -webkit-calc(100% - 220px);
+         width: -moz-calc(100% - 220px);
+         width: calc(100% - 220px);
+			height: 60px;
+		   background: #A32958; 
+		}
+			#header #topmenu_bx ul#topmenu li {
+				float: left;
+				width: 12.5%;
+				border-right: solid 1px #b14971;
+			} 
+			#header #topmenu_bx ul#topmenu li:first-child
+			{
+			    border-left:solid 1px #b14971;
+			}
+			#header #topmenu_bx ul#topmenu li h2 a {
+				font-size: 16px;
+		   	color: #FFFFFF;
+		   	line-height: 60px;
+		   	text-align: center;
+		   	font-weight: normal;
+		   	display: block;		   	
+			} 
+			#header #topmenu_bx ul#topmenu li h2 a:hover,
+			#header #topmenu_bx ul#topmenu li h2 a.on {background: #800000;/*#2D7DCD*/}
+			#header #topmenu_bx ul#topmenu li h2 a.toggle {background: #800000;/*#2D7DCD*/}
+		/* 탑하위메뉴 */
+		#header #topmenu_bx #topmenu_sub {
+			position: absolute;
+         z-index: 100000;
+         top: 60px;
+         left: 0px;
+			width: 100%;
+			height: 350px;
+			background: #FFFFFF; 
+			box-shadow: 0px 3px 5px #C8C8C8;
+		   -moz-box-shadow: 0px 3px 5px #C8C8C8;
+			-webkit-box-shadow: 0px 3px 5px #C8C8C8;
+		} 
+		   #header #topmenu_bx #topmenu_sub #copy {
+				position: relative;
+			   float: left;
+			   width: 450px;
+			   height: 100%;
+			   background: #EDF5FC url(/Resources/Images/topmenu_copy_bg.gif);
+			} 
+			   #header #topmenu_bx #topmenu_sub #copy .copy {
+			   	position: relative;
+					font-size: 18px;
+		   	   color: #000000;
+		   	   line-height: 40px;
+				} 
+				   #header #topmenu_bx #topmenu_sub #copy .copy span {
+				   	font-size: 20px;
+			   	   color: #000000;
+					} 
+			   #header #topmenu_bx #topmenu_sub #copy .icon {
+			   	position: absolute;
+		         z-index: 100000;
+					width: 158px;
+					height: 137px;
+					background: url(/Resources/Images/topmenu_copy_icon.png); background-position: top left; background-repeat: no-repeat;
+				}  
+		   #header #topmenu_bx #topmenu_sub dl {
+				position: relative;
+			   float: left;
+			   min-width: 150px;
+			   height: -webkit-calc(100% - 50px);
+	         height: -moz-calc(100% - 50px);
+	         height: calc(100% - 50px);
+			   padding: 25px 50px 25px;
+			   border-right: 1px dotted #E1E6F0;
+			}
+         #header #topmenu_bx #topmenu_sub dl:hover {background: #FAFAFA;}
+         #header #topmenu_bx #topmenu_sub dl:hover dt {border-bottom: 2px solid #d95350;}
+         #header #topmenu_bx #topmenu_sub dl:hover dt,
+         #header #topmenu_bx #topmenu_sub dl:hover dt a {color: #d95350;}
+			   #header #topmenu_bx #topmenu_sub dl dt,
+			   #header #topmenu_bx #topmenu_sub dl dd {padding: 0 20px 0 10px;}
+			   #header #topmenu_bx #topmenu_sub dl dt {border-bottom: 2px solid #2E7CCC;}
+			   #header #topmenu_bx #topmenu_sub dl dd {border-bottom: 1px dotted #969696;}
+			   #header #topmenu_bx #topmenu_sub dl dt,
+			   #header #topmenu_bx #topmenu_sub dl dt a {
+					font-size: 16px;
+		   	   color: #2E7CCC;
+		   	   line-height: 30px;
+				}
+			   #header #topmenu_bx #topmenu_sub dl dd,
+			   #header #topmenu_bx #topmenu_sub dl dd a {
+					font-size: 14px;
+		   	   color: #505050;
+		   	   line-height: 30px;
+				} 
+				#header #topmenu_bx #topmenu_sub dl dd a:hover {color: #000000;} 

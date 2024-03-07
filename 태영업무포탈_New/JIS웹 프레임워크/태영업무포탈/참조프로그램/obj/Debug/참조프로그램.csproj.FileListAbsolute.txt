@@ -1,0 +1,6 @@
+D:\프레임워크소스\태영업무포탈_New\JIS웹 프레임워크\태영업무포탈\참조프로그램\bin\Debug\참조프로그램.dll
+D:\프레임워크소스\태영업무포탈_New\JIS웹 프레임워크\태영업무포탈\참조프로그램\bin\Debug\참조프로그램.pdb
+D:\프레임워크소스\태영업무포탈_New\JIS웹 프레임워크\태영업무포탈\참조프로그램\obj\Debug\참조프로그램.csproj.CoreCompileInputs.cache
+D:\프레임워크소스\태영업무포탈_New\JIS웹 프레임워크\태영업무포탈\참조프로그램\obj\Debug\참조프로그램.dll
+D:\프레임워크소스\태영업무포탈_New\JIS웹 프레임워크\태영업무포탈\참조프로그램\obj\Debug\참조프로그램.pdb
+D:\프레임워크소스\태영업무포탈_New\JIS웹 프레임워크\태영업무포탈\참조프로그램\obj\Debug\참조프로그램.csproj.AssemblyReference.cache

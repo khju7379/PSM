@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OrgMapServer.aspx.cs" Inherits="TaeYoung.Portal.Common.OrgChart.OrgMapServer" %>

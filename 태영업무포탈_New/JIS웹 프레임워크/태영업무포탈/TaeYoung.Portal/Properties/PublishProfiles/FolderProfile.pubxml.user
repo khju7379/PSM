@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\프레임워크소스\배포</_PublishTargetUrl>
+    <History>True|2023-11-27T03:28:55.2288621Z;True|2023-06-12T09:34:29.6703614+09:00;True|2023-06-12T08:43:29.5000399+09:00;</History>
+  </PropertyGroup>
+</Project>

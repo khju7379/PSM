@@ -1,0 +1,42 @@
+@charset "utf-8"; 
+    .calender_Main {        
+		border-top: 1px solid #bdc3d2;
+    }
+    
+    .calendar_Day {
+		height: 30px;
+		font-family: 맑은 고딕,NanumGothicBold, 나눔고딕볼드, Dotum, 돋움, Gulim, 굴림, AppleGothic, Sans-serif;
+		font-size: 12px;
+		color: #646464;
+		font-weight: bold;
+		line-height: 30px;
+		padding-left:15px;
+		border-left: 1px solid #bdc3d2;
+		border-right: 1px solid #bdc3d2;
+		border-top: 2px solid #616161;
+		border-bottom: 1px solid #C8C8C8;
+		background:#F3F3F3;
+	}
+    .calendar_Legend {float:right; padding-right:10px;}
+    .calendar_Body {border-collapse: collapse; width: 100%; border: 1px solid #bdc3d2;}
+	.calendar_Body th {height: 32px; font-size: 15px; text-align: center; font-weight: bold; border: 1px solid #bdc3d2; background: rgb(245, 240, 220);}
+	.calendar_Body td {height: 50px; padding-left:0px; border: 1px solid #bdc3d2;}
+	
+	.Calendar_day_inbody { width:99%;margin:0px 0px 0px 3px;background-color:transparent;}
+		
+	.Calendar_day_inbody td { height:auto; border:0px none; padding:3px 3px 3px 3px;}
+	.Calendar_day_inbody td a:link { color:#222222;}
+	.Calendar_day_inbody td a:visited { color:#222222;}
+	.Calendar_day_inbody td a:hover {color: #dd1313; text-decoration: none; font-weight: bold;}
+	
+	.Calendar_day_inbody td.complete a:link { color:#AAAAAA;}
+	.Calendar_day_inbody td.complete a:visited { color:#AAAAAA;}
+	
+	.Calendar_day_inbody td.delay a:link { color:#FF8040;}
+	.Calendar_day_inbody td.delay a:visited { color:#FF8040;}
+	
+	.Calendar_day_inbody td.legend { color:#38b503;font-weight:bold;}
+	
+	.Calendar_legend { color:#92e600;}
+	
+	

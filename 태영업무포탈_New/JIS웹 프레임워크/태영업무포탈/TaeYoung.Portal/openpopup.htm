@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+     <style>      
+      
+        #divTitle2
+        {
+             position: absolute;
+             margin-top: 1px;
+             font-size: 31px;
+		     color: #ff5496;
+		     top: 90px;
+	         left: 40px;
+	         font-weight:bolder;
+	         font-family: NanumGothicExtraBold;
+        }
+        #divdetail
+        {
+             position: absolute;
+             margin-top: 1px;
+             font-size: 13px;
+             font-weight:bolder;
+		     color: #4a6084;
+		     top: 250px;
+	         left: 20px;	
+	         font-family: NanumGothicExtraBold;
+        }         
+        
+        #inputcss
+        {
+             position: absolute;
+             margin-top: 1px;
+		     top: 571px;
+	         left: 310px;		         
+        }        
+        </style> 
+
+        <script language="JavaScript">
+            function setCookie(name, value, expiredays) {
+                var todayDate = new Date();
+                todayDate.setDate(todayDate.getDate() + expiredays);
+                document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+
+            }
+            function closeWin() {                
+
+                if (document.myform.event.checked)
+                    setCookie("memo", "no", 1); // 1일 간 쿠키적용
+
+            }
+       </script>
+</head>
+<body onunload="closeWin()" >    
+ 
+         <form name="myform">
+          
+             <table style="width:470px; height:600px;"   >
+                   <tr  style="width:470px; height:540px; background-image:url(/Resources/Images/popup_bg.jpg); " >
+                      <td>
+                           
+                           <div id="divTitle2">
+                              고객정보시스템 리뉴얼 오픈
+                           </div>                            
+                      </td>  
+                   </tr>                               
+                   <tr id="divdetail">
+                      <td>
+                         2021년 5월 31일부로 (주)태영인더스트리 & (주)태영그레인터미널 <br />
+                         고객정보시스템이 리뉴얼 되어 신규 오픈 하였습니다.
+                         <br />
+                         <br />
+                         고객정보시스템 사용방법이나 화면 구성은 기존 시스템과 동일하며, 
+                         <br />
+                         PC버전과 모바일 버전의 구분 없이 동일한 URL 주소로 사용이 <br /> 가능합니다
+                         <br />
+                         <br />
+                         기타 사용시 불편사항이나 문의사항은 아래로 연락주시면 안내해 <br /> 드리겠습니다.
+                         <br />
+                         <br />
+                         <br />
+                         문의처: 전산파트 임경화 차장(052-228-3361)
+                         <br />
+                         <br />
+                         <br />
+                         * 권장브라우저 : 크롬(Chrome), 엣지(MicroSoft Edge) <br />
+                                          모바일(휴대폰, 패드, 아이패드) 공통 사용 가능 
+                      </td>
+                   </tr>                                                    
+                   <tr style="width:470px; height:55px; background-image:url(/Resources/Images/popup_button.jpg); " >
+                      <td id="inputcss">
+                          <input type="checkbox" name="event" onclick="closeWin(); self.close()" />                          
+                      </td>
+                   </tr> 
+             </table>  
+          
+        </form>
+</body>
+</html>

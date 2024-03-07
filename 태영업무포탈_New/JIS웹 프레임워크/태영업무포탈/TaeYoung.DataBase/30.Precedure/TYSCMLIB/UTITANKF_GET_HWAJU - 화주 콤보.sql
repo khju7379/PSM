@@ -1,0 +1,38 @@
+--DROP PROCEDURE TYJINFWLIB.UTITANKF_GET_HWAJU;
+-------------------------------------------------------------------------------------------
+--
+-- 프로시저명 : UTITANKF_GET_HWAJU
+-- 작성자     : 이상현
+-- 작성일     : 2023-05-31
+-- 설명       : 예제 리스트
+-- 예문       : CALL TYJINFWLIB.UTITANKF_GET_HWAJU ()
+-------------------------------------------------------------------------------------------
+CREATE PROCEDURE TYJINFWLIB.UTITANKF_GET_HWAJU ( ) 
+	DYNAMIC RESULT SETS 1 
+	LANGUAGE SQL 
+	SPECIFIC TYJINFWLIB.UTITANKF_GET_HWAJU 
+	NOT DETERMINISTIC 
+	MODIFIES SQL DATA 
+	CALLED ON NULL INPUT 
+	SET OPTION  ALWBLK = *ALLREAD , 
+	ALWCPYDTA = *OPTIMIZE , 
+	COMMIT = *NONE , 
+	DECRESULT = (31, 31, 00) , 
+	DYNDFTCOL = *NO , 
+	DYNUSRPRF = *USER , 
+	SRTSEQ = *HEX   
+	P1 : BEGIN  -- 시작 
+	DECLARE REFCURSOR CURSOR WITH RETURN FOR 
+		 
+		SELECT
+			TNHWAJU || ':' || TNHWAJUNM AS NAME,
+			TNHWAJU AS CODE
+		FROM TYSCMLIB.UTITANKF
+		WHERE TNHWAJU <> ''
+		AND    TNHWAJUNM <> ''
+		GROUP BY TNHWAJU, TNHWAJUNM
+		ORDER BY TNHWAJU;
+		 
+	OPEN REFCURSOR ; 
+  
+END  ; 

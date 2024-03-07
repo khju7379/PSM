@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4433CA83-CD5E-463F-BA8A-1F57206AEC3A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TYPSM.Report</RootNamespace>
+    <AssemblyName>TYPSM.Report</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="FarPoint.Win, Version=2.5.2003.2005, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\FarPoint Technologies\Spread.WinForms.v25 for Visual Studio 2005\v2.5.2003\Bin\FarPoint.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win.Spread, Version=2.5.2003.2005, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\FarPoint Technologies\Spread.WinForms.v25 for Visual Studio 2005\v2.5.2003\Bin\FarPoint.Win.Spread.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Chart">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Core.Rendering">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Core.Rendering.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Design.Win">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Design.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Document">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Document.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Excel">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Export.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Html">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Export.Html.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Image">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Export.Image.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Pdf">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Export.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Rdf">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Export.Rdf.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Word">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Export.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Xml">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Export.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Viewer.Win">
+      <HintPath>C:\Program Files (x86)\GrapeCity\ActiveReports 14\Tools\GrapeCity.ActiveReports.Viewer.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="JINI">
+      <HintPath>..\참조프로그램\참조DLL\JINI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CSG1010_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSG1010_RPT.Designer.cs">
+      <DependentUpon>CSG1010_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSG1020_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSG1020_RPT.Designer.cs">
+      <DependentUpon>CSG1020_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSG1030_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSG1030_RPT.Designer.cs">
+      <DependentUpon>CSG1030_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSG1040_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSG1040_RPT.Designer.cs">
+      <DependentUpon>CSG1040_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSG1050_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSG1050_RPT.Designer.cs">
+      <DependentUpon>CSG1050_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM4011_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4011_RPT.Designer.cs">
+      <DependentUpon>PSM4011_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM1090_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM1090_RPT.Designer.cs">
+      <DependentUpon>PSM1090_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM1070_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM1070_RPT.Designer.cs">
+      <DependentUpon>PSM1070_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSI1010_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSI1010_RPT.Designer.cs">
+      <DependentUpon>CSI1010_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSI1020_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSI1020_RPT.Designer.cs">
+      <DependentUpon>CSI1020_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSI1030_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSI1030_RPT.Designer.cs">
+      <DependentUpon>CSI1030_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSI1040_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSI1040_RPT.Designer.cs">
+      <DependentUpon>CSI1040_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSI1050_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSI1050_RPT.Designer.cs">
+      <DependentUpon>CSI1050_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSI1060_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSI1060_RPT.Designer.cs">
+      <DependentUpon>CSI1060_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSI1070_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSI1070_RPT.Designer.cs">
+      <DependentUpon>CSI1070_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSI1080_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSI1080_RPT.Designer.cs">
+      <DependentUpon>CSI1080_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS1010_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS1010_RPT.Designer.cs">
+      <DependentUpon>CSS1010_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS1020_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS1020_RPT.Designer.cs">
+      <DependentUpon>CSS1020_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS1030_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS1030_RPT.Designer.cs">
+      <DependentUpon>CSS1030_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS1040_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS1040_RPT.Designer.cs">
+      <DependentUpon>CSS1040_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS1050_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS1050_RPT.Designer.cs">
+      <DependentUpon>CSS1050_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS1060_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS1060_RPT.Designer.cs">
+      <DependentUpon>CSS1060_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS1070_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS1070_RPT.Designer.cs">
+      <DependentUpon>CSS1070_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS1080_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS1080_RPT.Designer.cs">
+      <DependentUpon>CSS1080_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS1090_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS1090_RPT.Designer.cs">
+      <DependentUpon>CSS1090_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS1100_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS1100_RPT.Designer.cs">
+      <DependentUpon>CSS1100_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS2010_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS2010_RPT.Designer.cs">
+      <DependentUpon>CSS2010_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS2020_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS2020_RPT.Designer.cs">
+      <DependentUpon>CSS2020_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS2030_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS2030_RPT.Designer.cs">
+      <DependentUpon>CSS2030_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS2040_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS2040_RPT.Designer.cs">
+      <DependentUpon>CSS2040_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS2050_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS2050_RPT.Designer.cs">
+      <DependentUpon>CSS2050_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS2060_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS2060_RPT.Designer.cs">
+      <DependentUpon>CSS2060_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSS9000_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CSS9000_RPT.Designer.cs">
+      <DependentUpon>CSS9000_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PSM4031_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4031_RPT.Designer.cs">
+      <DependentUpon>PSM4031_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM4021_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4021_RPT.Designer.cs">
+      <DependentUpon>PSM4021_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM4041_RPT_6.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4041_RPT_6.Designer.cs">
+      <DependentUpon>PSM4041_RPT_6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM4073_INS.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4073_INS.Designer.cs">
+      <DependentUpon>PSM4073_INS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM4073_APP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4073_APP.Designer.cs">
+      <DependentUpon>PSM4073_APP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM4091_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4091_RPT.Designer.cs">
+      <DependentUpon>PSM4091_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM4073_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4073_RPT.Designer.cs">
+      <DependentUpon>PSM4073_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM4040_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4040_RPT.Designer.cs">
+      <DependentUpon>PSM4040_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM4041_RPT_1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4041_RPT_1.Designer.cs">
+      <DependentUpon>PSM4041_RPT_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM4041_RPT_2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4041_RPT_2.Designer.cs">
+      <DependentUpon>PSM4041_RPT_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM4041_RPT_3.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4041_RPT_3.Designer.cs">
+      <DependentUpon>PSM4041_RPT_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM4041_RPT_4.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4041_RPT_4.Designer.cs">
+      <DependentUpon>PSM4041_RPT_4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM4041_RPT_5.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4041_RPT_5.Designer.cs">
+      <DependentUpon>PSM4041_RPT_5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM4050_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4050_RPT.Designer.cs">
+      <DependentUpon>PSM4050_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PSM4081_RPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PSM4081_RPT.Designer.cs">
+      <DependentUpon>PSM4081_RPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportSample.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportSample.Designer.cs">
+      <DependentUpon>ReportSample.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CSG1010_RPT.resx">
+      <DependentUpon>CSG1010_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSG1020_RPT.resx">
+      <DependentUpon>CSG1020_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSG1030_RPT.resx">
+      <DependentUpon>CSG1030_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSG1040_RPT.resx">
+      <DependentUpon>CSG1040_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSG1050_RPT.resx">
+      <DependentUpon>CSG1050_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM4011_RPT.resx">
+      <DependentUpon>PSM4011_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM1090_RPT.resx">
+      <DependentUpon>PSM1090_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM1070_RPT.resx">
+      <DependentUpon>PSM1070_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSI1010_RPT.resx">
+      <DependentUpon>CSI1010_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSI1020_RPT.resx">
+      <DependentUpon>CSI1020_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSI1030_RPT.resx">
+      <DependentUpon>CSI1030_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSI1040_RPT.resx">
+      <DependentUpon>CSI1040_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSI1050_RPT.resx">
+      <DependentUpon>CSI1050_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSI1060_RPT.resx">
+      <DependentUpon>CSI1060_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSI1070_RPT.resx">
+      <DependentUpon>CSI1070_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSI1080_RPT.resx">
+      <DependentUpon>CSI1080_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS1010_RPT.resx">
+      <DependentUpon>CSS1010_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS1020_RPT.resx">
+      <DependentUpon>CSS1020_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS1030_RPT.resx">
+      <DependentUpon>CSS1030_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS1040_RPT.resx">
+      <DependentUpon>CSS1040_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS1050_RPT.resx">
+      <DependentUpon>CSS1050_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS1060_RPT.resx">
+      <DependentUpon>CSS1060_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS1070_RPT.resx">
+      <DependentUpon>CSS1070_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS1080_RPT.resx">
+      <DependentUpon>CSS1080_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS1090_RPT.resx">
+      <DependentUpon>CSS1090_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS1100_RPT.resx">
+      <DependentUpon>CSS1100_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS2010_RPT.resx">
+      <DependentUpon>CSS2010_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS2020_RPT.resx">
+      <DependentUpon>CSS2020_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS2030_RPT.resx">
+      <DependentUpon>CSS2030_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS2040_RPT.resx">
+      <DependentUpon>CSS2040_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS2050_RPT.resx">
+      <DependentUpon>CSS2050_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS2060_RPT.resx">
+      <DependentUpon>CSS2060_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSS9000_RPT.resx">
+      <DependentUpon>CSS9000_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="PSM4031_RPT.resx">
+      <DependentUpon>PSM4031_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM4021_RPT.resx">
+      <DependentUpon>PSM4021_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM4041_RPT_6.resx">
+      <DependentUpon>PSM4041_RPT_6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM4073_INS.resx">
+      <DependentUpon>PSM4073_INS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM4073_APP.resx">
+      <DependentUpon>PSM4073_APP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM4091_RPT.resx">
+      <DependentUpon>PSM4091_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM4073_RPT.resx">
+      <DependentUpon>PSM4073_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM4040_RPT.resx">
+      <DependentUpon>PSM4040_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM4041_RPT_1.resx">
+      <DependentUpon>PSM4041_RPT_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM4041_RPT_2.resx">
+      <DependentUpon>PSM4041_RPT_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM4041_RPT_3.resx">
+      <DependentUpon>PSM4041_RPT_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM4041_RPT_4.resx">
+      <DependentUpon>PSM4041_RPT_4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM4041_RPT_5.resx">
+      <DependentUpon>PSM4041_RPT_5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM4050_RPT.resx">
+      <DependentUpon>PSM4050_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSM4081_RPT.resx">
+      <DependentUpon>PSM4081_RPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportSample.resx">
+      <DependentUpon>ReportSample.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaeYoung.Biz\TaeYoung.Biz.csproj">
+      <Project>{af480d12-b59d-433c-9194-5922cfaba493}</Project>
+      <Name>TaeYoung.Biz</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
